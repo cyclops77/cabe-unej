@@ -35,7 +35,7 @@
  
         <p class="card-text text-left">Place some text for the service 1 here. </p>
  
-        <a href=" /beasiswa/{{$b->slug}}" class="btn btn-warning">More info</a>
+        <a href=" /beasiswa/{{$b->slug_beasiswa}}" class="btn btn-warning">More info</a>
  
       </div>
  

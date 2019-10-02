@@ -15,11 +15,22 @@ class AuthController extends Controller
     	if (Auth::attempt($request->only('email','password'))) {
     		return redirect('/index');
     	}
-    	return 'Password Salah COK';
+    	return 'Password Salah';
     }
     public function logout()
     {
         Auth::logout();
-        return '';
+        return view('public.auth.login');
+    }
+    public function role()
+    {
+        $role = Auth()->user()->role;
+        if (Auth()->user()->role == 'admin') {
+            return view('dashboard.admin');
+        }else if (Auth()->user()->role == 'mahasiswa') {
+            return redirect('/beasiswa');
+        }else if (Auth()->user()->role == 'perusahaan') {
+            return view('dashboard.perusahaan');
+        }
     }
 }

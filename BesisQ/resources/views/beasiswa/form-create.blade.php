@@ -1,115 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<title>Register Perusahaan</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+@extends('include.perusahaan')
 
-</head>
-<body>
-	<div class="container">
-	 <div class="col-md-12">
-
-    @if(session('sukses'))
-    <div class="alert alert-success" >
-      {{session('sukses')}}
-    </div>
-    @endif
-    @if(session('gagal'))
-    <div class="alert alert-success" >
-      {{session('gagal')}}
-    </div>
-    @endif
-
-<br>
-
-<div class="card border-info float-center">
-  <div class="card-header">Buat Beasiswa
-    <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#exampleModal">
+@section('content-page')
+<div class="row">
+              <div class="col-xs-10 col-md-offset-1">
+                <section class="panel">
+                  <header class="panel-heading">
+                    <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#exampleModal">
       Tambah Persyaratan
     </button>
-  </div>
-  <div class="card-body text-info">
-    
-   <form method="POST" action="{{url('/send/buat-beasiswa')}}">
-          {{csrf_field()}}
-          
-          <div class="row">
-            <div class="col-md-6">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Nama Beasiswa</label>
-    <input type="text" class="form-control" placeholder="Masukkan Nama Beasiswa" name="nama_beasiswa" maxlength="191">
-  </div>
 
-
-<div class="form-group" id="inputanFormIPK" style="display: block">
-    <label for="exampleInputEmail1">Index Prestasi Kumulatif / Point</label>
-  <div class="row">
-  <div class="col-md-8">
-    <input type="number" class="form-control" name="ipk" id="inputIPK">
-  </div>
-  <div class="col-md-3">
-    <input type="number" class="form-control" name="point_ipk" id="pointIPK">
-  </div>
-  <a class="btn-sm btn btn-danger text-white"  onclick="FunctionIPK()">
-    X
-  </a>
-  </div>
-</div>
-
-<div class="form-group" id="inputanFormGAJI" style="display: block">
-    <label for="exampleInputEmail1">Gaji Orang Tua / Point</label>
-  <div class="row">
-  <div class="col-md-8">
-    <input type="number" class="form-control"  id="inputGAJI" name="gaji">
-  </div>
-  <div class="col-md-3">
-    <input type="number" class="form-control"  id="pointGAJI" name="point_gaji">
-  </div>
-  <a class="btn-sm btn btn-danger text-white" onclick="FunctionGAJI()">
-    X
-  </a>
-  </div>
-</div>
-
-<div class="form-group" id="inputanFormUMUR" style="display: block">
-    <label for="exampleInputEmail1">Umur / Point</label>
-  <div class="row">
-  <div class="col-md-8">
-    <input type="number" class="form-control" id="inputUMUR" name="umur">
-  </div>
-  <div class="col-md-3">
-    <input type="number" class="form-control" id="pointUMUR" name="point_umur">
-  </div>
-  <a class="btn-sm btn btn-danger text-white" onclick="FunctionUMUR()">
-    X
-  </a>
-  </div>
-</div>
-
-  
-
-<!-- //right -->
-</div>
-<div class="col-md-6">
-  
-  </div>
-  
-</div>
-  <button type="submit" class="btn btn-primary float-left">
-    Buat Sekarang !
-  </button>
-</div>
-</div>
-</form>
-  </div>
-</div>
-</div>
-  </div>
-
-<!-- MODAL  -->
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -129,6 +29,14 @@
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Jumlah Sertif</td>
+      <td>Angka</td>
+      <td>
+        <button class="btn-sm btn btn-primary" onclick="FunctionSERTIF()"><i class="fa fa-plus"></i> Tambahkan Jumlah Sertif</button>
+      </td>
+    </tr>
     <tr>
       <th scope="row">1</th>
       <td>Gaji Orang Tua</td>
@@ -166,60 +74,124 @@
     </div>
   </div>
 </div>
+                    <h2 class="panel-title">Form Elements</h2>
+                  </header>
+                  <div class="panel-body">
+                    
+                      <form method="POST" action="{{url('/send/buat-beasiswa')}}" class="form-horizontal" novalidate="novalidate" id="myform">
+          {{csrf_field()}}
+                      <div class="form-group">
+                        <label class="col-md-3 control-label" for="inputDefault">Nama Beasiswa</label>
+                        <div class="col-md-5">
+                          <input type="text" class="form-control" id="inputDefault" name="nama_beasiswa">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-md-3 control-label">Template Bukti</label>
+                        <div class="col-md-6">
+                          <div class="fileupload fileupload-new" data-provides="fileupload">
+                            <div class="input-append">
+                              <div class="uneditable-input">
+                                <i class="fa fa-file fileupload-exists"></i>
+                                <span class="fileupload-preview"></span>
+                              </div>
+                              <span class="btn btn-default btn-file">
+                                <span class="fileupload-exists">Change</span>
+                                <span class="fileupload-new">Select file</span>
+                                <input type="file" name="file_template" />
+                              </span>
+                              <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                          <div class="form-group">
+                        <label class="col-md-3 control-label">Fakultas</label>
+                        <div class="col-md-4">
+                          <select class="form-control mb-md" id="fakultas" name="fakultas">
+                            <option selected disabled>Pilih Fakultas Anda</option>
+                             @foreach($fak as $f)
+                            <option value="{{$f->id}}">{{$f->nama}}</option>
+                             @endforeach
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-md-3 control-label">Prodi</label>
+                        <div class="col-md-4">
+                          <select class="form-control mb-md" name="prodi" id="prodi">
+                            <option value="0" selected="true" disabled="true">Pilih Prodi Anda</option>
+                          </select>
+                        </div>
+                      </div>
+                        
+                      <div class="form-group" id="inputanFormIPK" style="display: none;">
+                        <div class="row">
+                        <label class="col-md-3 control-label">I P K </label>
+                        <div class="col-md-2">
+                          <input type="number" class="form-control" name="ipk" id="inputIPK" maxlength="4" step="0.01" max="4">
+                        </div>
+                       <a class="btn-sm btn btn-danger text-white"  onclick="FunctionIPK()">X</a>
+                        <label class="col-md-1 control-label">Point IPK </label>
+                        <div class="col-md-1">
+                          <input type="number" class="form-control" name="point_ipk" id="pointIPK" maxlength="4" step="0.01" max="4">
+                        </div>
+                      </div>  
+                     </div>
+
+                     <div class="form-group" id="inputanFormGAJI" style="display: none;">
+                        <div class="row">
+                        <label class="col-md-3 control-label">G a j i  O r t u </label>
+                        <div class="col-md-2">
+                          <input type="number" class="form-control" id="inputGAJI" name="gaji" maxlength="4" step="0.01" max="4">
+                        </div>
+                       <a class="btn-sm btn btn-danger text-white"  onclick="FunctionGAJI()">X</a>
+                        <label class="col-md-1 control-label">Point Gaji </label>
+                        <div class="col-md-1">
+                          <input type="number" class="form-control" id="pointGAJI" name="point_gaji" maxlength="4" step="0.01" max="4">
+                        </div>
+                      </div>  
+                     </div>
+
+                     <div class="form-group" id="inputanFormUMUR" style="display: none;">
+                        <div class="row">
+                        <label class="col-md-3 control-label">U m u r </label>
+                        <div class="col-md-2">
+                          <input type="number" class="form-control" id="inputUMUR" name="usia" maxlength="4" step="0.01" max="4">
+                        </div>
+                       <a class="btn-sm btn btn-danger text-white"  onclick="FunctionUMUR()">X</a>
+                        <label class="col-md-1 control-label">Point Umur </label>
+                        <div class="col-md-1">
+                          <input type="number" class="form-control" id="pointUMUR" name="point_usia" maxlength="4" step="0.01" max="4">
+                        </div>
+                      </div>  
+                     </div>
+            
+                  <div class="form-group" id="inputanFormSERTIF" style="display: none;">
+                        <div class="row">
+                        <label class="col-md-3 control-label">J u m l a h  S e r t i f </label>
+                        <div class="col-md-2">
+                          <input type="number" class="form-control" name="sertifikat" id="inputSERTIF" maxlength="4" step="0.01" max="4">
+                        </div>
+                       <a class="btn-sm btn btn-danger text-white"  onclick="FunctionSERTIF()">X</a>
+                        <label class="col-md-1 control-label">Point Sertif </label>
+                        <div class="col-md-1">
+                          <input type="number" class="form-control" name="point_sertifikat" id="pointSERTIF" maxlength="4" step="0.01" max="4">
+                        </div>
+                      </div>  
+                     </div>
+
+                  <button class="btn-sm btn btn-primary"><i class="fa fa-plus"></i> Buat Beasiswa</button>
 
 
+                    </form>
+                  </div>
+                </section>
+            
+               
+            
+              </div>
+            </div>
+            
+@endsection
 
-  <script type="text/javascript">
-  
-  function FunctionIPK(){
-    var x = document.getElementById("inputanFormIPK");
-    var y = document.getElementById("inputIPK");
-    var z = document.getElementById("pointIPK");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-      y.value = '';
-      z.value = '';
-    }else{
-      x.style.display = "none";
-      y.value = '';
-      z.value = '';
-    }
-  };
-
- function FunctionGAJI(){
-    var x = document.getElementById("inputanFormGAJI");
-    var y = document.getElementById("inputGAJI");
-    var z = document.getElementById("pointGAJI");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-      y.value = '';
-      z.value = '';
-    }else{
-      x.style.display = "none";
-      y.value = '';
-      z.value = '';
-    }
-  };
-function FunctionUMUR(){
-    var x = document.getElementById("inputanFormUMUR");
-    var y = document.getElementById("inputUMUR");
-    var z = document.getElementById("pointUMUR");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-      y.value = '';
-      z.value = '';
-    }else{
-      x.style.display = "none";
-      y.value = '';
-      z.value = '';
-    }
-  };
-
-  </script>
-
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
-</html>

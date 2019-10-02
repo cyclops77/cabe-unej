@@ -11,6 +11,6 @@ class Perusahaan extends Model
 
     public function beasiswa()
     {
-    	return $this->hasMany(Beasiswa::class);
+    	return $this->hasMany('App\Beasiswa');
     }
 }

@@ -36,11 +36,13 @@ Route::get('/logout','AuthController@logout');
 
 Route::group(['middleware' => ['auth','checkRole:perusahaan']], function(){
 	
-// Route::get('/index','BeasiswaController@index');
-	
-Route::get('/buat-beasiswa','BeasiswaController@createLink');
+Route::get('/buat-beasiswa','BeasiswaController@index');
 	
 Route::post('/send/buat-beasiswa','BeasiswaController@create');
+
+Route::get('/index','BeasiswaController@dashbardAdmin');
+
+Route::get('/my-profile','ProfileController@indexPerusahaan');
 
 });
 
@@ -48,7 +50,8 @@ Route::post('/send/buat-beasiswa','BeasiswaController@create');
 
 Route::group(['middleware' => ['auth','checkRole:mahasiswa,perusahaan,admin']], function(){
 
-Route::get('/index','BeasiswaController@listBeasiswa');
+Route::get('/index','AuthController@role');
+
 
 });
 
@@ -56,8 +59,17 @@ Route::get('/index','BeasiswaController@listBeasiswa');
 
 Route::group(['middleware' => ['auth','checkRole:mahasiswa']], function(){
 
-Route::get('/beasiswa/{slug}', 'BeasiswaController@detail');
+Route::get('/beasiswa','DashBoardController@indexMahasiswa');	
 
+Route::get('/beasiswa/{slug_beasiswa}', 'DaftarBeasiswaController@detail');
+
+Route::get('/profile','ProfileController@indexMahasiswa');
+
+Route::post('/ubah-profil','ProfileController@update');
+
+Route::post('/upload-bukti-syarat','DaftarBeasiswaController@daftarSekarang');
+
+Route::post('/upload-bukti', 'DaftarBeasiswaController@daftarSekarang');
 });
 
 //===||login admin||===// 

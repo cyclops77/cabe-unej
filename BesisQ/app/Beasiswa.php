@@ -11,6 +11,18 @@ class Beasiswa extends Model
 
     public function perusahaan()
     {
-    	return $this->belongsTo(Perusahaan::class);
+    	return $this->belongsTo('App\Perusahaan');
     }
+    public function fakultas()
+    {
+    	return $this->belongsTo('App\Fakultas');
+    }
+    public function prodi()
+    {
+    	return $this->belongsTo('App\Prodi');
+    }  
+    public function pendaftar_beasiswa()
+    {
+    	return $this->hasMany('App\Pendaftar_Beasiswa');
+    }    
 }

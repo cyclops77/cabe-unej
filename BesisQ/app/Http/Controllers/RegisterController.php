@@ -29,12 +29,17 @@ class RegisterController extends Controller
     	$user->role = 'mahasiswa';
     	$user->id = mt_rand(10000,19999);
     	$mhs = \App\Mahasiswa::create([
+            'id' => mt_rand(10000,19999),
     		'user_id' => $user->id,
+            'fakultas_id' => $request->fakultas,
+            'prodi_id' => $request->prodi,
     		'nama_lengkap' => $request->nama_lengkap,
     		'nohp' => $request->nohp,
     		'semester' => $request->semester,
     		'ipk' => $request->ipk,
-    		'jenis_jurusan' => $request->jenis_jurusan
+    		'gaji_ortu' => $request->gaji_ortu,
+            'usia' => $request->usia,
+            'sertifikat' => $request->jumlah_sertifikat
     	]);
     	$user->name = $request->nama_lengkap;
     	$user->email = $request->email;
