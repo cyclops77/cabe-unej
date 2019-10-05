@@ -86,32 +86,14 @@
                           <input type="text" class="form-control" id="inputDefault" name="nama_beasiswa">
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label class="col-md-3 control-label">Template Bukti</label>
-                        <div class="col-md-6">
-                          <div class="fileupload fileupload-new" data-provides="fileupload">
-                            <div class="input-append">
-                              <div class="uneditable-input">
-                                <i class="fa fa-file fileupload-exists"></i>
-                                <span class="fileupload-preview"></span>
-                              </div>
-                              <span class="btn btn-default btn-file">
-                                <span class="fileupload-exists">Change</span>
-                                <span class="fileupload-new">Select file</span>
-                                <input type="file" name="file_template" />
-                              </span>
-                              <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      
                           <div class="form-group">
                         <label class="col-md-3 control-label">Fakultas</label>
                         <div class="col-md-4">
                           <select class="form-control mb-md" id="fakultas" name="fakultas">
                             <option selected disabled>Pilih Fakultas Anda</option>
                              @foreach($fak as $f)
-                            <option value="{{$f->id}}">{{$f->nama}}</option>
+                            <option value="{{$f->id}}">{{$f->nama_fak}}</option>
                              @endforeach
                           </select>
                         </div>

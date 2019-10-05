@@ -12,13 +12,19 @@ class DashBoardController extends Controller
     	$idUser = auth()->user()->id;
     	$mahasiswa = \App\Mahasiswa::where('user_id','=',$idUser)->first();
 
-    	$beasiswaCuco = \App\Beasiswa::where('fakultas_id','=',$mahasiswa->fakultas_id)
+    	$beasiswaCuco = \App\Beasiswa::select('*')
+            ->join('perusahaan','perusahaan.user_id','=','beasiswa.perusahaan_id')
+            ->where('fakultas_id','=',$mahasiswa->fakultas_id)
     		->where('prodi_id','=',$mahasiswa->prodi_id)
     		->get();
-    	$beasiswaFakCuco = \App\Beasiswa::where('fakultas_id','=',$mahasiswa->fakultas_id)
+    	$beasiswaFakCuco = \App\Beasiswa::select('*')
+            ->join('perusahaan','perusahaan.user_id','=','beasiswa.perusahaan_id')
+            ->where('fakultas_id','=',$mahasiswa->fakultas_id)
     		->whereNull('prodi_id')
     		->get();
-        $beasiswaFree = \App\Beasiswa::whereNull('fakultas_id')
+        $beasiswaFree = \App\Beasiswa::select('*')
+            ->join('perusahaan','perusahaan.user_id','=','beasiswa.perusahaan_id')
+            ->whereNull('fakultas_id')
             ->whereNull('prodi_id')
             ->get();           
 

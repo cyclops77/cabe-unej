@@ -29,6 +29,10 @@ class ProfileController extends Controller
             'nohp' => $req->nohp,
             'semester' => $req->semester,
             'ipk' => $req->ipk, 
+            'ipk' => $req->ipk, 
+            'semester' => $req->semester,
+            'gaji_ortu' => $req->gaji_ortu,
+            'sertifikat' => $req->sertifikat,   
         ]);
         return redirect()->back();
     }

@@ -521,6 +521,18 @@ input[type=number] {
                             <input type="text" class="form-control" id="profileCompany" value="{{$akun->semester}}" name="semester">
                           </div>
                         </div>
+                         <div class="form-group">
+                          <label class="col-md-3 control-label" for="profileCompany">Gaji Ortu</label>
+                          <div class="col-md-8">
+                            <input type="text" class="form-control" id="profileCompany" value="{{$akun->gaji_ortu}}" name="gaji_ortu">
+                          </div>
+                        </div>
+                         <div class="form-group">
+                          <label class="col-md-3 control-label" for="profileCompany">Sertifikat</label>
+                          <div class="col-md-8">
+                            <input type="text" class="form-control" id="profileCompany" value="{{$akun->sertifikat}}" name="sertifikat">
+                          </div>
+                        </div>
                       </fieldset>
                       
                       <hr class="dotted tall">

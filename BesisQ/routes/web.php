@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('landpage.index');
+});
 
 Route::post('/send/registration','RegisterController@create');
 
@@ -70,6 +70,9 @@ Route::post('/ubah-profil','ProfileController@update');
 Route::post('/upload-bukti-syarat','DaftarBeasiswaController@daftarSekarang');
 
 Route::post('/upload-bukti', 'DaftarBeasiswaController@daftarSekarang');
+
+Route::post('/batalkan-beasiswa','DaftarBeasiswaController@hapusPengajuan');
+
 });
 
 //===||login admin||===// 

@@ -43,7 +43,7 @@
   </div>
   <select class="custom-select" id="inputGroupSelect01" name="jenis_perusahaan">
     <option selected>Choose...</option>
-    <option value="Bank">perBank</option>
+    <option value="Bank">Bank</option>
     <option value="Koperasi">Koperasi</option>
   </select>
 </div>

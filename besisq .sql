@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 02, 2019 at 05:17 PM
+-- Generation Time: Oct 05, 2019 at 01:10 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -52,13 +52,17 @@ CREATE TABLE `beasiswa` (
 --
 
 INSERT INTO `beasiswa` (`id`, `perusahaan_id`, `fakultas_id`, `prodi_id`, `nama_beasiswa`, `slug_beasiswa`, `ipk`, `point_ipk`, `gaji`, `point_gaji`, `usia`, `point_usia`, `sertifikat`, `point_sertifikat`, `created_at`, `updated_at`) VALUES
+(1834, 90816, 15, 54, 'Teaching and Money', 'teaching-and-money', 3, 100, NULL, NULL, NULL, NULL, NULL, NULL, '2019-10-04 18:59:33', '2019-10-04 18:59:33'),
+(2502, 90816, 14, 44, 'contoh beasiswa', 'contoh-beasiswa', 3, 70, NULL, NULL, NULL, NULL, NULL, NULL, '2019-10-04 19:08:48', '2019-10-04 19:08:48'),
 (3037, 90816, 1, NULL, 'IT Globality', 'it-globality', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-27 08:20:53', '2019-09-27 08:20:53'),
 (4798, 90816, 1, 1, 'Analyst Systems', 'analyst-systems', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-27 08:20:32', '2019-09-27 08:20:32'),
 (5138, 90816, 9, 26, 'Teknik Mesin', 'teknik-mesin', 4, 80, NULL, NULL, NULL, NULL, NULL, NULL, '2019-10-01 04:42:06', '2019-09-27 09:37:56'),
 (6563, 90816, 1, 1, 'Creative Systems', 'creative-systems', 4, 50, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-27 08:19:47', '2019-09-27 08:19:47'),
+(7743, 90816, 9, 26, 'Teknik Jaya', 'teknik-jaya', 3, 50, 4500000, 25, NULL, NULL, 5, 25, '2019-10-05 04:14:57', '2019-10-04 19:15:05'),
 (8081, 90816, 9, 31, 'teknik Kimia', 'teknik-kimia', 4, 20, NULL, NULL, NULL, NULL, NULL, NULL, '2019-10-01 04:36:08', '2019-09-27 09:38:11'),
 (8795, 90816, NULL, NULL, 'BCA Foundation', 'bca-foundation', 4, 4, 2000, 4, 4, 4, 4, 4, '2019-10-02 02:16:06', '2019-09-26 22:26:47'),
-(8945, 90816, 9, NULL, 'Engineer Smile', 'engineer-smile', NULL, NULL, NULL, NULL, 4, 4, NULL, NULL, '2019-10-02 02:08:58', '2019-09-27 09:37:43');
+(8945, 90816, 9, NULL, 'Engineer Smile', 'engineer-smile', NULL, NULL, NULL, NULL, 4, 4, NULL, NULL, '2019-10-02 02:08:58', '2019-09-27 09:37:43'),
+(9128, 90816, NULL, NULL, 'Pemkab Kabupaten', 'pemkab-kabupaten', 3, 100, NULL, NULL, NULL, NULL, NULL, NULL, '2019-10-04 19:00:38', '2019-10-04 19:00:38');
 
 -- --------------------------------------------------------
 
@@ -139,7 +143,7 @@ INSERT INTO `mahasiswa` (`id`, `user_id`, `fakultas_id`, `prodi_id`, `nama_lengk
 (11442, 13965, 3, 9, 'alfian ferdiansyah', '088234234', 5, '4', 10000000, 23, 0, '2019-09-26 22:22:09', '2019-09-26 22:22:09'),
 (14219, 10855, 12, 35, 'alfian ferdiansyah', '0822756756', 5, '4', 10000000, 21, 4, '2019-09-30 08:55:33', '2019-09-30 08:55:33'),
 (16352, 18495, 9, 26, 'taufik', '12313131', 3, '4', 10000000, 23, 0, '2019-09-30 03:32:05', '2019-09-30 03:32:05'),
-(16451, 13976, 9, 26, 'bila', '08912213312', 5, '3.75', 10000000, 22, 0, '2019-10-01 04:45:00', '2019-09-30 21:45:00'),
+(16451, 13976, 9, 26, 'Mashudah Sabilaturrizqi', '08912213312', 5, '3.7', 3000000, 22, 10, '2019-10-05 04:25:14', '2019-10-04 21:25:14'),
 (16579, 15125, 9, 31, 'Aga', '24234', 4, '4', 10000000, 2, 0, '2019-09-27 09:39:54', '2019-09-27 09:39:54'),
 (16854, 11060, 1, 1, 'henry', '08912213312', 5, '4', 10000000, 22, 0, '2019-09-27 08:22:26', '2019-09-27 08:22:26'),
 (17227, 12001, 9, 26, 'Henry Kristiano', '08656', 4, '3.76', 100000000, 21, 4, '2019-10-02 07:30:41', '2019-10-02 00:30:41');
@@ -200,8 +204,7 @@ CREATE TABLE `pendaftar_beasiswa` (
 --
 
 INSERT INTO `pendaftar_beasiswa` (`id`, `user_id`, `beasiswa_id`, `point`, `bukti_ipk`, `bukti_gaji`, `bukti_sertifikat`, `created_at`, `updated_at`) VALUES
-(5689, 13976, 5138, NULL, '1570029357_Screenshot (42).png', NULL, NULL, '2019-10-02 08:15:57', '2019-10-02 08:15:57'),
-(7348, 12001, 5138, NULL, '1570029338_Screenshot (44).png', NULL, NULL, '2019-10-02 08:15:38', '2019-10-02 08:15:38');
+(1241, 15125, 8081, 20, '1570184795_Screenshot (38).png', NULL, NULL, '2019-10-04 03:26:35', '2019-10-04 03:26:35');
 
 -- --------------------------------------------------------
 
@@ -211,7 +214,7 @@ INSERT INTO `pendaftar_beasiswa` (`id`, `user_id`, `beasiswa_id`, `point`, `bukt
 
 CREATE TABLE `perusahaan` (
   `id` bigint(20) NOT NULL,
-  `user_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
   `nama_perusahaan` varchar(200) NOT NULL,
   `jenis_perusahaan` varchar(200) NOT NULL,
   `nama_penanggung` varchar(200) NOT NULL,
@@ -231,7 +234,9 @@ INSERT INTO `perusahaan` (`id`, `user_id`, `nama_perusahaan`, `jenis_perusahaan`
 (5, 72420, 'Bank', 'Bank', 'izul', 'p@gmail.com', 'terverifikasi', '2019-09-17 06:38:18', '2019-09-17 06:08:14'),
 (6, 83286, 'Semen Holcim', 'Bank', 'henry', 'h@gmail.com', 'terverifikasi', '2019-09-17 09:35:29', '2019-09-17 06:24:09'),
 (7, 84148, 'Djarum Mild', 'Bank', 'alfian ferdiansyah', 'jarum11@gmail.com', 'terverifikasi', '2019-09-17 09:35:29', '2019-09-17 09:30:03'),
-(9, 86118, 'kopi', 'Koperasi', 'alfian', 'kopi@gmail.com', 'terverifikasi', '2019-09-19 02:45:07', '2019-09-19 02:42:23');
+(9, 86118, 'kopi', 'Koperasi', 'alfian', 'kopi@gmail.com', 'terverifikasi', '2019-09-19 02:45:07', '2019-09-19 02:42:23'),
+(10, 50270, 'Djarum Mild', 'Koperasi', 'alim', 'asdfdf@gmail.com', 'terverifikasi', '2019-10-04 19:32:00', '2019-10-04 19:29:45'),
+(11, NULL, 'Contoh Perusahaan', 'Bank', 'henry', 'a@gmail.com', 'Belum Terverifikasi', '2019-10-04 19:34:46', '2019-10-04 19:34:46');
 
 -- --------------------------------------------------------
 
@@ -354,6 +359,7 @@ INSERT INTO `users` (`id`, `role`, `name`, `email`, `email_verified_at`, `passwo
 (18495, 'mahasiswa', 'taufik', 'taufik@gmail.com', NULL, '$2y$10$.Sj1aBrcZNAqoCs4jiZP1epaTfma114J1qYCV9UwEAY037qkTIBPq', NULL, '2019-09-30 03:32:06', '2019-09-30 03:32:06'),
 (18866, 'mahasiswa', 'as', 'v@gmail.com', NULL, '$2y$10$1xlAjLiYVyAgoNQBV/abW.mAXDahhUpqO5s.rLA9u0LrNgTSwTu86', NULL, '2019-09-25 06:43:35', '2019-09-25 06:43:35'),
 (19694, 'mahasiswa', 'alfian ferdiansyah', 'alfian0000000@gmail.com', NULL, '$2y$10$mbOjzLJhjmnn13cQay27CeXj98mYA59P1/a13V.xHbquIjNnxhYwy', NULL, '2019-09-24 21:10:38', '2019-09-24 21:10:38'),
+(50270, 'perusahaan', 'Djarum Mild', 'asdfdf@gmail.com', NULL, '$2y$10$CKu4oLPIsgHnslbBgyKnlODJsCgLvw6zELBlCsLQRdooz1EaYVjAa', NULL, '2019-10-04 19:32:00', '2019-10-04 19:32:00'),
 (72420, 'perusahaan', 'Bank', 'p@gmail.com', NULL, '$2y$10$UBaak6bPRoXaZbIsbwhOr.GhwS8f7XmjArRH16O8r4AhxuWyC8fie', NULL, '2019-09-17 06:38:19', '2019-09-17 06:38:19'),
 (83286, 'perusahaan', 'Semen Holcim', 'h@gmail.com', NULL, '$2y$10$NqadedV7/p1XUjZSq.BFK.k0/5m3bbVds0z4spVId02KjohBbpfKy', NULL, '2019-09-17 09:35:29', '2019-09-17 09:35:29'),
 (84148, 'perusahaan', 'Djarum Mild', 'jarum11@gmail.com', NULL, '$2y$10$oNuTLvB0PNjEIzLKWrbkiubfIE9tMzAVTsDv.8XBP9bc5zYtvRaE6', NULL, '2019-09-17 09:35:29', '2019-09-17 09:35:29'),
@@ -444,7 +450,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `beasiswa`
 --
 ALTER TABLE `beasiswa`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8946;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9129;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -474,7 +480,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `perusahaan`
 --
 ALTER TABLE `perusahaan`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `prodi`
@@ -513,12 +519,6 @@ ALTER TABLE `mahasiswa`
 ALTER TABLE `pendaftar_beasiswa`
   ADD CONSTRAINT `pendaftar_beasiswa_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `pendaftar_beasiswa_ibfk_2` FOREIGN KEY (`beasiswa_id`) REFERENCES `beasiswa` (`id`);
-
---
--- Constraints for table `perusahaan`
---
-ALTER TABLE `perusahaan`
-  ADD CONSTRAINT `perusahaan_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `prodi`

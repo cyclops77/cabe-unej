@@ -22,6 +22,10 @@ input[type=number] {
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
+    
+    
+
+
     <!-- Web Fonts  -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
 
@@ -35,6 +39,7 @@ input[type=number] {
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('land-page/stylesheets/theme.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page/stylesheets/custom-style.css')}}" />
 
     <!-- Skin CSS -->
     <link rel="stylesheet" href="{{asset('land-page/stylesheets/skins/default.css')}}" />
@@ -53,6 +58,10 @@ input[type=number] {
     <link rel="stylesheet" href="{{asset('land-page/vendor/bootstrap/css/bootstrap.css')}}" />
     <link rel="stylesheet" href="{{asset('land-page/vendor/font-awesome/css/font-awesome.css')}}" />
     <link rel="stylesheet" href="{{asset('land-page/vendor/magnific-popup/magnific-popup.css')}}" />
+
+    <link rel="stylesheet" href="{{asset('land-page/stylesheets/theme-custom.css')}}" />
+
+
     <link rel="stylesheet" href="{{asset('land-page/vendor/bootstrap-datepicker/css/datepicker3.css')}}" />
 
     <!-- Specific Page Vendor CSS -->
@@ -70,10 +79,12 @@ input[type=number] {
 
     <!-- Head Libs -->
     <script src="{{asset('land-page/vendor/modernizr/modernizr.js')}}"></script>
-
+    
+    <title>
+      @yield('title_web')
+    </title>
   </head>
   <body>
-    @include('sweetalert::alert')
     <section class="body">
 
       <!-- start: header -->
@@ -138,8 +149,26 @@ input[type=number] {
 
         <section role="main" class="content-body">
           <header class="page-header">
-            <h2>Basic Forms</h2>
+            <h2>
+              @yield('nama_beasiswanya')
+            </h2>
+          <div class="right-wrapper pull-right">
+              <ol class="breadcrumbs">
+                <li>
+                  <a href="index.html">
+                    <i class="fa fa-home"></i>
+                  </a>
+                </li>
+                <li><span><a href="/beasiswa">Beasiswa</a></span></li>
+                <li>
+                <span>
+                  @yield('nama_beasiswa-breadcrumbs')
+                </span>
+              </li>
+              </ol>
           
+              <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+            </div>
             
           </header>
 
@@ -357,67 +386,10 @@ input[type=number] {
         });
     });
   </script>
-   <script type="text/javascript">
   
-  function FunctionIPK(){
-    var x = document.getElementById("inputanFormIPK");
-    var y = document.getElementById("inputIPK");
-    var z = document.getElementById("pointIPK");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-      y.value = '';
-      z.value = '';
-    }else{
-      x.style.display = "none";
-      y.value = '';
-      z.value = '';
-    }
-  };
 
- function FunctionGAJI(){
-    var x = document.getElementById("inputanFormGAJI");
-    var y = document.getElementById("inputGAJI");
-    var z = document.getElementById("pointGAJI");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-      y.value = '';
-      z.value = '';
-    }else{
-      x.style.display = "none";
-      y.value = '';
-      z.value = '';
-    }
-  };
-function FunctionUMUR(){
-    var x = document.getElementById("inputanFormUMUR");
-    var y = document.getElementById("inputUMUR");
-    var z = document.getElementById("pointUMUR");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-      y.value = '';
-      z.value = '';
-    }else{
-      x.style.display = "none";
-      y.value = '';
-      z.value = '';
-    }
-  };
+  <!-- STYLE -->
 
-function FunctionSERTIF(){
-    var x = document.getElementById("inputanFormSERTIF");
-    var y = document.getElementById("inputSERTIF");
-    var z = document.getElementById("pointSERTIF");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-      y.value = '';
-      z.value = '';
-    }else{
-      x.style.display = "none";
-      y.value = '';
-      z.value = '';
-    }
-  };
-  </script>
-
+<style type="text/css"></style>
   </body>
 </html>
