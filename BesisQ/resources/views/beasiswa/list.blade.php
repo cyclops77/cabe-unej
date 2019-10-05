@@ -21,7 +21,7 @@
                         <img src="{{asset('land-page/images/projects/wal2.jpg')}}" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
                         <div class="special_cource_text">
                             <a href="/beasiswa/{{$b->slug_beasiswa}}" class="btn_4">Lihat Beasiswa</a>
-                            <h4>{{date('M d, Y', strtotime($b->created_at))}}</h4>
+                            <h4>{{date('d M Y', strtotime($b->created_at))}}</h4>
                             <a href="course-details.html"><h3>{{$b->nama_beasiswa}}</h3></a>
                             <p>Which whose darkness saying were life unto fish wherein all fish of together called</p>
                             <div class="author_info">

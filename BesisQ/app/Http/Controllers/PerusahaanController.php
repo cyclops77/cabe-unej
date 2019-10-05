@@ -26,7 +26,7 @@ class PerusahaanController extends Controller
 
         $p->save();
 
-        return redirect('/login')->with('sukses','berhasil mendaftarkan akun perusahaan, silahlkan tunggu konfirmasi melalui email ');
+        return redirect()->back()->with('sukses','berhasil mendaftarkan akun perusahaan, silahlkan tunggu konfirmasi melalui email ');
 
     }
 

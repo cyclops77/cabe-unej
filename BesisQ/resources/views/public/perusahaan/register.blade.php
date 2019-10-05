@@ -25,7 +25,7 @@
 <div class="card border-info float-center">
   <div class="card-header">Header</div>
   <div class="card-body text-info">
-   <form method="POST" action="{{url('/send/regis-perusahaan')}}">
+   <form method="POST" action="{{url('/send/regis-perusahaan')}}" id="myForm">
           {{csrf_field()}}
           <div class="row">
             <div class="col-md-6">
@@ -63,6 +63,7 @@
   </div>
   
 </div>
+  <input type="button" onclick="myFunction()" value="Reset form">
   <button type="submit" class="btn btn-primary float-right">
     Kirim Registrasi
   </button>
@@ -78,5 +79,10 @@
 
 </div>
   </div>
+  <script>
+function myFunction() {
+  document.getElementById("myForm").reset();
+}
+</script>
 </body>
 </html>
