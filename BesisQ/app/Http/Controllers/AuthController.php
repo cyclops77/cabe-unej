@@ -30,7 +30,7 @@ class AuthController extends Controller
         }else if (Auth()->user()->role == 'mahasiswa') {
             return redirect('/beasiswa');
         }else if (Auth()->user()->role == 'perusahaan') {
-            return view('include.perusahaan');
+            return view('dashboard.perusahaan');
         }
     }
 }

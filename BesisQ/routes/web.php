@@ -44,6 +44,10 @@ Route::get('/index','BeasiswaController@dashbardAdmin');
 
 Route::get('/my-profile','ProfileController@indexPerusahaan');
 
+Route::get('/beasiswaku','PendaftarBeasiswaController@index');
+
+Route::get('/beasiswaku/{slug_beasiswa}','PendaftarBeasiswaController@pendaftar');
+
 });
 
 //===||login SEMUA||===// 
