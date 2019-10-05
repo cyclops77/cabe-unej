@@ -17,7 +17,7 @@ class PendaftarBeasiswaController extends Controller
     {
     	$idBea = \App\Beasiswa::where('slug_beasiswa','=', $slug_beasiswa)->first();
     	$pendaftar = \App\Pendaftar_Beasiswa::select('*')
-    		->join('users','users.id','=','pendaftar_beasiswa.user_id')
+    		->join('mahasiswa','mahasiswa.user_id','=','pendaftar_beasiswa.user_id')
     		->where('beasiswa_id','=',$idBea->id)->get();
     	// dd($pendaftar->point);
     	return view('pendaftar.detail', ['pendaftar' => $pendaftar]);	
