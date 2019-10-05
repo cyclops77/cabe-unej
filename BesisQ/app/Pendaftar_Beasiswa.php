@@ -18,5 +18,11 @@ class Pendaftar_Beasiswa extends Model
     {
     	return $this->belongsTo('App\Mahasiswa');
     }  
-
+    public function getBukti()
+    {
+        if (!$this->bukti_ipk) {
+            return asset('images/default.png');
+        }
+        return asset('bukti/'.$this->bukti_ipk);
+    }
 }
