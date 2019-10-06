@@ -24,7 +24,7 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
+	<img src="land-page/unej1878x874.jpg" style="position: fixed; z-index: -999"  style="opacity: 0.5;">
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">

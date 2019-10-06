@@ -141,20 +141,53 @@ class DaftarBeasiswaController extends Controller
         $user = Auth::user();
 
 
-
-        $filenya = $request->file('bukti_ipk');
-
-        $nama_file = time().'_'.$filenya->getClientOriginalName();
-
         $tempatfile = ('bukti');
 
-        $filenya->move($tempatfile, $nama_file);
+
+        if (empty($request->file('bukti_ipk'))) {
+//      INI GAJI
+        $filenyagaji = $request->file('bukti_gaji');
+        $nama_filegaji = $filenyagaji->getClientOriginalName().date("Y-m-d");
+        $filenyagaji->move($tempatfile, $nama_filegaji);
+//      INI SERTIF        
+        $filenyasertifikat = $request->file('bukti_sertifikat');
+        $nama_filesertifikat = $filenyasertifikat->getClientOriginalName().date("Y-m-d");
+        $filenyasertifikat->move($tempatfile, $nama_filesertifikat);
+        }
+        else if((empty($request->file('bukti_gaji'))) && (empty($request->file('bukti_sertifikat'))) ) {
+//      INI IPK
+        $filenyaipk = $request->file('bukti_ipk');
+        $nama_fileipk = $filenyaipk->getClientOriginalName().date("Y-m-d");
+        $filenyaipk->move($tempatfile, $nama_fileipk);
+
+        $nama_filegaji='';
+        $nama_filesertifikat='';
+
+        }else{
+//      INI IPK
+        $filenyaipk = $request->file('bukti_ipk');
+        $nama_fileipk = $filenyaipk->getClientOriginalName().date("Y-m-d");
+        $filenyaipk->move($tempatfile, $nama_fileipk);
+//      INI GAJI
+        $filenyagaji = $request->file('bukti_gaji');
+        $nama_filegaji = $filenyagaji->getClientOriginalName().date("Y-m-d");
+        $filenyagaji->move($tempatfile, $nama_filegaji);
+//      INI SERTIF        
+        $filenyasertifikat = $request->file('bukti_sertifikat');
+        $nama_filesertifikat = $filenyasertifikat->getClientOriginalName().date("Y-m-d");
+        $filenyasertifikat->move($tempatfile, $nama_filesertifikat);
+
+
+        }
+
 
         $upl = new \App\Pendaftar_Beasiswa;
         $upl->id = mt_rand(1000,9999);
         $upl->user_id = $user->id;
         $upl->beasiswa_id = $request->idbeasiswa;
-        $upl->bukti_ipk = $nama_file;
+        $upl->bukti_ipk = $nama_fileipk;
+        $upl->bukti_gaji = $nama_filegaji;
+        $upl->bukti_sertifikat = $nama_filesertifikat;
         $upl->point = $request->totalPoint;
         $upl->save();
 
