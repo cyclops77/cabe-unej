@@ -56,7 +56,6 @@ Route::group(['middleware' => ['auth','checkRole:mahasiswa,perusahaan,admin']], 
 
 Route::get('/index','AuthController@role');
 
-
 });
 
 //===||login mahasiswa||===// 

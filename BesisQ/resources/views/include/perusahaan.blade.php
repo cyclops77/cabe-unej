@@ -24,10 +24,15 @@ input[type=number] {
 
     <!-- Web Fonts  -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
-
+    <title>
+      @yield('titlenya')
+    </title>
 
     <!-- Vendor CSS -->
     <!-- {{asset('admin/assets/css/style.css')}} -->
+
+    <link rel="stylesheet" href="{{asset('land-page/vendor/bootstrap-multiselect/bootstrap-multiselect.css')}}" />
+
     <link rel="stylesheet" href="{{asset('land-page/vendor/bootstrap/css/bootstrap.css')}}" />
     <link rel="stylesheet" href="{{asset('land-page/vendor/font-awesome/css/font-awesome.css')}}" />
     <link rel="stylesheet" href="{{asset('land-page/vendor/magnific-popup/magnific-popup.css')}}" />
@@ -44,6 +49,40 @@ input[type=number] {
 
     <!-- Head Libs -->
     <script src="{{asset('land-page/vendor/modernizr/modernizr.js')}}"></script>
+
+    <link rel="stylesheet" href="{{asset('land-page//vendor/bootstrap/css/bootstrap.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page//vendor/font-awesome/css/font-awesome.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page//vendor/magnific-popup/magnific-popup.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page//vendor/bootstrap-datepicker/css/datepicker3.css')}}" />
+
+    <!-- Specific Page Vendor CSS -->
+    <link rel="stylesheet" href="{{asset('land-page//vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page//vendor/select2/select2.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page//vendor/bootstrap-multiselect/bootstrap-multiselect.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page//vendor/bootstrap-tagsinput/bootstrap-tagsinput.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page//vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page//vendor/bootstrap-timepicker/css/bootstrap-timepicker.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page//vendor/dropzone/css/basic.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page//vendor/dropzone/css/dropzone.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page//vendor/bootstrap-markdown/css/bootstrap-markdown.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page//vendor/summernote/summernote.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page//vendor/summernote/summernote-bs3.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page//vendor/codemirror/lib/codemirror.css')}}" />
+    <link rel="stylesheet" href="{{asset('land-page//vendor/codemirror/theme/monokai.css')}}" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{{asset('land-page//stylesheets/theme.css')}}" />
+
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="{{asset('land-page//stylesheets/skins/default.css')}}" />
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="{{asset('land-page//stylesheets/theme-custom.css')}}">
+
+    <!-- Head Libs -->
+    <script src="{{asset('land-page//vendor/modernizr/modernizr.js')}}"></script>
+
+
 
   </head>
   <body>
@@ -111,7 +150,21 @@ input[type=number] {
 
         <section role="main" class="content-body">
           <header class="page-header">
-            <h2>Basic Forms</h2>
+            <h2>@yield('nama-page')</h2>
+
+            <div class="right-wrapper pull-right">
+              <ol class="breadcrumbs">
+                <li>
+                  <a href="index.html">
+                    <i class="fa fa-home"></i>
+                  </a>
+                </li>
+                <li><span>@yield('page-awal')</span></li>
+                <li><span>@yield('page-kedua')</span></li>
+              </ol>
+          
+              <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+            </div>
           
             
           </header>
@@ -198,6 +251,56 @@ input[type=number] {
 
     <!-- Vendor -->
     @yield('script')
+
+    <script src="{{asset('land-page/vendor/bootstrap-multiselect/bootstrap-multiselect.js')}}"></script>
+    <script src="{{asset('land-page/vendor/jquery/jquery.js')}}"></script>
+    <script src="{{asset('land-page/vendor/jquery-browser-mobile/jquery.browser.mobile.js')}}"></script>
+    <script src="{{asset('land-page/vendor/bootstrap/js/bootstrap.js')}}"></script>
+    <script src="{{asset('land-page/vendor/nanoscroller/nanoscroller.js')}}"></script>
+    <script src="{{asset('land-page/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{asset('land-page/vendor/magnific-popup/magnific-popup.js')}}"></script>
+    <script src="{{asset('land-page/vendor/jquery-placeholder/jquery.placeholder.js')}}"></script>
+    
+    <!-- Specific Page Vendor -->
+    <script src="{{asset('land-page/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.js')}}"></script>
+    <script src="{{asset('land-page/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js')}}"></script>
+    <script src="{{asset('land-page/vendor/select2/select2.js')}}"></script>
+    <script src="{{asset('land-page/vendor/bootstrap-multiselect/bootstrap-multiselect.js')}}"></script>
+    <script src="{{asset('land-page/vendor/jquery-maskedinput/jquery.maskedinput.js')}}"></script>
+    <script src="{{asset('land-page/vendor/bootstrap-tagsinput/bootstrap-tagsinput.js')}}"></script>
+    <script src="{{asset('land-page/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.js')}}"></script>
+    <script src="{{asset('land-page/vendor/bootstrap-timepicker/js/bootstrap-timepicker.js')}}"></script>
+    <script src="{{asset('land-page/vendor/fuelux/js/spinner.js')}}"></script>
+    <script src="{{asset('land-page/vendor/dropzone/dropzone.js')}}"></script>
+    <script src="{{asset('land-page/vendor/bootstrap-markdown/js/markdown.js')}}"></script>
+    <script src="{{asset('land-page/vendor/bootstrap-markdown/js/to-markdown.js')}}"></script>
+    <script src="{{asset('land-page/vendor/bootstrap-markdown/js/bootstrap-markdown.js')}}"></script>
+    <script src="{{asset('land-page/vendor/codemirror/lib/codemirror.js')}}"></script>
+    <script src="{{asset('land-page/vendor/codemirror/addon/selection/active-line.js')}}"></script>
+    <script src="{{asset('land-page/vendor/codemirror/addon/edit/matchbrackets.js')}}"></script>
+    <script src="{{asset('land-page/vendor/codemirror/mode/javascript/javascript.js')}}"></script>
+    <script src="{{asset('land-page/vendor/codemirror/mode/xml/xml.js')}}"></script>
+    <script src="{{asset('land-page/vendor/codemirror/mode/htmlmixed/htmlmixed.js')}}"></script>
+    <script src="{{asset('land-page/vendor/codemirror/mode/css/css.js')}}"></script>
+    <script src="{{asset('land-page/vendor/summernote/summernote.js')}}"></script>
+    <script src="{{asset('land-page/vendor/bootstrap-maxlength/bootstrap-maxlength.js')}}"></script>
+    <script src="{{asset('land-page/vendor/ios7-switch/ios7-switch.js')}}"></script>
+    
+    <!-- Theme Base, Components and Settings -->
+    <script src="{{asset('land-page/javascripts/theme.js')}}"></script>
+    
+    <!-- Theme Custom -->
+    <script src="{{asset('land-page/javascripts/theme.custom.js')}}"></script>
+    
+    <!-- Theme Initialization Files -->
+    <script src="{{asset('land-page/javascripts/theme.init.js')}}"></script>
+
+
+    <!-- Examples -->
+    <script src="{{asset('land-page/javascripts/forms/examples.advanced.form.js')}}" /></script>
+
+
+
 
     <script src="{{asset('land-page/vendor/jquery/jquery.js')}}"></script>
     <script src="{{asset('land-page/vendor/jquery-browser-mobile/jquery.browser.mobile.js')}}"></script>

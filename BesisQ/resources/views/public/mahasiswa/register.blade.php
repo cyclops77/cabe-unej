@@ -10,12 +10,6 @@ input[type=number] {
 }
                      </style>
 
-
-
-
-
-
-
 <!doctype html>
 <html class="fixed">
   <head>
