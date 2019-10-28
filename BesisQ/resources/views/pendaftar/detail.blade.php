@@ -52,6 +52,7 @@
 		<img src="/bukti/{{$p->bukti_ipk}}" height="450px" style="display:  {{ empty($p->bukti_ipk) ? "none" : "block" }}">
 		<img src="/bukti/{{$p->bukti_gaji}}" height="450px" style="display:  {{ empty($p->bukti_gaji) ? "none" : "block" }}">
 		<img src="/bukti/{{$p->bukti_sertifikat}}" height="450px" style="display:  {{ empty($p->bukti_sertifikat) ? "none" : "block" }}">
+		<img src="/bukti/{{$p->bukti_organisasi}}" height="450px" style="display:  {{ empty($p->bukti_organisasi) ? "none" : "block" }}">
 	</div>
 </div>
 </div>

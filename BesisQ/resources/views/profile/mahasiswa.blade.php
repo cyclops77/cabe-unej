@@ -533,6 +533,20 @@ input[type=number] {
                             <input type="text" class="form-control" id="profileCompany" value="{{$akun->sertifikat}}" name="sertifikat">
                           </div>
                         </div>
+                        <div class="form-group">
+                        <label class="col-md-3 control-label" for="inputSuccess">Organisasi</label>
+                        <div class="col-md-8">
+                          <select class="form-control mb-md">
+                            <option {{$akun->organisasi=="Ketua dan Wakil Ketua" ? "selected" : ""}}>Ketua dan Wakil Ketua</option>
+                            <option {{$akun->organisasi=="Pengurus Inti" ? "selected" : ""}}>Pengurus Inti</option>
+                            <option {{$akun->organisasi=="Pengurus Divisi" ? "selected" : ""}}>Pengurus Divisi</option>
+                            <option value="" {{$akun->organisasi=="Anggota" ? "selected" : ""}}>Anggota</option>
+                          </select>
+                        </div>
+                      </div>
+                        </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-default">Reset</button>
                       </fieldset>
                       
                       <hr class="dotted tall">
@@ -540,42 +554,13 @@ input[type=number] {
                       <div class="panel-footer">
                         <div class="row">
                           <div class="col-md-9 col-md-offset-3">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="reset" class="btn btn-default">Reset</button>
                           </div>
                         </div>
                       </div>
 
                     </form>
                   </div>
-                  <div id="edit" class="tab-pane">
-                    <h4 class="mb-xlg">Ganti Kata Sansi</h4>
-                    <form action="">
-                      <fieldset class="mb-xl">
-                        <div class="form-group">
-                          <label class="col-md-3 control-label" for="profileNewPassword">New Password</label>
-                          <div class="col-md-8">
-                            <input type="password" class="form-control" id="profileNewPassword">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-3 control-label" for="profileNewPasswordRepeat">Repeat New Password</label>
-                          <div class="col-md-8">
-                            <input type="password" class="form-control" id="profileNewPasswordRepeat">
-                          </div>
-                        </div>
-                      </fieldset>
-                      <div class="panel-footer">
-                        <div class="row">
-                          <div class="col-md-9 col-md-offset-3">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="reset" class="btn btn-default">Reset</button>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-
-                  </div>
+                
                 </div>
               </div>
             </div>
