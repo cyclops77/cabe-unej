@@ -98,6 +98,12 @@ input[type=number] {
                             </div>
                           </div>
                           <div class="form-group">
+                            <label class="col-sm-4 control-label" for="w4-username"> NIM</label>
+                            <div class="col-sm-4">
+                              <input type="number" class="form-control" name="nim" id="w4-username" required>
+                            </div>
+                          </div>
+                          <div class="form-group">
                             <label class="col-sm-4 control-label" for="w4-username"> Email</label>
                             <div class="col-sm-4">
                               <input type="email" class="form-control" name="email" id="w4-username" required>
@@ -106,19 +112,19 @@ input[type=number] {
                           <div class="form-group">
                             <label class="col-sm-4 control-label" for="w4-username"> Nomor HP</label>
                             <div class="col-sm-4">
-                              <input type="number" class="form-control" name="nohp" id="w4-username" required>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-sm-4 control-label" for="w4-username"> Usia</label>
-                            <div class="col-sm-4">
-                              <input type="number" class="form-control" name="usia" id="w4-username" required>
+                              <input type="text" class="form-control" name="nohp" id="w4-username" required>
                             </div>
                           </div>
                            <div class="form-group">
                             <label class="col-sm-4 control-label" for="w4-username"> Gaji Ortu</label>
                             <div class="col-sm-4">
                               <input type="number" class="form-control" name="gaji_ortu" id="w4-username" required>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-4 control-label" for="w4-first-name">Semester</label>
+                            <div class="col-sm-2">
+                              <input type="number" class="form-control" name="semester" id="w4-first-name" required min="1">
                             </div>
                           </div>
                          <!--  <div class="form-group">
@@ -129,12 +135,7 @@ input[type=number] {
                           </div> -->
                         </div>
                         <div id="w4-profile" class="tab-pane">
-                          <div class="form-group">
-                            <label class="col-sm-5 control-label" for="w4-first-name">Semester</label>
-                            <div class="col-sm-2">
-                              <input type="number" class="form-control" name="semester" id="w4-first-name" required min="1">
-                            </div>
-                          </div>
+                          
                           <div class="form-group">
                             <label class="col-sm-5 control-label" for="w4-last-name">I P K</label>
                             <div class="col-sm-2">
@@ -145,6 +146,18 @@ input[type=number] {
                             <label class="col-sm-5 control-label" for="w4-last-name">Jumlah Sertifikat</label>
                             <div class="col-sm-2">
                               <input type="number" class="form-control" name="jumlah_sertifikat" id="w4-last-name" required min="0" >
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-5 control-label" for="w4-last-name">Organisasi</label>
+                            <div class="col-sm-4">
+                          <select class="form-control input-sm mb-md" name="organisasi">
+                             <option selected disabled>Pilih Organisasi Anda</option>
+                             <option value="Ketua dan Wakil Ketua">Ketua dan Wakil Ketua</option>
+                             <option value="Pengurus Inti">Pengurus Inti</option>
+                             <option value="Pengurus Divisi">Pengurus Divisi</option>
+                             <option value="Anggota">Anggota</option>
+                          </select>
                             </div>
                           </div>
                           <div class="form-group">
@@ -181,7 +194,7 @@ input[type=number] {
                           <div class="form-group">
                             <label class="col-sm-5 control-label" for="w4-first-name">Ulangin Password</label>
                             <div class="col-sm-2">
-                              <input type="password" class="form-control" name="password" id="w4-first-name" required>
+                              <input type="password" class="form-control" name="password2" id="w4-first-name" required>
                             </div>
                           </div>
                           
@@ -266,7 +279,7 @@ input[type=number] {
     <script src="{{asset('land-page/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
     <script src="{{asset('land-page/vendor/magnific-popup/magnific-popup.js')}}"></script>
     <script src="{{asset('land-page/vendor/jquery-placeholder/jquery.placeholder.js')}}"></script>
-    
+    <script src="{{asset('jquery/vendor/jquery-maskedinput/jquery.maskedinput.js')}}"></script>
     <!-- Theme Base, Components and Settings -->
     <script src="{{asset('land-page/javascripts/theme.js')}}"></script>
     

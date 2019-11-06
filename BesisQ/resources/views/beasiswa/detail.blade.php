@@ -30,7 +30,7 @@
 @endif
 <section class="panel">
 <div class="panel-body">
-<img src="{{asset('land-page/images/projects/wal6.jpg')}}" class="img-fluid" alt="Responsive image" width="100%" height="250px" style="object-fit: cover;">
+<img src="{{asset('land-page/images/projects/'.$gbr)}}" class="img-fluid" alt="Responsive image" width="100%" height="250px" style="object-fit: cover;">
 <br>
 <br>
 <br>
@@ -52,7 +52,7 @@
 
     <div id="modalFullColorDanger" class="modal-block modal-full-color modal-block-danger mfp-hide">
       <section class="panel">
-        <header class="panel-heading">
+        <header class="panel-heading" style="background-color: #18222b;">
           <h2 class="panel-title">Oopss . . . !</h2>
         </header>
         <div class="panel-body"  style="background-color: #34495e;">
@@ -67,7 +67,7 @@
             </div>
           </div>
         </div>
-        <footer class="panel-footer">
+        <footer class="panel-footer" style="background-color: #34495e;">
           <div class="row">
             <div class="col-md-12 text-right">
               <button class="btn btn-default modal-dismiss">Cancel</button>
@@ -140,7 +140,7 @@
                 <span class="btn btn-default btn-file">
                   <span class="fileupload-exists">Ubah</span>
                   <span class="fileupload-new">Pilih file</span>
-                  <input type="file" name="bukti_ipk" />
+                  <input type="file" name="bukti_ipk" required />
                 </span>
                 <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Hapus</a>
               </div>
@@ -162,7 +162,7 @@
                 <span class="btn btn-default btn-file">
                   <span class="fileupload-exists">Ubah</span>
                   <span class="fileupload-new">Pilih file</span>
-                  <input type="file" name="bukti_gaji"/>
+                  <input type="file" name="bukti_gaji" required />
                 </span>
                 <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
               </div>
@@ -182,7 +182,7 @@
                 <span class="btn btn-default btn-file">
                   <span class="fileupload-exists">Ubah</span>
                   <span class="fileupload-new">Pilih file</span>
-                  <input type="file" name="bukti_sertifikat"/>
+                  <input type="file" name="bukti_sertifikat" required />
                 </span>
                 <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
               </div>
@@ -204,7 +204,7 @@
                 <span class="btn btn-default btn-file">
                   <span class="fileupload-exists">Ubah</span>
                   <span class="fileupload-new">Pilih file</span>
-                  <input type="file" name="bukti_organisasi" />
+                  <input type="file" name="bukti_organisasi" required />
                 </span>
                 <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Hapus</a>
               </div>

@@ -25,6 +25,13 @@ class RegisterController extends Controller
     }
     public function create(Request $request)
     {
+        $thisError = "none";
+        $prodi = \App\Prodi::where('id','=',$request->prodi)->first();
+        $nim = (String)$prodi->nim; 
+        
+       
+
+        if (strpos((String)$request->nim,$nim)) {
     	$user = new \App\User;
     	$user->role = 'mahasiswa';
     	$user->id = mt_rand(10000,19999);
@@ -38,8 +45,8 @@ class RegisterController extends Controller
     		'semester' => $request->semester,
     		'ipk' => $request->ipk,
     		'gaji_ortu' => $request->gaji_ortu,
-            'usia' => $request->usia,
-            'sertifikat' => $request->jumlah_sertifikat
+            'sertifikat' => $request->jumlah_sertifikat,
+            'organisasi' => $request->organisasi
     	]);
     	$user->name = $request->nama_lengkap;
     	$user->email = $request->email;
@@ -48,5 +55,15 @@ class RegisterController extends Controller
     	$user->save();
 
     	return redirect('/login');
+    }else if(!strpos($request->nim,$nim)){
+        $thisError = "Nim dan Prodi anda tidak sinkron";
+        return view('public.mahasiswa.gagal-verif',compact('thisError'));
+    }else if($request->password2 !== $request->password && !strpos($request->nim,$nim)){
+        $thisError = "Password anda tidak sesuai dan juga Nim dan Prodi anda tidak sinkron";
+        return view('public.mahasiswa.gagal-verif',compact('thisError'));
+    }else if($request->password2 !== $request->password){
+        $thisError = "Password anda tidak sesuai";
+        return view('public.mahasiswa.gagal-verif',compact('thisError'));
+    }
     }
 }

@@ -43,7 +43,7 @@
 <div id="z{{$p->id}}" class="modal-block modal-full-color modal-block-primary mfp-hide">
 <section class="panel">
 <header class="panel-heading">
-<h2 class="panel-title">Are you sure?</h2>
+<h2 class="panel-title">Detail Bukti Pendaftar</h2>
 </header>
 <div class="panel-body">
 <div class="modal-wrapper">
@@ -59,7 +59,7 @@
 <footer class="panel-footer">
 <div class="row">
 	<div class="col-md-12 text-right">
-		<button class="btn btn-primary modal-confirm">Confirm</button>
+		<button class="btn btn-primary modal-confirm">Back</button>
 	</div>
 </div>
 </footer>

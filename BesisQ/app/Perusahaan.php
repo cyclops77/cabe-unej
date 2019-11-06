@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Perusahaan extends Model
 {
     protected $table = 'perusahaan';
-    protected $fillable = ['user_id','nama_perusahaan','jenis_perusahaan','nama_penanggung','email_perusahaan','status'];
+    protected $fillable = ['user_id','nama_perusahaan','jenis_perusahaan','nama_penanggung','email_perusahaan','status','bukti'];
 
     public function beasiswa()
     {

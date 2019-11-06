@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('landpage.index');
 });
 
+Route::get('/error-register',function(){
+	return view('public.mahasiswa.gagal-verif');
+});
+
 Route::post('/send/registration','RegisterController@create');
 
 Route::get('/daftar-mahasiswa','RegisterController@index');
@@ -24,7 +28,6 @@ Route::get('/json-prodi/','RegisterController@prodi');
 Route::get('/daftar-perusahaan','PerusahaanController@index');
 
 Route::post('send/regis-perusahaan','PerusahaanController@register');
-
 
 Route::get('/login','AuthController@index');
 
@@ -47,6 +50,11 @@ Route::get('/my-profile','ProfileController@indexPerusahaan');
 Route::get('/beasiswaku','PendaftarBeasiswaController@index');
 
 Route::get('/beasiswaku/{slug_beasiswa}','PendaftarBeasiswaController@pendaftar');
+
+
+Route::get('/danger', function () {
+    return view('danger');
+});
 
 });
 
@@ -85,5 +93,7 @@ Route::group(['middleware' => ['auth','checkRole:admin']], function(){
 Route::get('/pendaftar','PerusahaanController@listPendaftar');
 
 Route::post('/data-pendaftaran/terima-perusahaan','PerusahaanController@accRegisterPerusahaan');
+
+Route::post('/data-pendaftaran/jangan-terima-perusahaan','PerusahaanController@DecRegisterPerusahaan');
 
 });

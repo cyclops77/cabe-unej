@@ -12,6 +12,7 @@ class DaftarBeasiswaController extends Controller
 {
     public function detail($slug_beasiswa)
     {
+        $r = mt_rand(1,12);
         $userid = auth()->user()->id;
     
         $data_mahasiswa = \App\Mahasiswa::where('user_id','=',$userid)->first();
@@ -203,7 +204,8 @@ class DaftarBeasiswaController extends Controller
 
         
          // dd($SDBL);   
-        return view('beasiswa.detail',['bea' => $bea,'data_mahasiswa' => $data_mahasiswa,'totalPoint' => $totalPoint,'btn' => $btn,'btn1' => $btn1,'SDBL' => $SDBL,'output' => $output]);
+        $gbr = 'wal'.$r.'.jpg';
+        return view('beasiswa.detail',['bea' => $bea,'data_mahasiswa' => $data_mahasiswa,'totalPoint' => $totalPoint,'btn' => $btn,'btn1' => $btn1,'SDBL' => $SDBL,'output' => $output,'r' => $r,'gbr' => $gbr]);
     }
     public function daftarSekarang(Request $request)
     {

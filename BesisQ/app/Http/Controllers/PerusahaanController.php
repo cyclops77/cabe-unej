@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
+use Mail;
+use App\Mail\SendEmail;
+use App\Mail\SendEmailNot;
+use Illuminate\Support\Facades\Crypt;
+
 
 class PerusahaanController extends Controller
 {
@@ -12,21 +18,31 @@ class PerusahaanController extends Controller
     }
     public function register(Request $request)
     {
-        $p = new \App\Perusahaan;
+        $tempatfile = ('bukti_image');
 
-        $p->nama_perusahaan = $request->nama_perusahaan;
+        $gbr = $request->file('foto');
+        $nama_Gbr = $gbr->getClientOriginalName();
+        $gbr->move($tempatfile, $nama_Gbr);
 
-        $p->jenis_perusahaan = $request->jenis_perusahaan;
+        $user = new \App\User;
+        $user->id = mt_rand(50000,99999);
+        $user->role = 'perusahaan';
+        \App\Perusahaan::create([
+                'user_id' => $user->id,
+                'nama_perusahaan' => $request->nama_perusahaan,
+                'jenis_perusahaan' => $request->jenis_perusahaan,
+                'email_perusahaan' => $request->email_perusahaan,
+                'nama_penanggung' => $request->nama_penanggung,
+                'status' => 'Belum Terverifikasi',
+                'bukti' => $nama_Gbr,
+            ]);
+        $user->name = $request->nama_perusahaan;
+        $user->email = $request->email_perusahaan;
+        $user->password = bcrypt($request->password);
 
-        $p->email_perusahaan = $request->email_perusahaan;
+        $user->save();
 
-        $p->nama_penanggung = $request->nama_penanggung;
-
-        $p->status = 'Belum Terverifikasi';
-
-        $p->save();
-
-        return redirect()->back()->with('sukses','berhasil mendaftarkan akun perusahaan, silahlkan tunggu konfirmasi melalui email ');
+        return redirect('login');
 
     }
 
@@ -40,27 +56,34 @@ class PerusahaanController extends Controller
 
     public function accRegisterPerusahaan(Request $request)
     {
-
-        foreach ($request->reg as $sw) {
-        
-        $perusahaan =  \App\Perusahaan::where('id','=',$sw)->first();
-            
-    	$user = new \App\User;
-    	$user->id = mt_rand(50000,99999);
-    	$user->role = 'perusahaan';
-        \App\Perusahaan::where('id','=',$sw)
+        \App\Perusahaan::where('id','=',$request->idnya)
             ->update([
-                'user_id' => $user->id,
                 'status' => 'terverifikasi',
             ]);
-    	$user->name = $perusahaan->nama_perusahaan;
-    	$user->email = $perusahaan->email_perusahaan;
-    	$user->password = bcrypt('secret');
 
-    	$user->save();
+        $subject = 'Aktivasi Akun Perusahaan';
+        $message = $request->contoh;
 
-        }
+        $email = $request->email;
+        Mail::to($email)->send( new SendEmail($subject, $message));
+    
 
-    	return redirect('/login')->with('sukses','berhasil mendaftarkan perusahaan');
+    	return redirect()->back()->with('sukses','berhasil mendaftarkan perusahaan');
+    }
+    public function DecRegisterPerusahaan(Request $request)
+    {
+        \App\Perusahaan::where('id','=',$request->idnya)
+            ->update([
+                'status' => 'tidak terverifif',
+            ]);
+
+        $subject = 'Aktivasi Akun Perusahaan';
+        $message = $request->contoh;
+
+        $email = $request->email;
+        Mail::to($email)->send( new SendEmailNot($subject, $message));
+    
+
+        return redirect()->back()->with('gagal','berhasil menolak perusahaan');
     }
 }

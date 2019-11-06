@@ -25,7 +25,7 @@
 <div class="card border-info float-center">
   <div class="card-header">Header</div>
   <div class="card-body text-info">
-   <form method="POST" action="{{url('/send/regis-perusahaan')}}" id="myForm">
+   <form method="POST" action="{{url('/send/regis-perusahaan')}}" id="myForm" enctype="multipart/form-data">
           {{csrf_field()}}
           <div class="row">
             <div class="col-md-6">
@@ -60,11 +60,13 @@
     <label for="exampleInputEmail1">Penanggung Jawab</label>
     <input type="text" class="form-control" placeholder="Masukkan Nama Lengkap Anda" name="nama_penanggung">
   </div>
+  <label for="exampleFormControlFile1">Example file input</label>
+    <input type="file" class="form-control-file" name="foto">
   </div>
   
 </div>
-  <input type="button" onclick="myFunction()" value="Reset form">
-  <button type="submit" class="btn btn-primary float-right">
+  <input type="button" onclick="myFunction()" value="Reset Form" class="btn btn-dark">
+  <button type="submit" class="btn btn-info float-right">
     Kirim Registrasi
   </button>
 </div>

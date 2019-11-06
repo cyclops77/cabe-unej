@@ -30,7 +30,9 @@ class AuthController extends Controller
         }else if (Auth()->user()->role == 'mahasiswa') {
             return redirect('/beasiswa');
         }else if (Auth()->user()->role == 'perusahaan') {
-            return view('dashboard.perusahaan');
+            $userid = Auth::user()->id;
+            $perusahaan = \App\Perusahaan::where('user_id','=',$userid)->first();
+            return view('dashboard.perusahaan',compact('perusahaan'));
         }
     }
 }

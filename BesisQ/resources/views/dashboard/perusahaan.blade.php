@@ -1,4 +1,4 @@
-@extends('include.perusahaan')
+@extends('include.mahasiswa')
 
 @section('titlenya')
 	Halaman awal -- Perusahaan
@@ -15,7 +15,7 @@
 @section('content-page')
 
 <div class="row">
-<a href="/buat-beasiswa" class="" >
+<a href="{{$perusahaan->status=="Belum Terverifikasi" ? "/danger" : "/buat-beasiswa"}}">
 	<div class="col-md-4 col-md-offset-2" >
 		<section class="panel">
 			<header class="panel-heading" style="background-color: #42a5f5;">
@@ -30,7 +30,7 @@
 		</section>
 	</div>
 	</a>
-<a href="/beasiswaku" class="" >
+<a href=" {{$perusahaan->status=="Belum Terverifikasi" ? "/danger" : "/beasiswaku"}}">
 	<div class="col-md-4">
 		<section class="panel">
 			<header class="panel-heading" style="background-color: #5c6bc0">
@@ -48,7 +48,7 @@
 </div>
 
 
-<a href="/buat-beasiswa" class="">
+<!-- <a href="/buat-beasiswa" class="">
 	<div class="col-md-4 col-md-offset-4" >
 		<section class="panel">
 			<header class="panel-heading" style="background-color: #7e57c2">
@@ -62,5 +62,5 @@
 			</div>
 		</section>
 	</div>
-	</a>
+	</a> -->
 @stop
