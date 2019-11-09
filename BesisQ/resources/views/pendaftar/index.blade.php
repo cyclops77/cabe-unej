@@ -1,49 +1,70 @@
-@extends('include.perusahaan')
+@extends('include.index')
+												
 
-@section('content-page')
-
-@section('nama-page')
-Beasiswa Kami
-@endsection
-
-@section('page-awal')
-<a href="/index">Menu</a>
-@endsection
-
-@section('page-kedua')
-Beasiswa Kami
-@endsection
+@section('konten')
 
 
-<div class="tab-content">
-<div id="everything" class="tab-pane active">
-	<p class="total-results text-muted">Showing 1 to 9 of 47 results</p>
-	<ul class="list-unstyled search-results-list">
-@foreach($beasiswaPerusahaan as $b)
-		<li>
-			<p class="result-type">
-				<span class="label label-primary">Beasiswa</span>
-			</p>
-			<a href="/beasiswaku/{{$b->slug_beasiswa}}" class="has-thumb">
-				<div class="result-thumb">
-					
-					<img src="{{asset('land-page/images/!logged-user.jpg')}}" alt="John Doe" />
-				</div>
-				<div class="result-data">
-					<p class="h3 title text-primary">{{$b->nama_beasiswa}}</p>
-					<p class="description col-sm-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ante nisl, sagittis nec lacus et, convallis efficitur justo. Curabitur elementum feugiat quam. Etiam ac orci iaculis, luctus nisl et, aliquet metus. Praesent congue tortor venenatis, ornare eros eu, semper orci.</p>
-				</div>
-			</a>
-		</li>
-@endforeach
-			
-	</ul>
+  <!--================ Hero sm Banner start =================-->      
+  <section class="hero-banner hero-banner--sm mb-30px">
+    <div class="container">
+      <div class="hero-banner--sm__content">
+        <h1>List Beasiswa</h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{url('/')}}">Beranda</a></li>
+            <li class="breadcrumb-item active" aria-current="page">List Beasiswa</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <!--================ Hero sm Banner end =================-->
 
-	<hr class="solid mb-none" />
+<!-- src="img/blog/cat-post/cat-post-3.jpg" -->
 
-	
-</div>
-</div>
+  <!--================Blog Categorie Area =================-->
+  <section class="">
+    <hr align="center" width="95%">
+    <hr align="center" width="93%">
+    <hr align="center" width="91%">    
+    <hr align="center" width="89%">
+    <div class="container">
+      <div class="row">
+        @foreach($beasiswaPerusahaan as $index => $b)
+        <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content">
+          <div class="blog_post">
+              <img src="land-page/images/projects/wal{{$r+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
+              <div class="blog_details">
+            <div class="row">
+            <div class="col-md-8">
+              <h2><a href="/beasiswaku/{{$b->slug_beasiswa}}" class="text-dark">{{$b->nama_beasiswa}}</a></h2>
+            </div>
+            <div class="col-md-4">
+              <h5 class="float-right"><small>Pendaftar : </small>{{$b->pendaftar_beasiswa->count()}}</h5>
+            </div>
+            </div>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis nisi suscipit, aspernatur a, ducimus nemo provident tempore eveniet facere qui eaque fuga nihil vitae, harum! Reiciendis id illo dolore, ullam.  
+                <hr>
+                Fakultas : 
+                <br>
+                Prodi : 
+                <br>
+                  <a class="button button-blog float-right" href="/beasiswaku/{{$b->slug_beasiswa}}">View More</a>
+              </div>
+          </div>
+      </div>
+      @endforeach
+        
 
+      
+        
+      </div>
+    </div>
+    <hr align="center" width="89%">
+    <hr align="center" width="91%">    
+    <hr align="center" width="93%">
+    <hr align="center" width="95%">
+  </section>
+  <!--================Blog Categorie Area =================-->
 
 @stop

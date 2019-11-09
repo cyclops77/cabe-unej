@@ -1,108 +1,96 @@
-@extends('include.perusahaan')
+@extends('include.index')
+                        
 
-@section('content-page')
-<div class="row">
-  <div class="col-xs-10 col-md-offset-1">
-    <section class="panel">
-      <header class="panel-heading">
-        <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#exampleModal">
-Tambah Persyaratan
-</button>
+@section('konten')
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-<div class="modal-body">
-<table class="table table-striped">
-<thead>
-<tr>
-<th scope="col">#</th>
-<th scope="col">Input Name</th>
-<th scope="col">Type</th>
-<th scope="col">Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th scope="row">1</th>
-<td>Jumlah Sertif</td>
-<td>Angka</td>
-<td>
-<button class="btn-sm btn btn-primary" onclick="FunctionSERTIF()"><i class="fa fa-plus"></i> Tambahkan Jumlah Sertif</button>
-</td>
-</tr>
-<tr>
-<th scope="row">1</th>
-<td>Gaji Orang Tua</td>
-<td>Angka</td>
-<td>
-<button class="btn-sm btn btn-primary" onclick="FunctionGAJI()"><i class="fa fa-plus"></i> Tambahkan Input Gaji</button>
-</td>
-</tr>
-<tr>
-<th scope="row">2</th>
-<td>Umur</td>
-<td>Angka</td>
-<td>
-<button class="btn-sm btn btn-primary" onclick="FunctionUMUR()"><i class="fa fa-plus"></i> Tambahkan Input Umur</button>
-</td>
-</tr>
-<tr>
-<th scope="row">3</th>
-<td>IPK</td>
-<td>Angka</td>
-<td>
-<button class="btn-sm btn btn-primary" onclick="FunctionIPK()"><i class="fa fa-plus"></i> Tambahkan IPK</button>
-</td>
-</tr>
-<tr>
-</tbody>
-</table>
 
-@section('nama-page')
-Buat Beasiswa
-@endsection
+  <!--================ Hero sm Banner start =================-->      
+  <section class="hero-banner hero-banner--sm mb-30px">
+    <div class="container">
+      <div class="hero-banner--sm__content">
+        <h1>Buat Beasiswa </h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{url('/')}}">Beranda</a></li>
+            <li class="breadcrumb-item active">Buat Beasiswa</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <!--================ Hero sm Banner end =================-->
 
-@section('page-awal')
-<a href="/index">Menu</a>
-@endsection
+<!-- src="img/blog/cat-post/cat-post-3.jpg" -->
 
-@section('page-kedua')
-Buat Beasiswa
-@endsection
+  <!--================Blog Categorie Area =================-->
 
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-<button type="button" class="btn btn-primary">Save changes</button>
-</div>
-</div>
-</div>
-</div>
-        <h2 class="panel-title">Buat Beasiswa</h2>
-      </header>
+   <!--================ Hero sm Banner end =================-->
+
+<section class="">
+<br>
+<br>
+<br>
+<br>
+    <div class="container">
+      @if(session('sukses'))
+    <div class="alert alert-success" >
+      {{session('sukses')}}
+    </div>
+    @endif
+    @if(session('gagal'))
+    <div class="alert alert-danger" >
+      {{session('gagal')}}
+    </div>
+    @endif
       <div class="panel-body">
-        
-          <form method="POST" action="{{url('/send/buat-beasiswa')}}" class="form-horizontal" novalidate="novalidate" id="myform">
+        <div class="card">
+          <form method="POST" action="{{url('/send/buat-beasiswa')}}" class="form-contact contact_form" novalidate="novalidate" id="myform">
 {{csrf_field()}}
-          <div class="form-group">
-            <label class="col-md-3 control-label" for="inputDefault">Nama Beasiswa</label>
-            <div class="col-md-5">
-              <input type="text" class="form-control" id="inputDefault" name="nama_beasiswa">
+
+<script type="text/javascript" src="{{asset('ckeditor/ckeditor.js')}}"></script>
+          <div class="form-group mt-4 offset-3">
+            <label class="col-md-6" for="inputDefault">Nama Beasiswa</label>
+            <div class="col-md-7">
+              <input class="form-control" name="nama_beasiswa" id="name" type="text" placeholder="Enter your name">
             </div>
           </div>
-          
-
-
+          <div class="form-group mt-4 offset-3">
+            <label class="col-md-6" for="inputDefault">Batas Beasiswa</label>
+            <div class="col-md-7">
+              <input class="form-control" name="batas_akhir" type="date">
+            </div>
+          </div>
+          <div class="row offset-3">
           <div class="form-group">
-            <label class="col-md-3 control-label">Fakultas</label>
-            <div class="col-md-4">
+            <label class="col-md-6" for="inputDefault">Point IPK</label>
+            <div class="col-md-12">
+              <input class="form-control" name="point_ipk" type="number">
+            </div>
+          </div>
+          <div class="form-group ">
+            <label class="col-md-6" for="inputDefault">Point Gaji</label>
+            <div class="col-md-12">
+              <input class="form-control" name="point_gaji" type="number">
+            </div>
+          </div>
+          </div>
+          <div class="row offset-3">
+          <div class="form-group">
+            <label class="col-md-12" for="inputDefault">Point Organsasi</label>
+            <div class="col-md-12">
+              <input class="form-control" name="point_organisasi" type="number">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-12" for="inputDefault">Point Sertifikat</label>
+            <div class="col-md-12">
+              <input class="form-control" name="point_sertifikat" type="number">
+            </div>
+          </div>
+          </div>
+          <div class="form-group offset-3">
+            <label class="col-md-6 control-label">Fakultas</label>
+            <div class="col-md-7">
               <select class="form-control mb-md" id="fakultas" name="fakultas">
                 <option selected disabled>Pilih Fakultas Anda</option>
                  @foreach($fak as $f)
@@ -114,82 +102,44 @@ Buat Beasiswa
 
           
 
-          <div class="form-group">
-            <label class="col-md-3 control-label">Prodi</label>
-            <div class="col-md-4">
+          <div class="form-group offset-3">
+            <label class="col-md-6 control-label">Prodi</label>
+            <div class="col-md-7">
               <select class="form-control mb-md" name="prodi" id="prodi">
                 <option value="0" selected="true" disabled="true">Pilih Prodi Anda</option>
               </select>
             </div>
           </div>
+
+          <div class="form-group offset-1">
+            <label class="col-md-6 control-label" for="inputDefault">Right Text</label>
+            <div class="col-md-11">
+              <textarea class="ckeditor" id="ckedtor" name="right_text"></textarea>
+            </div>
+          </div>
+          <div class="form-group offset-1">
+            <label class="col-md-6 control-label" for="inputDefault">Middle Text</label>
+            <div class="col-md-11">
+              <textarea class="ckeditor" id="ckedtor" name="middle_text"></textarea>
+            </div>
+          </div>
             
-          <div class="form-group" id="inputanFormIPK" style="display: none;">
-            <div class="row">
-            <label class="col-md-3 control-label">I P K </label>
-            <div class="col-md-2">
-              <input type="number" class="form-control" name="ipk" id="inputIPK" maxlength="4" step="0.01" max="4">
-            </div>
-           <a class="btn-sm btn btn-danger text-white"  onclick="FunctionIPK()">X</a>
-            <label class="col-md-1 control-label">Point IPK </label>
-            <div class="col-md-1">
-              <input type="number" class="form-control" name="point_ipk" id="pointIPK" maxlength="4" step="0.01" max="4">
-            </div>
-          </div>  
-         </div>
+          
 
-         <div class="form-group" id="inputanFormGAJI" style="display: none;">
-            <div class="row">
-            <label class="col-md-3 control-label">G a j i  O r t u </label>
-            <div class="col-md-2">
-              <input type="number" class="form-control" id="inputGAJI" name="gaji" maxlength="4" step="0.01" max="4">
-            </div>
-           <a class="btn-sm btn btn-danger text-white"  onclick="FunctionGAJI()">X</a>
-            <label class="col-md-1 control-label">Point Gaji </label>
-            <div class="col-md-1">
-              <input type="number" class="form-control" id="pointGAJI" name="point_gaji" maxlength="4" step="0.01" max="4">
-            </div>
-          </div>  
-         </div>
-
-         <div class="form-group" id="inputanFormUMUR" style="display: none;">
-            <div class="row">
-            <label class="col-md-3 control-label">U m u r </label>
-            <div class="col-md-2">
-              <input type="number" class="form-control" id="inputUMUR" name="usia" maxlength="4" step="0.01" max="4">
-            </div>
-           <a class="btn-sm btn btn-danger text-white"  onclick="FunctionUMUR()">X</a>
-            <label class="col-md-1 control-label">Point Umur </label>
-            <div class="col-md-1">
-              <input type="number" class="form-control" id="pointUMUR" name="point_usia" maxlength="4" step="0.01" max="4">
-            </div>
-          </div>  
-         </div>
-
-      <div class="form-group" id="inputanFormSERTIF" style="display: none;">
-            <div class="row">
-            <label class="col-md-3 control-label">J u m l a h  S e r t i f </label>
-            <div class="col-md-2">
-              <input type="number" class="form-control" name="sertifikat" id="inputSERTIF" maxlength="4" step="0.01" max="4">
-            </div>
-           <a class="btn-sm btn btn-danger text-white"  onclick="FunctionSERTIF()">X</a>
-            <label class="col-md-1 control-label">Point Sertif </label>
-            <div class="col-md-1">
-              <input type="number" class="form-control" name="point_sertifikat" id="pointSERTIF" maxlength="4" step="0.01" max="4">
-            </div>
-          </div>  
-         </div>
-
-      <button class="btn-sm btn btn-primary"><i class="fa fa-plus"></i> Buat Beasiswa</button>
+      <button class="btn btn-primary mb-3 ml-3 "><i class="fa fa-plus"></i> Buat Beasiswa</button>
 
 
         </form>
       </div>
-    </section>
+      </div>
+    </div>
+    <hr align="center" width="89%">
+    <hr align="center" width="91%">    
+    <hr align="center" width="93%">
+    <hr align="center" width="95%">
+  </section>
 
-   
 
-  </div>
-</div>
+  <!--================Blog Categorie Area =================-->
 
-@endsection
-
+@stop

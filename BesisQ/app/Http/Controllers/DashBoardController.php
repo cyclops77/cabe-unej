@@ -18,20 +18,19 @@ class DashBoardController extends Controller
     	$beasiswaCuco = \App\Beasiswa::select('*')
             ->where('fakultas_id','=',$mahasiswa->fakultas_id)
     		->where('prodi_id','=',$mahasiswa->prodi_id)
+            ->where('status','=','aktiv')
     		->get();
     	$beasiswaFakCuco = \App\Beasiswa::select('*')
             ->where('fakultas_id','=',$mahasiswa->fakultas_id)
     		->whereNull('prodi_id')
+            ->where('status','=','aktiv')
     		->get();
         $beasiswaFree = \App\Beasiswa::select('*')
             ->whereNull('fakultas_id')
             ->whereNull('prodi_id')
+            ->where('status','=','aktiv')
             ->get();           
 
-        // $beasiswaCuco = \App\Prodi::select('prodi.nama','fakultas.nama_fak')->join('fakultas','fakultas.id','=','prodi.fakultas_id')->get();
-
     	return view('beasiswa.list',['beasiswaCuco' => $beasiswaCuco,'beasiswaFakCuco' => $beasiswaFakCuco,'beasiswaFree'=> $beasiswaFree,'r' => $r,'t' => $t,'s' => $s]);
-
-    	// dd($beasiswaCuco);
     }
 }

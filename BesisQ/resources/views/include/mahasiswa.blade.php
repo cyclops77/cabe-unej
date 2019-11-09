@@ -52,7 +52,7 @@ input[type=number] {
 
 
 
-
+    @yield('style')
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="{{asset('land-page/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css')}}" />
     <link rel="stylesheet" href="{{asset('land-page/vendor/bootstrap/css/bootstrap.css')}}" />

@@ -1,103 +1,107 @@
-@extends('include.mahasiswa')
+@extends('include.index')
+                        
 
-@section('content-page')
+@section('konten')
 
-<section role="main" class="content-body">
-<div class="row">
-<div class="col-md-12">
-<section class="panel">
-<header class="panel-heading">
-<h2 class="panel-title">Pendaftar Beasiswa</h2>
-</header>
-<div class="panel-body">
-<div class="table-responsive">
-	<table class="table mb-none">
-		<thead>
-				<th>
-					
-				<a onclick="selectAll()">#</a>
 
-				</th>
-				<th>ID</th>
-				<th>Nama Lengkap</th>
-				<th>Point</th>
-				<th>Output</th>
-				<th>Waktu Daftar</th>
-				<th>Bukti</th>
-				<th>Actions</th>
-		</thead>
-		<tbody>
-@foreach($pendaftar as $p)
-	<tr>
-		<td><div class="checkbox-custom checkbox-primary">
-				<input type="checkbox" id="ckbx" name="idpendaftar" id="checkboxExample2">
-				<label for="checkboxExample2"></label>
-			</div></td>
-		<td>{{$p->id}}</td>
-		<td>{{$p->nama_lengkap}}</td>
-		<td>{{$p->point}}</td>
-		<td>{{$p->output}}</td>
-		<td>{{date('d M Y', strtotime($p->created_at))}}</td>
-		<td><a class="modal-basic btn btn-info btn-sm" href="#z{{$p->id}}">lihat</a>
+  <!--================ Hero sm Banner start =================-->      
+  <section class="hero-banner hero-banner--sm mb-30px">
+    <div class="container">
+      <div class="hero-banner--sm__content">
+        <h1>Beasiswa {{$idBea->nama_beasiswa}}</h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{url('/')}}">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="{{url('/beasiswaku')}}">List Beasiswa</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{$idBea->nama_beasiswa}}</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <!--================ Hero sm Banner end =================-->
 
-<div id="z{{$p->id}}" class="modal-block modal-full-color modal-block-primary mfp-hide">
-<section class="panel">
-<header class="panel-heading">
-<h2 class="panel-title">Detail Bukti Pendaftar</h2>
-</header>
-<div class="panel-body">
-<div class="modal-wrapper">
-	
-	<div class="modal-text">
-		<img src="/bukti/{{$p->bukti_ipk}}" height="450px" style="display:  {{ empty($p->bukti_ipk) ? "none" : "block" }}">
-		<img src="/bukti/{{$p->bukti_gaji}}" height="450px" style="display:  {{ empty($p->bukti_gaji) ? "none" : "block" }}">
-		<img src="/bukti/{{$p->bukti_sertifikat}}" height="450px" style="display:  {{ empty($p->bukti_sertifikat) ? "none" : "block" }}">
-		<img src="/bukti/{{$p->bukti_organisasi}}" height="450px" style="display:  {{ empty($p->bukti_organisasi) ? "none" : "block" }}">
-	</div>
+<!-- src="img/blog/cat-post/cat-post-3.jpg" -->
+
+  <!--================Blog Categorie Area =================-->
+
+   <!--================ Hero sm Banner end =================-->
+
+<div class="">
+  <div class="container-table100">
+    <div class="wrap-table100">
+      <div class="table100 ver1 m-b-110">
+        <div class="table100-head">
+          <table>
+            <thead>
+              <tr class="row100 head">
+                <th class="cell100 column1">No</th>
+                <th class="cell100 column2">Nama Lengkap</th>
+                <th class="cell100 column3">Point</th>
+                <th class="cell100 column4">Keterangan</th>
+                <th class="cell100 column5">Detail</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+
+        <div class="table100-body js-pscroll">
+          <table>
+            <tbody>
+              @if($isEmpty=="yes")
+              <tr class="row100 body">
+                <td class="cell100 column1" colspan="5" style="height: 80px">Belum ada pendaftar</td>
+              @else  
+              </tr>  
+              @foreach($pendaftar as $index => $p)
+              <tr class="row100 body">
+                <td class="cell100 column1">{{$index+1}}</td>
+                <td class="cell100 column2">{{$p->nama_lengkap}}</td>
+                <td class="cell100 column3">{{$p->point}}</td>
+                <td class="cell100 column4">{{$p->output}}</td>
+                <td class="cell100 column5">
+                  <button type="button" class="button button-blog" data-toggle="modal" data-target="#bukti{{$p->id}}">
+                    lihat
+                  </button>
+
+
+<div class="modal fade" id="bukti{{$p->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{$p->nama_lengkap}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="/bukti/{{$p->bukti_ipk}}" style="width: 100%">
+    <img src="/bukti/{{$p->bukti_gaji}}" style="width: 100%">
+    <img src="/bukti/{{$p->bukti_sertifikat}}" style="width: 100%">
+    <img src="/bukti/{{$p->bukti_organisasi}}" style="width: 100%">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button button-blog" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-<footer class="panel-footer">
-<div class="row">
-	<div class="col-md-12 text-right">
-		<button class="btn btn-primary modal-confirm">Back</button>
-	</div>
-</div>
-</footer>
-</section>
-</div></td>
-		<td class="actions">
-			<a href=""><i class="fa fa-pencil"></i></a>
-			<a href="" class="delete-row"><i class="fa fa-trash-o"></i></a>
-		</td>
-	</tr>
-@endforeach
-													
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</section>
-							</div>
-						
-						</div>
-						
-					<!-- end: page -->
-				</section>
-<script type="text/javascript">
-			function selectAll(){
-				var items=document.getElementsByName('idpendaftar');
-				for(var i=0; i<items.length; i++){
-					if(items[i].type=='checkbox')
-						items[i].checked=true;
-				}
-			}
-			
-			function UnSelectAll(){
-				var items=document.getElementById('ckbx');
-				for(var i=0; i<items.length; i++){
-					if(items[i].type=='checkbox')
-						items[i].checked=false;
-				}
-			}			
-		</script>
+                </td>
+              </tr>
+              @endforeach
+              @endif
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>  
+  </div>  
+</div> 
+    <hr align="center" width="89%">
+    <hr align="center" width="91%">    
+    <hr align="center" width="93%">
+    <hr align="center" width="95%">
+  </section>
+  <!--================Blog Categorie Area =================-->
+
 @stop

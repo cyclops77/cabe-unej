@@ -12,7 +12,7 @@ class DaftarBeasiswaController extends Controller
 {
     public function detail($slug_beasiswa)
     {
-        $r = mt_rand(1,12);
+        $r = mt_rand(1,2);
         $userid = auth()->user()->id;
     
         $data_mahasiswa = \App\Mahasiswa::where('user_id','=',$userid)->first();
@@ -135,10 +135,17 @@ class DaftarBeasiswaController extends Controller
         }
 
         //== NORMALISASI ==//
-        $nIPK = 0.35;
-        $nGAJI = 0.15;
-        $nSERTIF = 0.30;
-        $nORG = 0.20;
+        $pIPK = $bea->point_ipk/100;
+        $pGAJI = $bea->point_gaji/100;
+        $pORG = $bea->point_organisasi/100;
+        $pSER = $bea->point_sertifikat/100;
+
+
+        
+        $nIPK = $pIPK;
+        $nGAJI = $pGAJI;
+        $nSERTIF = $pSER;
+        $nORG = $pORG;
         //=================//
 
         //== UTILITY ==//
@@ -178,13 +185,17 @@ class DaftarBeasiswaController extends Controller
 
         if ($SDBL === null && $SDBL_slug === null) {
             $btn = '
-                      <a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-primary col-md-12" href="#modalAnim">Daftar Sekarang</a>
+                      <button type="button" class="button button-postComment" data-toggle="modal" data-target="#exampleModalCenter3" style="width: 100%">
+                          Daftar Beasiswa
+                      </button>
                     ';
             $btn1 = '';                    
         }
-        else if ($SDBL === null && $SDBL_slug === null) {
+        else if ($SDBL !== null && $SDBL_slug === null) {
             $btn = '
-                      <a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-primary col-md-12" href="#modalAnim">Daftar Sekarang</a>
+                      <button type="button" class="button button-postComment" data-toggle="modal" data-target="#exampleModalCenter" style="width: 100%">
+                          Daftar Beasiswa
+                      </button>
                     ';
             $btn1 = '';                    
         }
@@ -192,11 +203,17 @@ class DaftarBeasiswaController extends Controller
             $btn = '
                       
                     ';
-            $btn1 = '<a class="mb-xs mt-xs mr-xs modal-basic btn btn-danger col-md-12" href="#modalFullColorDanger2">Batalkan Beasiswa</a>';                   
+            $btn1 = '
+                    <button type="button" class="button button-postComment" data-toggle="modal" data-target="#exampleModalCenter2" style="width: 100%">
+                          Batalkan Pengajuan
+                    </button>
+            ';                   
         }         
         else{
             $btn = '
-                      <a class="mb-xs mt-xs mr-xs modal-with-zoom-anim btn btn-primary col-md-12" href="#modalFullColorDanger">Daftar Sekarang</a>
+                      <button type="button" class="button button-postComment" data-toggle="modal" data-target="#exampleModalCenter3" style="width: 100%">
+                          Daftar Beasiswa
+                      </button>
                     ';
             $btn1 = '';                    
         }
@@ -204,13 +221,23 @@ class DaftarBeasiswaController extends Controller
 
         
          // dd($SDBL);   
+        $perusahaan = \App\Perusahaan::where('id','=',$bea->perusahaan_id)->first();
         $gbr = 'wal'.$r.'.jpg';
-        return view('beasiswa.detail',['bea' => $bea,'data_mahasiswa' => $data_mahasiswa,'totalPoint' => $totalPoint,'btn' => $btn,'btn1' => $btn1,'SDBL' => $SDBL,'output' => $output,'r' => $r,'gbr' => $gbr]);
+        return view('beasiswa.detail',['bea' => $bea,'data_mahasiswa' => $data_mahasiswa,'totalPoint' => $totalPoint,'btn' => $btn,'btn1' => $btn1,'SDBL' => $SDBL,'output' => $output,'r' => $r,'gbr' => $gbr,'perusahaan' => $perusahaan]);
     }
     public function daftarSekarang(Request $request)
     {
         $user = Auth::user();
 
+        if (empty($request->file('bukti_gaji'))) {
+            return redirect()->back()->with('gagal','Silahkan upload bukti gaji rang tua');
+        }else if (empty($request->file('bukti_ipk'))) {
+            return redirect()->back()->with('gagal','Silahkan upload bukti ipk');
+        }else if (empty($request->file('bukti_sertifikat'))) {
+            return redirect()->back()->with('gagal','Silahkan upload bukti sertifikat');
+        }else if (empty($request->file('bukti_organisasi'))) {
+            return redirect()->back()->with('gagal','Silahkan upload bukti organisasi');
+        }else{
 
         $tempatfile = ('bukti');
 
@@ -334,6 +361,7 @@ class DaftarBeasiswaController extends Controller
         $upl->save();
 
         return redirect()->back()->with('sukses','Berhasil Daftar Beasiswa');
+    }
     }
     public function hapusPengajuan(Request $request)
     {

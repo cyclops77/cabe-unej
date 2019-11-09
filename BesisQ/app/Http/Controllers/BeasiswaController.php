@@ -45,28 +45,41 @@ class BeasiswaController extends Controller
     public function create(Request $request)
     {
     	$userid = auth()->user()->id;
-    	// $perusahaanid = \App\Perusahaan::select('id')->where('user_id','=',$userid)->first();
+    	$perusahaanid = \App\Perusahaan::where('user_id','=',$userid)->first();
     	// dd($perusahaanid);
+        $tot = ($request->point_ipk+$request->point_gaji+$request->point_organisasi+$request->point_sertifikat);
+        if ($tot > 100) {
+            return redirect()->back()->with('gagal','total dari point tidak dapat lebih dari 100');
+        }else if($tot < 100) {
+            return redirect()->back()->with('gagal','total dari point tidak dapat kurang dari 100');
+        }else if($tot = 100) {
+            
 
     	$bea = new \App\Beasiswa;
     	$bea->id = mt_rand(1000,9999);
-    	$bea->perusahaan_id = $userid;
+        \App\BeasiswaAtribut::create([
+            'id' => mt_rand(1000,9999),
+            'beasiswa_id' => $bea->id,
+            'right_text' => $request->right_text,
+            'middle_text' => $request->middle_text,
+        ]);
+    	$bea->perusahaan_id = $perusahaanid->id;
         $bea->fakultas_id = $request->fakultas;
         $bea->prodi_id = $request->prodi;
-    	$bea->nama_beasiswa = $request->nama_beasiswa;
+        $bea->nama_beasiswa = $request->nama_beasiswa;
+        $bea->batas_akhir = $request->batas_akhir;
     	$bea->slug_beasiswa = Str::slug($request->nama_beasiswa, '-');
-        $bea->ipk = $request->ipk;            	
+        $bea->status = 'tidak aktiv';      	
         $bea->point_ipk = $request->point_ipk;              
-        $bea->gaji = $request->gaji;              
-        $bea->point_gaji = $request->point_gaji;              
-        $bea->usia = $request->usia;
-        $bea->point_usia = $request->point_usia;              
-        $bea->sertifikat = $request->sertifikat;
+              
+        $bea->point_gaji = $request->point_gaji;               
+        $bea->point_organisasi = $request->point_organisasi;
         $bea->point_sertifikat = $request->point_sertifikat;
 
         $bea->save();
 
     	return redirect()->back()->with('sukses','Berhasil Membuat Beasissssswaaa . . . !');
+        }
     }
     public function detail($slug_beasiswa)
     {
@@ -119,8 +132,8 @@ class BeasiswaController extends Controller
 
         $totalPoint = $bulatHasilPointGAJI + $bulatHasilPointIPK + $bulatHasilPointUMUR;
          
-         dd($totalPoint);   
+         // dd($totalPoint);   
 
-        // return view('beasiswa.detail',['bea' => $bea,'data_mahasiswa' => $data_mahasiswa]);
+        return view('beasiswa.detail',['bea' => $bea,'data_mahasiswa' => $data_mahasiswa]);
     }
 }

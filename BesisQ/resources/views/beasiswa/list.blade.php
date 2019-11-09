@@ -1,54 +1,177 @@
-@extends('include.mahasiswa')
+@extends('include.index')
 												
 
-@section('content-page')
+@section('konten')
 
 
-<section class="special_cource padding_top">
+  <!--================ Hero sm Banner start =================-->      
+  <section class="hero-banner hero-banner--sm mb-30px">
+    <div class="container">
+      <div class="hero-banner--sm__content">
+        <h1>Beasiswa</h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{url('/')}}">Beranda</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cari Beasiswa</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <!--================ Hero sm Banner end =================-->
+
+<!-- src="img/blog/cat-post/cat-post-3.jpg" -->
+
+  <!--================Blog Categorie Area =================-->
+  <section class="">
+    <hr align="center" width="100%">
+    <hr align="center" width="100%">
+    <hr align="center" width="100%">    
+    <hr align="center" width="100%">
+    <div class="container">
+      <div class="row">
+        @foreach($beasiswaCuco as $index => $b)
+        <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content">
+          <div class="blog_post">
+              <img src="land-page/images/projects/wal{{$r+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
+              <div class="blog_details">
+            <div class="row">
+            <div class="col-md-8">
+              <h2><a href="/beasiswa/{{$b->slug_beasiswa}}" class="text-dark">{{$b->nama_beasiswa}}</a></h2>
+            </div>
+            <div class="col-md-4">
+              <h5 class="float-right"><small>Pendaftar : </small>{{$b->pendaftar_beasiswa->count()}}</h5>
+            </div>
+            </div>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis nisi suscipit, aspernatur a, ducimus nemo provident tempore eveniet facere qui eaque fuga nihil vitae, harum! Reiciendis id illo dolore, ullam.  
+                <hr>
+                Fakultas : {{$b->fakultas->nama_fak}}
+                <br>
+                Prodi : {{$b->prodi->nama}}
+                <br>
+                  <a class="button button-blog float-right" href="/beasiswa/{{$b->slug_beasiswa}}">View More</a>
+              </div>
+          </div>
+      </div>
+      @endforeach
+        @foreach($beasiswaFakCuco as $index => $b)
+        <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content">
+          <div class="blog_post">
+              <img src="land-page/images/projects/wal{{$t+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
+              <div class="blog_details">
+            <div class="row">
+            <div class="col-md-8">
+              <h2><a href="/beasiswa/{{$b->slug_beasiswa}}" class="text-dark">{{$b->nama_beasiswa}}</a></h2>
+            </div>
+            <div class="col-md-4">
+              <h5 class="float-right"><small>Pendaftar : </small>{{$b->pendaftar_beasiswa->count()}}</h5>
+            </div>
+            </div>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis nisi suscipit, aspernatur a, ducimus nemo provident tempore eveniet facere qui eaque fuga nihil vitae, harum! Reiciendis id illo dolore, ullam.  
+                <hr>
+                Fakultas : {{$b->fakultas->nama_fak}}
+                <br>
+                Prodi : Bebas
+                <br>
+                  <a class="button button-blog float-right" href="/beasiswa/{{$b->slug_beasiswa}}">View More</a>
+              </div>
+          </div>
+      </div>
+      @endforeach
+
+      @foreach($beasiswaFree as $index => $b)
+        <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content">
+          <div class="blog_post">
+              <img src="land-page/images/projects/wal{{$s+1+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
+              <div class="blog_details">
+            <div class="row">
+            <div class="col-md-8">
+              <h2><a href="/beasiswa/{{$b->slug_beasiswa}}" class="text-dark">{{$b->nama_beasiswa}}</a></h2>
+            </div>
+            <div class="col-md-4">
+              <h5 class="float-right"><small>Pendaftar : </small>{{$b->pendaftar_beasiswa->count()}}</h5>
+            </div>
+            </div>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis nisi suscipit, aspernatur a, ducimus nemo provident tempore eveniet facere qui eaque fuga nihil vitae, harum! Reiciendis id illo dolore, ullam.  
+                <hr>
+                Fakultas : Bebas
+                <br>
+                Prodi : Bebas
+                <br>
+                  <a class="button button-blog float-right" href="/beasiswa/{{$b->slug_beasiswa}}">View More</a>
+              </div>
+          </div>
+      </div>
+      @endforeach
+
+      
+        
+      </div>
+    </div>
+    <hr align="center" width="89%">
+    <hr align="center" width="91%">    
+    <hr align="center" width="93%">
+    <hr align="center" width="95%">
+  </section>
+  <!--================Blog Categorie Area =================-->
+
+
+
+
+<!-- <section class="special_cource padding_top">
        
             <div class="justify-content-center" style="margin-top: -10%;position: relative;">
             </div>
             <div class="row">
             	@foreach($beasiswaCuco as $index => $b)
-                <div class="col-sm-6 col-lg-4">
+                <div class="col-sm-6 col-lg-4" style="margin-top: 20px">
                     <div class="single_special_cource">
                         <img src="land-page/images/projects/wal{{$r+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
                         <div class="special_cource_text">
                             <a href="/beasiswa/{{$b->slug_beasiswa}}" class="btn_4">Lihat Beasiswa</a>
-                            <h4>{{date('d M Y', strtotime($b->created_at))}}</h4>
-                            <a href="course-details.html"><h3>{{$b->nama_beasiswa}}({{$b->pendaftar_beasiswa->count()}})</h3></a>
+                            <h4><small>Pendaftar : </small>{{$b->pendaftar_beasiswa->count()}}</h4>
+                            <a href="course-details.html"><h3>{{$b->nama_beasiswa}}</h3></a>
                             <p>Which whose darkness saying were life unto fish wherein all fish of together called</p>
-                            
+                            <hr>
+                            Fakultas : {{$b->fakultas->nama_fak}}
+                            <br>
+                            Prodi : {{$b->prodi->nama}}
                         </div>
 
                     </div>
                 </div>
                 @endforeach
                 @foreach($beasiswaFakCuco as $index => $c)
-                <div class="col-sm-6 col-lg-4">
+                <div class="col-sm-6 col-lg-4" style="margin-top: 20px">
                     <div class="single_special_cource">
                         <img src="land-page/images/projects/wal{{$s+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
                         <div class="special_cource_text">
                             <a href="/beasiswa/{{$c->slug_beasiswa}}" class="btn_4">Lihat Beasiswa</a>
-                            <h4>{{date('M d, Y', strtotime($c->created_at))}}</h4>
+                            <h4><small>Pendaftar : </small>{{$c->pendaftar_beasiswa->count()}}</h4>
                             <a href="course-details.html"><h3>{{$c->nama_beasiswa}}</h3></a>
                             <p>Which whose darkness saying were life unto fish wherein all fish of together called</p>
-                            
+                            <hr>
+                            Fakultas : {{$c->fakultas->nama_fak}}
+                            <br>
+                            Prodi : Bebas
                         </div>
 
                     </div>
                 </div>
                 @endforeach
                 @foreach($beasiswaFree as $index => $d)
-                <div class="col-sm-6 col-lg-4">
+                <div class="col-sm-6 col-lg-4" style="margin-top: 20px">
                     <div class="single_special_cource">
                         <img src="land-page/images/projects/wal{{$t+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
                         <div class="special_cource_text">
                             <a href="/beasiswa/{{$d->slug_beasiswa}}" class="btn_4">Lihat Beasiswa</a>
-                            <h4>{{date('M d, Y', strtotime($d->created_at))}}</h4>
+                            <h4><small>Pendaftar : </small>{{$d->pendaftar_beasiswa->count()}}</h4>
                             <a href="course-details.html"><h3>{{$d->nama_beasiswa}}</h3></a>
                             <p>Which whose darkness saying were life unto fish wherein all fish of together called</p>
-                            
+                            <hr>
+                            Fakultas : Bebas
+                            <br>
+                            Prodi : Bebas
                         </div>
 
                     </div>
@@ -57,5 +180,5 @@
             </div>
         </div>
     </section>
-
+ -->
 @stop

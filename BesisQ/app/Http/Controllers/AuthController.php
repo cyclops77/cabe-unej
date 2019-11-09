@@ -26,13 +26,26 @@ class AuthController extends Controller
     {
         $role = Auth()->user()->role;
         if (Auth()->user()->role == 'admin') {
-            return view('dashboard.admin');
+            return view('landpage.admin');
         }else if (Auth()->user()->role == 'mahasiswa') {
-            return redirect('/beasiswa');
+            return view('landpage.index');
         }else if (Auth()->user()->role == 'perusahaan') {
             $userid = Auth::user()->id;
             $perusahaan = \App\Perusahaan::where('user_id','=',$userid)->first();
-            return view('dashboard.perusahaan',compact('perusahaan'));
+            return view('landpage.perusahaan',compact('perusahaan'));
+        }
+    }
+    public function roleIf()
+    {
+        $role = Auth()->user()->role;
+        if (Auth()->user()->role == 'admin') {
+            return view('landpage.admin');
+        }else if (Auth()->user()->role == 'mahasiswa') {
+            return view('landpage.index');
+        }else if (Auth()->user()->role == 'perusahaan') {
+            $userid = Auth::user()->id;
+            $perusahaan = \App\Perusahaan::where('user_id','=',$userid)->first();
+            return view('landpage.perusahaan',compact('perusahaan'));
         }
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Beasiswa extends Model
 {
     protected $table = 'beasiswa';
-    protected $fillable = ['perusahaan_id','nama_beasiswa','slug_beasiswa','ipk','point_ipk','gaji_ortu','point_gaji','usia','point_usia'];
+    protected $fillable = ['perusahaan_id','nama_beasiswa','slug_beasiswa','point_organisasi','point_ipk','point_gaji','point_usia','batas_akhir'];
 
     public function perusahaan()
     {
@@ -24,5 +24,9 @@ class Beasiswa extends Model
     public function pendaftar_beasiswa()
     {
     	return $this->hasMany('App\Pendaftar_Beasiswa');
-    }    
+    }
+    public function beasiswa_atribut()
+        {
+            return $this->hasOne('App\BeasiswaAtribut');
+        }    
 }

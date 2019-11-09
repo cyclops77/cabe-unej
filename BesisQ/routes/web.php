@@ -96,4 +96,7 @@ Route::post('/data-pendaftaran/terima-perusahaan','PerusahaanController@accRegis
 
 Route::post('/data-pendaftaran/jangan-terima-perusahaan','PerusahaanController@DecRegisterPerusahaan');
 
+Route::get('/verifikasi-beasiswa','AccBeasiswaController@index');
+
+Route::post('/verifikasi-terima-beasiswa','AccBeasiswaController@acc');
 });

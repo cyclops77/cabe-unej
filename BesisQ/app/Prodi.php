@@ -12,4 +12,8 @@ class Prodi extends Model
     {
     	return $this->belongsTo('App\Fakultas');
     }
+    public function beasiswa()
+    {
+    	return $this->belongsTo('App\Beasiswa');
+    }
 }	

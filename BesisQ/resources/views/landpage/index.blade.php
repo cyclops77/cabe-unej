@@ -1,254 +1,371 @@
-<!doctype html>
-<html lang="en">
+@extends('include.index')
+@section('konten')
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>CABE UNEJ</title>
 
-     <link rel="stylesheet" href="{{asset('mj_T/stylesheets/custom-style.css')}}" />
 
-    <link rel="icon" href="{{asset('mj_T/img/favicon.png')}}">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{asset('mj_T/css/bootstrap.min.css')}}">
-    <!-- animate CSS -->
-    <link rel="stylesheet" href="{{asset('mj_T/css/animate.css')}}">
-    <!-- owl carousel CSS -->
-    <link rel="stylesheet" href="{{asset('mj_T/css/owl.carousel.min.css')}}">
-    <!-- themify CSS -->
-    <link rel="stylesheet" href="{{asset('mj_T/css/themify-icons.css')}}">
-    <!-- flaticon CSS -->
-    <link rel="stylesheet" href="{{asset('mj_T/css/flaticon.css')}}">
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href="{{asset('mj_T/css/magnific-popup.css')}}">
-    <!-- swiper CSS -->
-    <link rel="stylesheet" href="{{asset('mj_T/css/slick.css')}}">
-    <!-- style CSS -->
-    <link rel="stylesheet" href="{{asset('mj_T/css/style.css')}}">
-</head>
-
-<body>
-    <!--::header part start::-->
-    <header class="main_menu home_menu">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="index.html"> <!-- <img src="{{asset('mj_T/img/logo.png')}}" alt="logo"> --> </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-
-                        <div class="collapse navbar-collapse main-menu-item justify-content-end"
-                            id="navbarSupportedContent">
-                            <ul class="navbar-nav align-items-center">
-                                
-                                <li class="nav-item">
-                                    <a class="nav-link" href="cource.html">Visi MIsi</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="blog.html">Registrasi</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Pages
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="single-blog.html">Single blog</a>
-                                        <a class="dropdown-item" href="elements.html">Elements</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">HUbungin Kami</a>
-                                </li>
-                                <li class="d-none d-lg-block">
-                                    <a class="btn_1" href="/login">Masuk</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
+  <main class="side-main">
+    <!--================ Hero sm Banner start =================-->      
+    <section class="hero-banner mb-30px">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="hero-banner__img">
+              <img class="img-fluid" src="{{asset('stylers/img/banner/hero-banner.png')}}" alt="">
             </div>
-        </div>
-    </header>
-    <!-- Header part end-->
+          </div>
+          <div class="col-lg-5 pt-5">
+            <div class="hero-banner__content">
+              @guest<h1>Cari Beasiswa UNEJ</h1>@endguest
+              @auth 
+              <h1>{{Auth::user()->role=="mahasiswa" ? "Cari Beasiswa UNEJ" : ""}}</h1>
+              <h1 style="display: {{Auth::user()->role=="perusahaan" ? "block" : "none"}}">{{Auth::user()->name}}</h1>
+              <h1 style="display: {{Auth::user()->role=="admin" ? "block" : "none"}}">Welcome Admin</h1>
+              @endauth
+              <p>Vel aliquam quis, nulla pede mi commodo tristique nam hac Luctun torquent velit felis commodo pellentesque nulla cras vel aliqua quisan nulla pede mi commoda</p>
 
-    <!-- banner part start-->
-    <section class="banner_part">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-xl-6">
-                    <div class="banner_text">
-                        <div class="banner_text_iner">
-                            <h5>gapai masa depan dengan</h5>
-                            <h1>Cabe UNEJ</h1>
-                            <p>Replenish seasons may male hath fruit beast were seas saw you arrie said man beast whales
-                                his void unto last session for bite. Set have great you'll male grass yielding yielding
-                                man</p>
-                            <a href="/login" class="btn_1">Masuk </a>
-                            <a href="#registrasi" class="btn_2">Registrasi </a>
-                        </div>
-                    </div>
-                </div>
+              @guest
+              <a class="button bg" href="{{url('/login')}}">Cari Beasiswa</a>
+              @endguest
+              @auth
+              <a style="width: 45%;text-align: center;display: {{Auth::user()->role=="mahasiswa" ? "block" : "none"}}" class="button bg" href="{{url('/beasiswa')}}">Cari Beasiswa</a>
+              <a style="width: 45%;text-align: center;display: {{Auth::user()->role=="perusahaan" ? "block" : "none"}}" class="button bg" href="{{url('/beasiswaku')}}">Beasiswa Saya</a>  
+              @endauth
             </div>
+          </div>
         </div>
+      </div>
     </section>
-    <!-- banner part start-->
+    <!--================ Hero sm Banner end =================-->
 
-    <!-- feature_part start-->
-    <section class="feature_part" id="registrasi">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-xl-6 align-self-center">
-                    <div class="single_feature_text ">
-                        <h2>Registrasi <br>     </h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non minus nobis ab, iusto neque similique animi itaque facere ducimus at laboriosam commodi velit, voluptatibus suscipit pariatur iste. Quisquam eius, ratione.</p>
-                        <a href="#" class="btn_1">Read More</a>
-                    </div>
-                </div>
-                
-                <div class="col-sm-6 col-xl-3">
-                    <a href="/daftar-perusahaan">
-                    <div class="single_feature">
-                        <div class="single_feature_part">
-                            <span class="single_feature_icon"><i class="ti-new-window"></i></span>
-                            <h4>Perusahaan</h4>
-                            <p>Set have great you male grasses yielding yielding first their to called
-                                </p>
-                        </div>
-                    </div>
-                    </a>
-                </div>
-                <div class="col-sm-6 col-xl-3">
-                    <a href="/daftar-mahasiswa">
-                    <div class="single_feature">
-                        <div class="single_feature_part single_feature_part_2">
-                            <span class="single_service_icon style_icon"><i class="ti-light-bulb"></i></span>
-                            <h4>Mahasiswa</h4>
-                            <p>Set have great you male grasses yielding yielding first their to called deep
-                                abundantly Set have great you male</p>
-                        </div>
-                    </div>                    
-                    </a>
-                </div>
-            </div>
+    <!--================ Feature section start =================-->  
+    @auth    
+    <section class="section-margin" style="display: {{Auth::user()->role=="perusahaan" ? "block" : "none"}}">
+      <div class="container">
+        <div class="section-intro pb-85px text-center">
+          <h2 class="section-intro__title">Menu Perusahaan</h2>
+          <p class="section-intro__subtitle">Vel aliquam quis, nulla pede mi commodo tristique nam hac. Luctus torquent velit felis commodo pellentesque nulla cras. Tincidunt hacvel alivquam quis nulla pede mi commodo tristique nam hac  luctus torquent</p>
         </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 offset-2">
+              <a href="{{url('/beasiswaku')}}" style="text-decoration: none;">
+              <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
+                <span class="card-feature__icon">
+                  <i class="ti-package"></i>
+                </span>
+                <h3 class="card-feature__title">Beasiswaku</h3>
+                <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
+              </div>
+              </a>
+            </div>
+            <div class="col-lg-4">
+              <a href="{{url('/buat-beasiswa')}}" style="text-decoration: none;">
+              <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
+                <span class="card-feature__icon">
+                  <i class="ti-mouse-alt"></i>
+                </span>
+                <h3 class="card-feature__title">Buat Beasiswa</h3>
+                <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
+              </div>
+              </a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
     </section>
-    <!-- upcoming_event part start-->
+    @endauth
+    @auth    
+    <section class="section-margin" style="display: {{Auth::user()->role=="admin" ? "block" : "none"}}">
+      <div class="container">
+        <div class="section-intro pb-85px text-center">
+          <h2 class="section-intro__title">Menu Admin</h2>
+          <p class="section-intro__subtitle">Vel aliquam quis, nulla pede mi commodo tristique nam hac. Luctus torquent velit felis commodo pellentesque nulla cras. Tincidunt hacvel alivquam quis nulla pede mi commodo tristique nam hac  luctus torquent</p>
+        </div>
 
-    <!-- learning part start-->
-
-    <!-- learning part end-->
-
-    <!-- member_counter counter start -->
-  
-    <!-- member_counter counter end -->
-
-    <!--::review_part start::-->
-   
-    <!-- learning part end-->
-
-    <!--::review_part start::-->
-
-    <!--::blog_part end::-->
-
-    <!--::blog_part start::-->
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 offset-2">
+              <a href="{{url('/pendaftar')}}" style="text-decoration: none;">
+              <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
+                <span class="card-feature__icon">
+                  <i class="ti-package"></i>
+                </span>
+                <h3 class="card-feature__title">Pendaftar Perusahaan</h3>
+                <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
+              </div>
+              </a>
+            </div>
+            <div class="col-lg-4">
+              <a href="{{url('/verifikasi-beasiswa')}}" style="text-decoration: none;">
+              <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
+                <span class="card-feature__icon">
+                  <i class="ti-mouse-alt"></i>
+                </span>
+                <h3 class="card-feature__title">Verifikasi Beasiswa</h3>
+                <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
+              </div>
+              </a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    @endauth
+    <!--================ Feature section end =================-->      
     
-    <!--::blog_part end::-->
+    <!--================ about section start =================-->      
+    <section class="section-padding--small bg-magnolia">
+      <div class="container">
+        <div class="row no-gutters align-items-center">
+          <div class="col-md-5 mb-5 mb-md-0">
+            <div class="about__content">
+              <h2>Leading the Digital Entertainment Revolution</h2>
+              <p>Molestie lorem est faucibus Faucibus erat phasellus placerat proinint aptent pulvinar fusce nostra porta sem platea nec, donec fusce erat Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent pulvinar fusce nostra port</p>
+              <a class="button button-light" href="#">Know More</a>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="about__img">
+              <img class="img-fluid" src="{{asset('stylers/img/home/about.png')}}" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================ about section end =================-->      
+    
+    <!--================ Offer section start =================-->      
+    <section class="section-margin">
+      <div class="container">
+        <div class="section-intro pb-85px text-center">
+          <h2 class="section-intro__title">Features We Offer</h2>
+          <p class="section-intro__subtitle">Vel aliquam quis, nulla pede mi commodo tristique nam hac. Luctus torquent velit felis commodo pellentesque nulla cras. Tincidunt hacvel alivquam quis nulla pede mi commodo tristique nam hac  luctus torquent</p>
+        </div>
 
-    <!-- footer part start-->
-    <footer class="footer-area">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-sm-6 col-md-4 col-xl-3">
-                    <div class="single-footer-widget footer_1">
-                        <a href="index.html"> <img src="img/logo.png" alt=""> </a>
-                        <p>But when shot real her. Chamber her one visite removal six
-                            sending himself boys scot exquisite existend an </p>
-                        <p>But when shot real her hamber her </p>
-                    </div>
+        <div class="row">
+          <div class="col-lg-6">
+
+            <div class="row offer-single-wrapper">
+              <div class="col-lg-6 offer-single">
+                <div class="card offer-single__content text-center">
+                  <span class="offer-single__icon">
+                    <i class="ti-pencil-alt"></i>
+                  </span>
+                  <h4>Easy To Manage</h4>
+                  <p>Posuere porttitor justo ornare dictum ultricies enim imperdiet integer habitant.</p>
                 </div>
-                <div class="col-sm-6 col-md-4 col-xl-4">
-                    <div class="single-footer-widget footer_2">
-                        <h4>Newsletter</h4>
-                        <p>Stay updated with our latest trends Seed heaven so said place winged over given forth fruit.
-                        </p>
-                        <form action="#">
-                            <div class="form-group">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder='Enter email address'
-                                        onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter email address'">
-                                    <div class="input-group-append">
-                                        <button class="btn btn_1" type="button"><i class="ti-angle-right"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="social_icon">
-                            <a href="#"> <i class="ti-facebook"></i> </a>
-                            <a href="#"> <i class="ti-twitter-alt"></i> </a>
-                            <a href="#"> <i class="ti-instagram"></i> </a>
-                            <a href="#"> <i class="ti-skype"></i> </a>
-                        </div>
-                    </div>
+              </div>
+              
+              <div class="col-lg-6 offer-single">
+                <div class="card offer-single__content text-center">
+                  <span class="offer-single__icon">
+                    <i class="ti-ruler-pencil"></i>
+                  </span>
+                  <h4>Analytics Tool</h4>
+                  <p>Posuere porttitor justo ornare dictum ultricies enim imperdiet integer habitant.</p>
                 </div>
-                <div class="col-xl-3 col-sm-6 col-md-4">
-                    <div class="single-footer-widget footer_2">
-                        <h4>Contact us</h4>
-                        <div class="contact_info">
-                            <p><span> Address :</span> Hath of it fly signs bear be one blessed after </p>
-                            <p><span> Phone :</span> +2 36 265 (8060)</p>
-                            <p><span> Email : </span>info@colorlib.com </p>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
 
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="copyright_part_text text-center">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row offer-single-wrapper">
+              <div class="col-lg-6 offer-single">
+                <div class="card offer-single__content text-center">
+                  <span class="offer-single__icon">
+                    <i class="ti-cut"></i>
+                  </span>
+                  <h4>Professionals Tools</h4>
+                  <p>Posuere porttitor justo ornare dictum ultricies enim imperdiet integer habitant.</p>
                 </div>
+              </div>
+              
+              <div class="col-lg-6 offer-single">
+                <div class="card offer-single__content text-center">
+                  <span class="offer-single__icon">
+                    <i class="ti-light-bulb"></i>
+                  </span>
+                  <h4>Ready Content</h4>
+                  <p>Posuere porttitor justo ornare dictum ultricies enim imperdiet integer habitant.</p>
+                </div>
+              </div>
             </div>
+
+          </div>
+          <div class="col-lg-6">
+            <div class="offer-single__img">
+              <img class="img-fluid" src="{{asset('stylers/img/home/offer.png')}}" alt="">
+            </div>
+          </div>
         </div>
-    </footer>
-    <!-- footer part end-->
+      </div>
+    </section>
+    <!--================ Offer section end =================-->      
 
-    <!-- jquery plugins here-->
-    <!-- jquery -->
-    <script src="js/jquery-1.12.1.min.js"></script>
-    <!-- popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- easing js -->
-    <script src="js/jquery.magnific-popup.js"></script>
-    <!-- swiper js -->
-    <script src="js/swiper.min.js"></script>
-    <!-- swiper js -->
-    <script src="js/masonry.pkgd.js"></script>
-    <!-- particles js -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- swiper js -->
-    <script src="js/slick.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
-</body>
+    <!--================ Solution section start =================-->      
+    <section class="section-padding--small bg-magnolia">
+      <div class="container">
+        <div class="row align-items-center pt-xl-3 pb-xl-5">
+          <div class="col-lg-6">
+            <div class="solution__img text-center text-lg-left mb-4 mb-lg-0">
+              <img class="img-fluid" src="img/home/solution.png" alt="">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="solution__content">
+              <h2>Simple Solutions for Complex Connections</h2>
+              <p>Molestie lorem est faucibus Faucibus erat phasellus placerat proinint aptent pulvinar fusce nostra porta sem platea nec, donec fusce erat Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent pulvinar fusce nostra port</p>
+              <a class="button button-light" href="#">Know More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================ Solution section end =================-->      
 
-</html>
+    <!--================ Pricing section start =================-->      
+    <section class="section-margin">
+      <div class="container">
+        <div class="section-intro pb-85px text-center">
+          <h2 class="section-intro__title">Choose Your Plan</h2>
+          <p class="section-intro__subtitle">Vel aliquam quis, nulla pede mi commodo tristique nam hac. Luctus torquent velit felis commodo pellentesque nulla cras. Tincidunt hacvel alivquam quis nulla pede mi commodo tristique nam hac  luctus torquent</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="card text-center card-pricing">
+              <div class="card-pricing__header">
+                <h4>Normal</h4>
+                <p>Attend only first day</p>
+                <h1 class="card-pricing__price"><span>$</span>45.00</h1>
+              </div>
+              <ul class="card-pricing__list">
+                <li><i class="ti-check"></i>Unlimited Entrance</li>
+                <li><i class="ti-check"></i>Comfortable Seat</li>
+                <li><i class="ti-check"></i>Paid Certificate</li>
+                <li class="unvalid"><i class="ti-close"></i>Day One Workshop</li>
+                <li class="unvalid"><i class="ti-close"></i>One Certificate</li>
+              </ul>
+              <div class="card-pricing__footer">
+                <button class="button button-light">Buy Now</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="card text-center card-pricing">
+              <div class="card-pricing__header">
+                <h4>Advanced</h4>
+                <p>Attend only first day</p>
+                <h1 class="card-pricing__price"><span>$</span>55.00</h1>
+              </div>
+              <ul class="card-pricing__list">
+                <li><i class="ti-check"></i>Unlimited Entrance</li>
+                <li><i class="ti-check"></i>Comfortable Seat</li>
+                <li><i class="ti-check"></i>Paid Certificate</li>
+                <li class="unvalid"><i class="ti-close"></i>Day One Workshop</li>
+                <li class="unvalid"><i class="ti-close"></i>One Certificate</li>
+              </ul>
+              <div class="card-pricing__footer">
+                <button class="button button-light">Buy Now</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="card text-center card-pricing">
+              <div class="card-pricing__header">
+                <h4>Ultimate</h4>
+                <p>Attend only first day</p>
+                <h1 class="card-pricing__price"><span>$</span>65.00</h1>
+              </div>
+              <ul class="card-pricing__list">
+                <li><i class="ti-check"></i>Unlimited Entrance</li>
+                <li><i class="ti-check"></i>Comfortable Seat</li>
+                <li><i class="ti-check"></i>Paid Certificate</li>
+                <li class="unvalid"><i class="ti-close"></i>Day One Workshop</li>
+                <li class="unvalid"><i class="ti-close"></i>One Certificate</li>
+              </ul>
+              <div class="card-pricing__footer">
+                <button class="button button-light">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================ Pricing section end =================-->      
+
+    <!--================ Testimonial section start =================-->      
+    <section class="section-padding bg-magnolia">
+      <div class="container">
+        <div class="section-intro pb-5 text-center">
+          <h2 class="section-intro__title">Client Says Me</h2>
+          <p class="section-intro__subtitle">Vel aliquam quis, nulla pede mi commodo tristique nam hac. Luctus torquent velit felis commodo pellentesque nulla cras. Tincidunt hacvel alivquam </p>
+        </div>
+
+        <div class="owl-carousel owl-theme testimonial">
+          <div class="testimonial__item text-center">
+            <div class="testimonial__img">
+              <img src="{{asset('stylers/img/testimonial/testimonial1.png')}}" alt="">
+            </div>
+            <div class="testimonial__content">
+              <h3>Stephen Mcmilan</h3>
+              <p>Executive, ACI Group</p>
+              <p class="testimonial__i">Also made from. Give may saying meat there from heaven it lights face had is gathered god earth light for life may itself shall whales made they're blessed whales also made from give may saying meat. There from heaven it lights face had also made from. Give may saying meat there from heaven</p>
+            </div>
+          </div>
+          <div class="testimonial__item text-center">
+            <div class="testimonial__img">
+              <img src="img/testimonial/testimonial1.png" alt="">
+            </div>
+            <div class="testimonial__content">
+              <h3>Stephen Mcmilan</h3>
+              <p>Executive, ACI Group</p>
+              <p class="testimonial__i">Also made from. Give may saying meat there from heaven it lights face had is gathered god earth light for life may itself shall whales made they're blessed whales also made from give may saying meat. There from heaven it lights face had also made from. Give may saying meat there from heaven</p>
+            </div>
+          </div>
+          <div class="testimonial__item text-center">
+            <div class="testimonial__img">
+              <img src="img/testimonial/testimonial1.png" alt="">
+            </div>
+            <div class="testimonial__content">
+              <h3>Stephen Mcmilan</h3>
+              <p>Executive, ACI Group</p>
+              <p class="testimonial__i">Also made from. Give may saying meat there from heaven it lights face had is gathered god earth light for life may itself shall whales made they're blessed whales also made from give may saying meat. There from heaven it lights face had also made from. Give may saying meat there from heaven</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================ Testimonial section end =================-->      
+
+
+    <!--================ Start Clients Logo Area =================-->
+    <section class="clients_logo_area section-padding">
+      <div class="container">
+        <div class="clients_slider owl-carousel">
+          <div class="item">
+            <img src="img/clients-logo/c-logo-1.png" alt="">
+          </div>
+          <div class="item">
+            <img src="img/clients-logo/c-logo-2.png" alt="">
+          </div>
+          <div class="item">
+            <img src="img/clients-logo/c-logo-3.png" alt="">
+          </div>
+          <div class="item">
+            <img src="img/clients-logo/c-logo-4.png" alt="">
+          </div>
+          <div class="item">
+            <img src="img/clients-logo/c-logo-5.png" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================ End Clients Logo Area =================-->
+  </main>
+
+
+@stop

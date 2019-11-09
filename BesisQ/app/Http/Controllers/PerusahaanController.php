@@ -48,10 +48,14 @@ class PerusahaanController extends Controller
 
     public function listPendaftar()
     {
-
-        $pendaftar = \App\Perusahaan::where('status','=','Belum Terverifikasi')->get();
-        
-        return view('admin.index',['pendaftar' => $pendaftar]);
+        $pendaftar = \App\Perusahaan::where('status','=','Belum Terverifikasi')->first();
+        if (empty($pendaftar)) {
+            $isEmpty = "yes";
+        }else{
+            $isEmpty = "no";
+            $pendaftar = \App\Perusahaan::where('status','=','Belum Terverifikasi')->get();
+        }
+        return view('admin.perusahaan.index',compact('pendaftar','isEmpty'));
     }
 
     public function accRegisterPerusahaan(Request $request)
