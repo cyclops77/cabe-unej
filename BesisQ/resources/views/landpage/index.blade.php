@@ -38,6 +38,44 @@
     <!--================ Hero sm Banner end =================-->
 
     <!--================ Feature section start =================-->  
+    @guest
+    <section class="section-margin">
+      <div class="container">
+        <div class="section-intro pb-85px text-center">
+          <h2 class="section-intro__title">Register</h2>
+          <p class="section-intro__subtitle">Vel aliquam quis, nulla pede mi commodo tristique nam hac. Luctus torquent velit felis commodo pellentesque nulla cras. Tincidunt hacvel alivquam quis nulla pede mi commodo tristique nam hac  luctus torquent</p>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 offset-2">
+              <a href="{{url('/daftar-perusahaan')}}" style="text-decoration: none;">
+              <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
+                <span class="card-feature__icon">
+                  <i class="ti-package"></i>
+                </span>
+                <h3 class="card-feature__title">Regitrasi Perusahaan</h3>
+                <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
+              </div>
+              </a>
+            </div>
+            <div class="col-lg-4">
+              <a href="{{url('/daftar-mahasiswa')}}" style="text-decoration: none;">
+              <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
+                <span class="card-feature__icon">
+                  <i class="ti-mouse-alt"></i>
+                </span>
+                <h3 class="card-feature__title">Registrasi Mahasiswa</h3>
+                <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
+              </div>
+              </a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    @endguest
     @auth    
     <section class="section-margin" style="display: {{Auth::user()->role=="perusahaan" ? "block" : "none"}}">
       <div class="container">
@@ -72,6 +110,17 @@
             </div>
             
           </div>
+          <div class="col-lg-4 offset-4 mt-3">
+              <a href="{{url('/sedang-diverifikasi')}}" style="text-decoration: none;">
+              <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
+                <span class="card-feature__icon">
+                  <i class="ti-themify-favicon"></i>
+                </span>
+                <h3 class="card-feature__title">Proses Verifikasi</h3>
+                <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
+              </div>
+              </a>
+            </div>
         </div>
       </div>
     </section>

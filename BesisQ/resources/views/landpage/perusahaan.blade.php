@@ -71,6 +71,17 @@
             </div>
             
           </div>
+          <div class="col-lg-4 mt-4 offset-4">
+              <a href="{{$perusahaan->status=="terverifikasi" ? "/sedang-diverifikasi" : "/danger"}}" style="text-decoration: none;" style="text-decoration: none;"> 
+                <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
+                <span class="card-feature__icon">
+                  <i class="ti-mouse-alt"></i>
+                </span>
+                <h3 class="card-feature__title">Sedang Diverifikasi</h3>
+                <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
+              </div>
+              </a>
+            </div>
         </div>
       </div>
     </section>
