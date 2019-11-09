@@ -12,6 +12,7 @@ class DaftarBeasiswaController extends Controller
 {
     public function detail($slug_beasiswa)
     {
+        $now = date('Y-m-d H:i:s');
         $r = mt_rand(1,2);
         $userid = auth()->user()->id;
     
@@ -183,6 +184,18 @@ class DaftarBeasiswaController extends Controller
             ->where('beasiswa_id','=',$bea->id)
             ->first();            
 
+
+
+        //=====jika maksa masuk pas udah timeout///////////////////////
+
+        
+            $btnZ = '
+                      <button type="button" class="button button-postComment" data-toggle="modal" data-target="#timeoutBRO" style="width: 100%">
+                          Daftar Beasiswa
+                      </button>
+                    ';              
+            
+
         if ($SDBL === null && $SDBL_slug === null) {
             $btn = '
                       <button type="button" class="button button-postComment" data-toggle="modal" data-target="#exampleModalCenter3" style="width: 100%">
@@ -223,7 +236,7 @@ class DaftarBeasiswaController extends Controller
          // dd($SDBL);   
         $perusahaan = \App\Perusahaan::where('id','=',$bea->perusahaan_id)->first();
         $gbr = 'wal'.$r.'.jpg';
-        return view('beasiswa.detail',['bea' => $bea,'data_mahasiswa' => $data_mahasiswa,'totalPoint' => $totalPoint,'btn' => $btn,'btn1' => $btn1,'SDBL' => $SDBL,'output' => $output,'r' => $r,'gbr' => $gbr,'perusahaan' => $perusahaan]);
+        return view('beasiswa.detail',['bea' => $bea,'data_mahasiswa' => $data_mahasiswa,'totalPoint' => $totalPoint,'btn' => $btn,'btn1' => $btn1,'SDBL' => $SDBL,'output' => $output,'r' => $r,'gbr' => $gbr,'perusahaan' => $perusahaan,'now' => $now,'btnZ' => $btnZ]);
     }
     public function daftarSekarang(Request $request)
     {

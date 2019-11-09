@@ -50,20 +50,11 @@
                                   </a>
                               </li>
                               <li>
-                                  <a href="#">{{date('d M Y', strtotime($bea->created_at))}}
+                                  <a href="#">{{date('d M Y', strtotime($bea->batas_akhir))}}
                                       <i class="lnr lnr-calendar-full"></i>
                                   </a>
                               </li>
-                              <li>
-                                  <a href="#">1.2M Views
-                                      <i class="lnr lnr-eye"></i>
-                                  </a>
-                              </li>
-                              <li>
-                                  <a href="#">06 Comments
-                                      <i class="lnr lnr-bubble"></i>
-                                  </a>
-                              </li>
+                              
                           </ul>
                           <ul class="social-links">
                               <li>
@@ -133,8 +124,13 @@
               <div class="blog_right_sidebar">
                   <!-- <button class="button button-postComment">Post Comment</button> -->
                  <!-- Button trigger modal -->
+
+      @if($now < $bea->batas_akhir)                 
       {!!$btn!!}
       {!!$btn1!!}
+      @else
+      {!!$btnZ!!}
+      @endif
   
 
                   
@@ -186,7 +182,26 @@
 
 
 
-
+<!-- Modal TIMEOUT-->
+<div class="modal fade" id="timeoutBRO" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header button-postComment" >
+        <h5 class="modal-title" id="exampleModalLabel">Beasiswa Time Out</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Peringatan</h4>
+              <p style="color: black">Dear <strong>{{Auth::user()->name}},</strong> Beasiswa ini telah melewati batas akhir, silahkan pilih kembali beasiswa yang ingin anda cari dengan waktu yang masih belum melewati batas akhir. <strong><a href="{{url('/beasiswa')}}" >Ok, Mengerti</a></strong></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button button-postComment" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- Modal 1-->
