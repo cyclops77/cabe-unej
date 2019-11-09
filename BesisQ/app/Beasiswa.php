@@ -26,7 +26,11 @@ class Beasiswa extends Model
     	return $this->hasMany('App\Pendaftar_Beasiswa');
     }
     public function beasiswa_atribut()
-        {
-            return $this->hasOne('App\BeasiswaAtribut');
-        }    
+    {
+        return $this->hasOne('App\BeasiswaAtribut');
+    }    
+    public function beasiswa_revisi()
+    {
+        return $this->hasOne('App\BeasiswaRevisi');
+    }    
 }
