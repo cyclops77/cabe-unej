@@ -35,25 +35,7 @@
       {{session('gagal')}}
     </div>
     @endif
-    <div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+  
       <div class="row">
         @foreach($beasiswaCuco as $index => $b)
         <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content">
@@ -106,6 +88,85 @@
                 <br>
                 Prodi : {{$b->prodi->nama}}
                 <br>
+                <!-- Button trigger modal -->
+<button type="button" class="button button-blog mt-4 float-left" data-toggle="modal" data-target="#c{{$b->id}}">
+  Tolak
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="c{{$b->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{$b->nama_beasiswa}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{{url('/admin-verifikasi-beasiswa')}}" class="form-contact contact_form" novalidate="novalidate" id="myform">
+        {{csrf_field()}}
+          
+          <div class="row mt-2 ">
+                <div class="col-md-5">
+                Point IPK 
+                </div>
+                <div class="col-md-5">
+                : {{$b->point_ipk}}
+                </div>
+              </div>  
+            <div class="row mt-2 ">
+                <div class="col-md-5">
+                Point Gaji Ortu
+                </div>
+                <div class="col-md-5">
+                : {{$b->point_gaji}}
+                </div>
+              </div>  
+              <div class="row mt-2 ">
+                <div class="col-md-5">          
+                Point Sertifikat
+                </div>
+                <div class="col-md-5">
+                : {{$b->point_sertifikat}}
+                </div>
+              </div>  
+              <div class="row mt-2 ">
+                <div class="col-md-5">
+                Point Organisasi
+                </div>
+                <div class="col-md-5">
+                : {{$b->point_organisasi}}
+                </div>
+              </div>   
+                <hr>
+                Fakultas : {{$b->fakultas->nama_fak}}
+                <br>
+                Prodi : {{$b->prodi->nama}}
+                <br>
+                <hr>
+          <div class="form-group">
+            <label class="col-md-6" for="inputDefault">Kesalahan</label>
+            <div class="col-md-12">
+              <input class="form-control" name="kesalahan" type="text">
+            </div>
+          </div>
+          <div class="form-group ">
+            <label class="col-md-6" for="inputDefault">Catatan</label>
+            <div class="col-md-12">
+              <textarea class="form-control mb-10" rows="5" name="catatan" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'"></textarea>
+            </div>
+          </div>
+          <input type="hidden" name="idnya" value="{{$b->id}}">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+        <button type="submit" class="button button-blog">Kirim Penolakan</button>
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
                   <form action="{{url('/verifikasi-terima-beasiswa')}}" method="POST">
                   {{csrf_field()}}
                     <input type="hidden" name="idnya" value="{{$b->id}}">
@@ -172,6 +233,84 @@
                 <br>
                 Prodi : Bebas
                 <br>
+<button type="button" class="button button-blog mt-4 float-left" data-toggle="modal" data-target="#c{{$b->id}}">
+  Tolak
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="c{{$b->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{$b->nama_beasiswa}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{{url('/admin-verifikasi-beasiswa')}}" class="form-contact contact_form" novalidate="novalidate" id="myform">
+        {{csrf_field()}}
+          
+          <div class="row mt-2 ">
+                <div class="col-md-5">
+                Point IPK 
+                </div>
+                <div class="col-md-5">
+                : {{$b->point_ipk}}
+                </div>
+              </div>  
+            <div class="row mt-2 ">
+                <div class="col-md-5">
+                Point Gaji Ortu
+                </div>
+                <div class="col-md-5">
+                : {{$b->point_gaji}}
+                </div>
+              </div>  
+              <div class="row mt-2 ">
+                <div class="col-md-5">          
+                Point Sertifikat
+                </div>
+                <div class="col-md-5">
+                : {{$b->point_sertifikat}}
+                </div>
+              </div>  
+              <div class="row mt-2 ">
+                <div class="col-md-5">
+                Point Organisasi
+                </div>
+                <div class="col-md-5">
+                : {{$b->point_organisasi}}
+                </div>
+              </div>   
+                <hr>
+                Fakultas : Bebas
+                <br>
+                Prodi : Bebas
+                <br>
+                <hr>
+          <div class="form-group">
+            <label class="col-md-6" for="inputDefault">Kesalahan</label>
+            <div class="col-md-12">
+              <input class="form-control" name="kesalahan" type="text">
+            </div>
+          </div>
+          <div class="form-group ">
+            <label class="col-md-6" for="inputDefault">Catatan</label>
+            <div class="col-md-12">
+              <textarea class="form-control mb-10" rows="5" name="catatan" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'"></textarea>
+            </div>
+          </div>
+          <input type="hidden" name="idnya" value="{{$b->id}}">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+        <button type="submit" class="button button-blog">Kirim Penolakan</button>
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
                   <form action="{{url('/verifikasi-terima-beasiswa')}}" method="POST">
                   {{csrf_field()}}
                     <input type="hidden" name="idnya" value="{{$b->id}}">
@@ -238,6 +377,85 @@
                 <br>
                 Prodi : Bebas
                 <br>
+                <!-- Button trigger modal -->
+<button type="button" class="button button-blog mt-4 float-left" data-toggle="modal" data-target="#c{{$b->id}}">
+  Tolak
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="c{{$b->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{$b->nama_beasiswa}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{{url('/admin-verifikasi-beasiswa')}}" class="form-contact contact_form" novalidate="novalidate" id="myform">
+        {{csrf_field()}}
+          
+          <div class="row mt-2 ">
+                <div class="col-md-5">
+                Point IPK 
+                </div>
+                <div class="col-md-5">
+                : {{$b->point_ipk}}
+                </div>
+              </div>  
+            <div class="row mt-2 ">
+                <div class="col-md-5">
+                Point Gaji Ortu
+                </div>
+                <div class="col-md-5">
+                : {{$b->point_gaji}}
+                </div>
+              </div>  
+              <div class="row mt-2 ">
+                <div class="col-md-5">          
+                Point Sertifikat
+                </div>
+                <div class="col-md-5">
+                : {{$b->point_sertifikat}}
+                </div>
+              </div>  
+              <div class="row mt-2 ">
+                <div class="col-md-5">
+                Point Organisasi
+                </div>
+                <div class="col-md-5">
+                : {{$b->point_organisasi}}
+                </div>
+              </div>   
+                <hr>
+                Fakultas : {{$b->fakultas->nama_fak}}
+                <br>
+                Prodi : Bebas
+                <br>
+                <hr>
+          <div class="form-group">
+            <label class="col-md-6" for="inputDefault">Kesalahan</label>
+            <div class="col-md-12">
+              <input class="form-control" name="kesalahan" type="text">
+            </div>
+          </div>
+          <div class="form-group ">
+            <label class="col-md-6" for="inputDefault">Catatan</label>
+            <div class="col-md-12">
+              <textarea class="form-control mb-10" rows="5" name="catatan" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'"></textarea>
+            </div>
+          </div>
+          <input type="hidden" name="idnya" value="{{$b->id}}">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link" data-dismiss="modal">Tutup</button>
+        <button type="submit" class="button button-blog">Kirim Penolakan</button>
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
                   <form action="{{url('/verifikasi-terima-beasiswa')}}" method="POST">
                   {{csrf_field()}}
                     <input type="hidden" name="idnya" value="{{$b->id}}">
