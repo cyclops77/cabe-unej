@@ -51,10 +51,11 @@ Route::get('/beasiswaku','PendaftarBeasiswaController@index');
 
 Route::get('/beasiswaku/{slug_beasiswa}','PendaftarBeasiswaController@pendaftar');
 
+Route::get('/sedang-diverifikasi','AccBeasiswaController@proses');
 
-Route::get('/danger', function () {
-    return view('danger');
-});
+Route::get('/danger', function (){return view('danger');});
+
+Route::post('/send/edit-beasiswa','BeasiswaController@update');
 
 });
 
@@ -99,4 +100,7 @@ Route::post('/data-pendaftaran/jangan-terima-perusahaan','PerusahaanController@D
 Route::get('/verifikasi-beasiswa','AccBeasiswaController@index');
 
 Route::post('/verifikasi-terima-beasiswa','AccBeasiswaController@acc');
+
+Route::post('/admin-verifikasi-beasiswa','AccBeasiswaController@decc');
+
 });
