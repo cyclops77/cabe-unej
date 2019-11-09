@@ -12,7 +12,9 @@ class PendaftarBeasiswaController extends Controller
     	$idnya = auth()->user()->id;
         $r = mt_rand(1,2);
         $perusahaan = \App\Perusahaan::where('user_id','=',$idnya)->first();
-    	$beasiswaPerusahaan = \App\Beasiswa::where('perusahaan_id','=',$perusahaan->id)->get();	
+    	$beasiswaPerusahaan = \App\Beasiswa::where('perusahaan_id','=',$perusahaan->id)
+            ->where('status','=','aktiv')
+            ->get();	
     	return view('pendaftar.index',['beasiswaPerusahaan'=> $beasiswaPerusahaan,'r'=>$r]);
     }
     public function pendaftar($slug_beasiswa)

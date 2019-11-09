@@ -136,4 +136,47 @@ class BeasiswaController extends Controller
 
         return view('beasiswa.detail',['bea' => $bea,'data_mahasiswa' => $data_mahasiswa]);
     }
+
+    public function update(Request $req)
+    {
+        $tot = ($req->point_ipk+$req->point_gaji+$req->point_organisasi+$req->point_sertifikat);
+        if ($tot > 100) {
+            return redirect()->back()->with('gagal','total dari point tidak dapat lebih dari 100');
+        }else if($tot < 100) {
+            return redirect()->back()->with('gagal','total dari point tidak dapat kurang dari 100');
+        }else if($tot = 100) {
+
+
+        $checkIN = \App\Beasiswa::select('*')
+            ->where('id','=',$req->idnya)
+            ->whereIn('id',function($query){
+                    $query->select('beasiswa_id')->from('beasiswa_revisi');
+                })
+            ->first();
+
+        //==JIKA KOSONG=========================================================//
+        if (empty($checkIN)) {
+            \App\Beasiswa::where('id','=',$req->idnya)
+            ->update([
+                'point_ipk' => $req->point_ipk,
+                'point_gaji' => $req->point_gaji,
+                'point_organisasi' => $req->point_organisasi,
+                'point_sertifikat' => $req->point_sertifikat,
+            ]);
+            
+
+        }else if(!empty($checkIN)){
+             \App\Beasiswa::where('id','=',$req->idnya)
+            ->update([
+                'point_ipk' => $req->point_ipk,
+                'point_gaji' => $req->point_gaji,
+                'point_organisasi' => $req->point_organisasi,
+                'point_sertifikat' => $req->point_sertifikat,
+            ]);
+            \App\BeasiswaRevisi::where('beasiswa_id','=',$req->idnya)->delete();
+        }    
+
+        return redirect()->back()->with('sukses','Behasil mengubah data beasiswa');
+    }
+    }
 }
