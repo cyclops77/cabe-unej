@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>CABE-UNEJ</title>
-    <link rel="icon" href="{{asset('stylers/img/Fevicon.png')}}" type="image/png">
+  <link rel="icon" href="{{asset('stylers/img/Fevicon.png')}}" type="image/png">
+  <!-- Fonts -->
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
   <link rel="stylesheet" href="{{asset('stylers/vendors/bootstrap/bootstrap.min.css')}}">
-  <link rel="stylesheet" href="{{asset('stylers/vendors/fontawesome/css/all.min.css')}}">
+  <!-- <link rel="stylesheet" href="{{asset('stylers/vendors/fontawesome/css/all.min.css')}}"> -->
   <link rel="stylesheet" href="{{asset('stylers/vendors/themify-icons/themify-icons.css')}}">
   <link rel="stylesheet" href="{{asset('stylers/vendors/linericon/style.css')}}">
   <link rel="stylesheet" href="{{asset('stylers/vendors/owl-carousel/owl.theme.default.min.css')}}">
@@ -25,11 +28,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-  <style>
-    *{
-      font-family: sans-serif;
-    }
-  </style>
+  
   <!--================Header Menu Area =================-->
   <header class="header_area">
     <div class="main_menu">
@@ -48,7 +47,7 @@
               <li class="nav-item active">
                 <a class="nav-link" href="/"><strong>Beranda</strong></a>
               </li> 
-              <li class="nav-item"><a class="nav-link" href="feature.html">Profil Saya</a></li> 
+              <li class="nav-item"><a class="nav-link" href="{{url('/profile')}}">Profil Saya</a></li> 
             </ul>
 
             <ul class="navbar-right">
