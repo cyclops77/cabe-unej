@@ -9,7 +9,9 @@ class AccBeasiswaController extends Controller
 {
     public function index()
     {
-    	$r = mt_rand(1,2);
+        $r = mt_rand(1,2);
+        $s = mt_rand(3,4);
+        $t = mt_rand(5,6);
     	$beasiswa = \App\Beasiswa::where('status','=','tidak aktiv')->first();
         if (empty($beasiswa)) {
             $isEmpty = "yes";
