@@ -44,10 +44,13 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav justify-content-end">
+
+              @auth
               <li class="nav-item active">
                 <a class="nav-link" href="/"><strong>Beranda</strong></a>
               </li> 
               <li class="nav-item"><a class="nav-link" href="{{url('/profile')}}">Profil Saya</a></li> 
+              @endauth
             </ul>
 
             <ul class="navbar-right">

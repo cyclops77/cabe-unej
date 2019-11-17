@@ -276,19 +276,19 @@
         <input type="hidden" name="output" value="{{$output}}">
       <div class="custom-file mb-3">
       <input type="file" class="custom-file-input" id="customFile" name="bukti_ipk">
-      <label class="custom-file-label" for="customFile">Choose file</label>
+      <label class="custom-file-label" for="customFile">Pilih Bukti IPK</label>
       </div>
       <div class="custom-file mb-3">
       <input type="file" class="custom-file-input" id="customFile" name="bukti_gaji">
-      <label class="custom-file-label" for="customFile">Choose file</label>
+      <label class="custom-file-label" for="customFile">Pilih Bukti Gaji Orang Tua</label>
       </div>
       <div class="custom-file mb-3">
       <input type="file" class="custom-file-input" id="customFile" name="bukti_sertifikat">
-      <label class="custom-file-label" for="customFile">Choose file</label>
+      <label class="custom-file-label" for="customFile">Pilih Bukti Sertifikat</label>
       </div>
       <div class="custom-file mb-3">
       <input type="file" class="custom-file-input" id="customFile" name="bukti_organisasi">
-      <label class="custom-file-label" for="customFile">Choose file</label>
+      <label class="custom-file-label" for="customFile">Pilih Bukti Organisasi</label>
       </div>
       </div>
       <div class="modal-footer">

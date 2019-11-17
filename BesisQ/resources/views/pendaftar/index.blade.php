@@ -56,9 +56,11 @@
       @endforeach
         
 
-      
         
       </div>
+    <div class="offset-5">
+    {{$beasiswaPerusahaan->links()}}    
+    </div>
     </div>
     <hr align="center" width="89%">
     <hr align="center" width="91%">    
