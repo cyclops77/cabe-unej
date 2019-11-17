@@ -240,141 +240,69 @@ class DaftarBeasiswaController extends Controller
     }
     public function daftarSekarang(Request $request)
     {
-        $user = Auth::user();
+        $a1 = ($request->file('bukti_ipk'))->getClientOriginalName();
+        $a2 = ($request->file('bukti_gaji'))->getClientOriginalName();
+        $a3 = ($request->file('bukti_sertifikat'))->getClientOriginalName();
+        $a4 = ($request->file('bukti_organisasi'))->getClientOriginalName();
 
-        if (empty($request->file('bukti_gaji'))) {
-            return redirect()->back()->with('gagal','Silahkan upload bukti gaji rang tua');
-        }else if (empty($request->file('bukti_ipk'))) {
-            return redirect()->back()->with('gagal','Silahkan upload bukti ipk');
-        }else if (empty($request->file('bukti_sertifikat'))) {
-            return redirect()->back()->with('gagal','Silahkan upload bukti sertifikat');
-        }else if (empty($request->file('bukti_organisasi'))) {
-            return redirect()->back()->with('gagal','Silahkan upload bukti organisasi');
+        if ((strpos($a1, "jpg") || strpos($a1, "jpeg") || strpos($a1, "png") || strpos($a1, "docx"))===false) {
+            return redirect()->back()->with('gagal','Foto Bukti IPK harus berupa PNG, JPEG, JPG, docx');
+        }else if ((strpos($a2, "jpg") || strpos($a2, "jpeg") || strpos($a2, "png") || strpos($a2, "docx"))===false) {
+            return redirect()->back()->with('gagal','Foto Bukti Gaji harus berupa PNG, JPEG, JPG, docx');
+        }else if ((strpos($a3, "jpg") || strpos($a3, "jpeg") || strpos($a3, "png") || strpos($a3, "docx"))===false) {
+            return redirect()->back()->with('gagal','Foto Bukti Sertifikat harus berupa PNG, JPEG, JPG, docx');
+        }else if ((strpos($a4, "jpg") || strpos($a4, "jpeg") || strpos($a4, "png") || strpos($a4, "docx"))===false) {
+            return redirect()->back()->with('gagal','Foto Bukti Organisasi harus berupa PNG, JPEG, JPG, docx');
         }else{
+                $user = Auth::user();
 
-        $tempatfile = ('bukti');
+                if (empty($request->file('bukti_gaji'))) {
+                    return redirect()->back()->with('gagal','Silahkan upload bukti gaji rang tua');
+                }else if (empty($request->file('bukti_ipk'))) {
+                    return redirect()->back()->with('gagal','Silahkan upload bukti ipk');
+                }else if (empty($request->file('bukti_sertifikat'))) {
+                    return redirect()->back()->with('gagal','Silahkan upload bukti sertifikat');
+                }else if (empty($request->file('bukti_organisasi'))) {
+                    return redirect()->back()->with('gagal','Silahkan upload bukti organisasi');
+                }else{
 
-        $filenyaGaji = $request->file('bukti_gaji');
-        $nama_fileGaji = $filenyaGaji->getClientOriginalName();
-        $filenyaGaji->move($tempatfile, $nama_fileGaji);
+                $tempatfile = ('bukti');
 
-        $filenyaIPK = $request->file('bukti_ipk');
-        $nama_fileIPK = $filenyaIPK->getClientOriginalName();
-        $filenyaIPK->move($tempatfile, $nama_fileIPK);
+                $filenyaGaji = $request->file('bukti_gaji');
+                $nama_fileGaji = $filenyaGaji->getClientOriginalName();
+                $filenyaGaji->move($tempatfile, $nama_fileGaji);
 
-        $filenyaSERTIFIKAT = $request->file('bukti_sertifikat');
-        $nama_fileSERTIFIKAT = $filenyaSERTIFIKAT->getClientOriginalName();
-        $filenyaSERTIFIKAT->move($tempatfile, $nama_fileSERTIFIKAT);
+                $filenyaIPK = $request->file('bukti_ipk');
+                $nama_fileIPK = $filenyaIPK->getClientOriginalName();
+                $filenyaIPK->move($tempatfile, $nama_fileIPK);
 
-        $filenyaORGANISASI = $request->file('bukti_organisasi');
-        $nama_fileORGANISASI = $filenyaORGANISASI->getClientOriginalName();
-        $filenyaORGANISASI->move($tempatfile, $nama_fileORGANISASI);
+                $filenyaSERTIFIKAT = $request->file('bukti_sertifikat');
+                $nama_fileSERTIFIKAT = $filenyaSERTIFIKAT->getClientOriginalName();
+                $filenyaSERTIFIKAT->move($tempatfile, $nama_fileSERTIFIKAT);
 
-
-
-
-// //      INI SERTIF        
-//         $filenyasertifikat = $request->file('bukti_sertifikat');
-//         $nama_filesertifikat = $filenyasertifikat->getClientOriginalName().date("Y-m-d");
-//         $filenyasertifikat->move($tempatfile, $nama_filesertifikat);
-
-
-//         if ((empty($request->file('bukti_ipk'))) && (!empty($request->file('bukti_sertifikat'))) && (!empty($request->file('bukti_gaji')))) {
-// //      INI GAJI
-//         $filenyagaji = $request->file('bukti_gaji');
-//         $nama_filegaji = $filenyagaji->getClientOriginalName().date("Y-m-d");
-//         $filenyagaji->move($tempatfile, $nama_filegaji);
-// //      INI SERTIF        
-//         $filenyasertifikat = $request->file('bukti_sertifikat');
-//         $nama_filesertifikat = $filenyasertifikat->getClientOriginalName().date("Y-m-d");
-//         $filenyasertifikat->move($tempatfile, $nama_filesertifikat);
-//         }
-//         else if((empty($request->file('bukti_gaji'))) && (!empty($request->file('bukti_ipk'))) && (!empty($request->file('bukti_sertifikat'))) ) {
-//         //      INI IPK
-//         $filenyaipk = $request->file('bukti_ipk');
-//         $nama_fileipk = $filenyaipk->getClientOriginalName().date("Y-m-d");
-//         $filenyaipk->move($tempatfile, $nama_fileipk);
-
-//         //      INI SERTIF        
-//         $filenyasertifikat = $request->file('bukti_sertifikat');
-//         $nama_filesertifikat = $filenyasertifikat->getClientOriginalName().date("Y-m-d");
-//         $filenyasertifikat->move($tempatfile, $nama_filesertifikat);
-
-//         $nama_filegaji='';
-
-//         }else if((empty($request->file('bukti_sertifikat'))) && (!empty($request->file('bukti_ipk'))) && (!empty($request->file('bukti_gaji')))) {
-//         //      INI IPK
-//         $filenyaipk = $request->file('bukti_ipk');
-//         $nama_fileipk = $filenyaipk->getClientOriginalName().date("Y-m-d");
-//         $filenyaipk->move($tempatfile, $nama_fileipk);
-
-// //      INI GAJI
-//         $filenyagaji = $request->file('bukti_gaji');
-//         $nama_filegaji = $filenyagaji->getClientOriginalName().date("Y-m-d");
-//         $filenyagaji->move($tempatfile, $nama_filegaji);
-
-//         $nama_filesertifikat='';
-
-//         }
-//         else if((empty($request->file('bukti_gaji'))) && (empty($request->file('bukti_sertifikat'))) ) {
-//         //      INI IPK
-//         $filenyaipk = $request->file('bukti_ipk');
-//         $nama_fileipk = $filenyaipk->getClientOriginalName().date("Y-m-d");
-//         $filenyaipk->move($tempatfile, $nama_fileipk);
-
-//         $nama_filegaji='';
-//         $nama_filesertifikat='';
-
-//         }else if((empty($request->file('bukti_ipk'))) && (empty($request->file('bukti_sertifikat'))) ) {
-//         //      INI GAJI
-//         $filenyagaji = $request->file('bukti_gaji');
-//         $nama_filegaji = $filenyagaji->getClientOriginalName().date("Y-m-d");
-//         $filenyagaji->move($tempatfile, $nama_filegaji);
-
-//         $nama_fileipk='';
-//         $nama_filesertifikat='';
-
-//         }else if((empty($request->file('bukti_ipk'))) && (empty($request->file('bukti_gaji'))) ) {
-//         //      INI SERTIF        
-//         $filenyasertifikat = $request->file('bukti_sertifikat');
-//         $nama_filesertifikat = $filenyasertifikat->getClientOriginalName().date("Y-m-d");
-//         $filenyasertifikat->move($tempatfile, $nama_filesertifikat);
-
-//         $nama_filegaji='';
-//         $nama_filesertifikat='';
-
-//         }else{
-//         //      INI IPK
-//         $filenyaipk = $request->file('bukti_ipk');
-//         $nama_fileipk = $filenyaipk->getClientOriginalName().date("Y-m-d");
-//         $filenyaipk->move($tempatfile, $nama_fileipk);
-//         //      INI GAJI
-//         $filenyagaji = $request->file('bukti_gaji');
-//         $nama_filegaji = $filenyagaji->getClientOriginalName().date("Y-m-d");
-//         $filenyagaji->move($tempatfile, $nama_filegaji);
-//         //      INI SERTIF        
-//         $filenyasertifikat = $request->file('bukti_sertifikat');
-//         $nama_filesertifikat = $filenyasertifikat->getClientOriginalName().date("Y-m-d");
-//         $filenyasertifikat->move($tempatfile, $nama_filesertifikat);
+                $filenyaORGANISASI = $request->file('bukti_organisasi');
+                $nama_fileORGANISASI = $filenyaORGANISASI->getClientOriginalName();
+                $filenyaORGANISASI->move($tempatfile, $nama_fileORGANISASI);
 
 
-//         }
 
 
-        $upl = new \App\Pendaftar_Beasiswa;
-        $upl->id = mt_rand(1000,9999);
-        $upl->user_id = $user->id;
-        $upl->beasiswa_id = $request->idbeasiswa;
-        $upl->bukti_ipk = $nama_fileIPK;
-        $upl->bukti_gaji = $nama_fileGaji;
-        $upl->bukti_sertifikat = $nama_fileSERTIFIKAT;
-        $upl->bukti_organisasi = $nama_fileORGANISASI;
-        $upl->output = $request->output;
-        $upl->point = $request->totalPoint;
-        $upl->save();
+                $upl = new \App\Pendaftar_Beasiswa;
+                $upl->id = mt_rand(1000,9999);
+                $upl->user_id = $user->id;
+                $upl->beasiswa_id = $request->idbeasiswa;
+                $upl->bukti_ipk = $nama_fileIPK;
+                $upl->bukti_gaji = $nama_fileGaji;
+                $upl->bukti_sertifikat = $nama_fileSERTIFIKAT;
+                $upl->bukti_organisasi = $nama_fileORGANISASI;
+                $upl->output = $request->output;
+                $upl->point = $request->totalPoint;
+                $upl->save();
 
-        return redirect()->back()->with('sukses','Berhasil Daftar Beasiswa');
-    }
+                return redirect()->back()->with('sukses','Berhasil Daftar Beasiswa');
+            }
+        }
+    
     }
     public function hapusPengajuan(Request $request)
     {
