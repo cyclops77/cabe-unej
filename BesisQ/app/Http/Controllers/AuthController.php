@@ -15,12 +15,12 @@ class AuthController extends Controller
     	if (Auth::attempt($request->only('email','password'))) {
     		return redirect('/index');
     	}
-    	return 'Password Salah';
+    	return redirect()->back()->with('gagal','Email atau Password salah atau tidak tepat');
     }
     public function logout()
     {
         Auth::logout();
-        return view('public.auth.login');
+        return redirect('/login')->with('sukses','Berhasil Logout');
     }
     public function role()
     {

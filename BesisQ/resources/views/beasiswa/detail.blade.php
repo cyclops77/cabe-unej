@@ -22,7 +22,7 @@
 
   <section class="blog_area single-post-area section-margin--medium">
     <div class="container">
-      @if(session('sukses'))
+@if(session('sukses'))
 <div class="alert alert-success" >
 {{session('sukses')}}
 </div>
@@ -275,19 +275,19 @@
         <input type="hidden" name="totalPoint" value="{{$totalPoint}}">
         <input type="hidden" name="output" value="{{$output}}">
       <div class="custom-file mb-3">
-      <input type="file" class="custom-file-input" id="customFile" name="bukti_ipk">
+      <input type="file" class="custom-file-input" id="customFile" required name="bukti_ipk">
       <label class="custom-file-label" for="customFile">Pilih Bukti IPK</label>
       </div>
       <div class="custom-file mb-3">
-      <input type="file" class="custom-file-input" id="customFile" name="bukti_gaji">
+      <input type="file" class="custom-file-input" id="customFile" required name="bukti_gaji">
       <label class="custom-file-label" for="customFile">Pilih Bukti Gaji Orang Tua</label>
       </div>
       <div class="custom-file mb-3">
-      <input type="file" class="custom-file-input" id="customFile" name="bukti_sertifikat">
+      <input type="file" class="custom-file-input" id="customFile" required name="bukti_sertifikat">
       <label class="custom-file-label" for="customFile">Pilih Bukti Sertifikat</label>
       </div>
       <div class="custom-file mb-3">
-      <input type="file" class="custom-file-input" id="customFile" name="bukti_organisasi">
+      <input type="file" class="custom-file-input" id="customFile" required name="bukti_organisasi">
       <label class="custom-file-label" for="customFile">Pilih Bukti Organisasi</label>
       </div>
       </div>

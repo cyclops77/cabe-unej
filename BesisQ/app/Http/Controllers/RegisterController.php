@@ -28,42 +28,53 @@ class RegisterController extends Controller
         $thisError = "none";
         $prodi = \App\Prodi::where('id','=',$request->prodi)->first();
         $nim = (String)$prodi->nim; 
-        
-       
 
-        if (strpos((String)$request->nim,$nim)) {
-    	$user = new \App\User;
-    	$user->role = 'mahasiswa';
-    	$user->id = mt_rand(10000,19999);
-    	$mhs = \App\Mahasiswa::create([
-            'id' => mt_rand(10000,19999),
-    		'user_id' => $user->id,
-            'fakultas_id' => $request->fakultas,
-            'prodi_id' => $request->prodi,
-    		'nama_lengkap' => $request->nama_lengkap,
-    		'nohp' => $request->nohp,
-    		'semester' => $request->semester,
-    		'ipk' => $request->ipk,
-    		'gaji_ortu' => $request->gaji_ortu,
-            'sertifikat' => $request->jumlah_sertifikat,
-            'organisasi' => $request->organisasi
-    	]);
-    	$user->name = $request->nama_lengkap;
-    	$user->email = $request->email;
-    	$user->password = bcrypt($request->password);
+        $cek = \App\User::where('email','=',$request->email)
+            ->first();
+            if (empty($cek)) { 
+                if (strpos((String)$request->nim,$nim)) {
 
-    	$user->save();
+                    if($request->password2 !== $request->password){
+                        $arr["thisError"] = "Password anda tidak sesuai";
+                        $arr["linkBack"] = "daftar-mahasiswa";
+                        return view('error',compact('arr'));
+                    }else{
+                    	$user = new \App\User;
+                    	$user->role = 'mahasiswa';
+                    	$user->id = mt_rand(10000,19999);
+                    	$mhs = \App\Mahasiswa::create([
+                            'id' => mt_rand(10000,19999),
+                    		'user_id' => $user->id,
+                            'fakultas_id' => $request->fakultas,
+                            'prodi_id' => $request->prodi,
+                    		'nama_lengkap' => $request->nama_lengkap,
+                    		'nohp' => $request->nohp,
+                    		'semester' => $request->semester,
+                    		'ipk' => $request->ipk,
+                    		'gaji_ortu' => $request->gaji_ortu,
+                            'sertifikat' => $request->jumlah_sertifikat,
+                            'organisasi' => $request->organisasi
+                    	]);
+                    	$user->name = $request->nama_lengkap;
+                    	$user->email = $request->email;
+                    	$user->password = bcrypt($request->password);
 
-    	return redirect('/login');
-    }else if(!strpos($request->nim,$nim)){
-        $thisError = "Nim dan Prodi anda tidak sinkron";
-        return view('public.mahasiswa.gagal-verif',compact('thisError'));
-    }else if($request->password2 !== $request->password && !strpos($request->nim,$nim)){
-        $thisError = "Password anda tidak sesuai dan juga Nim dan Prodi anda tidak sinkron";
-        return view('public.mahasiswa.gagal-verif',compact('thisError'));
-    }else if($request->password2 !== $request->password){
-        $thisError = "Password anda tidak sesuai";
-        return view('public.mahasiswa.gagal-verif',compact('thisError'));
-    }
+                    	$user->save();
+
+                    	return redirect('/login')->with('sukses','Berhasil Membuat Akun Mahasiswa, Silahkan Login');
+                    }
+            }else if(!strpos($request->nim,$nim)){
+                $arr["thisError"] = "Nim dan Prodi anda tidak sinkron";
+                $arr["linkBack"] = "daftar-mahasiswa";
+                
+                return view('error', compact('arr'));
+            
+            }
+        }else{
+           $arr["thisError"] = "Email telah digunakan";
+           $arr["linkBack"] = "daftar-mahasiswa";
+                
+           return view('error',compact('arr')); 
+        }
     }
 }
