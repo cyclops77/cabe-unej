@@ -1,5 +1,16 @@
 @extends('include.index')
 
+@section('styles')
+<!-- <link rel="stylesheet" href="{{asset('calender/css/style.css')}}"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="{{asset('calender/css/style.css')}}">
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="{{asset('/calender/js/index.js')}}"></script>
+@stop
+
 @section('konten')
  <!--================ Hero sm Banner start =================-->      
 <section class="hero-banner hero-banner--sm mb-30px">
@@ -133,14 +144,24 @@
       @endif
   
 
+
+<ul>
+ 
+  <li class="card" style="color: white">
+    <div class="card__flipper">
+       <div class="card__front">
+        <p class="card__name"><br>
+          Batas<br>
+          
+        </p>
+        <p class="card__num">{{date('d', strtotime($bea->batas_akhir))}}</p><span>{{date('M, Y', strtotime($bea->batas_akhir))}}</span>
+      </div>
+      
+    </div>
+  </li>
+</ul>
                   
-                  <aside class="single_sidebar_widget ads_widget">
-                      <a href="#">
-                          <img class="img-fluid" src="img/blog/add.jpg" alt="">
-                      </a>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, laudantium nemo expedita perferendis voluptatem dolores aliquid sequi officia nobis est, autem sed reprehenderit ab culpa dolor, sint omnis tempora mollitia!</p>
-                      <div class="br"></div>
-                  </aside>
+               
                   <aside class="single_sidebar_widget post_category_widget">
                       <h4 class="widget_title">Total Point</h4>
                       <ul class="list cat-list">

@@ -29,7 +29,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
+  @yield('styles')
 <script>
 $(document).ready(function(){
     $("#myModal").modal();
@@ -52,15 +52,15 @@ $(document).ready(function(){
           </button>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul class="nav navbar-nav menu_nav justify-content-end">
 
               @auth
+            <ul class="nav navbar-nav menu_nav justify-content-end">
               <li class="nav-item active">
                 <a class="nav-link" href="/"><strong>Beranda</strong></a>
               </li> 
               <li class="nav-item"><a class="nav-link" href="{{url('/profile')}}">Profil Saya</a></li> 
-              @endauth
             </ul>
+              @endauth
 
             <ul class="navbar-right">
               <li class="nav-item">

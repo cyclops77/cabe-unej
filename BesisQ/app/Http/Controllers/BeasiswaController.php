@@ -8,6 +8,7 @@ use Auth;
 use \App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class BeasiswaController extends Controller
 {
@@ -44,6 +45,7 @@ class BeasiswaController extends Controller
     }
     public function create(Request $request)
     {
+        $timeNow = Carbon::now();
     	$userid = auth()->user()->id;
     	$perusahaanid = \App\Perusahaan::where('user_id','=',$userid)->first();
     	// dd($perusahaanid);
@@ -53,7 +55,11 @@ class BeasiswaController extends Controller
         }else if($tot < 100) {
             return redirect()->back()->with('gagal','total dari point tidak dapat kurang dari 100');
         }else if($tot = 100) {
-            
+        
+        if ($request->batas_akhir <= $timeNow) {
+            return redirect()->back()->with('gagal','Waktu yang di tentukan tidak boleh kurang dari waktu sekarang');
+        }else{
+
 
     	$bea = new \App\Beasiswa;
     	$bea->id = mt_rand(1000,9999);
@@ -79,6 +85,7 @@ class BeasiswaController extends Controller
         $bea->save();
 
     	return redirect()->back()->with('sukses','Berhasil Membuat Beasissssswaaa . . . !');
+        }    
         }
     }
     public function detail($slug_beasiswa)

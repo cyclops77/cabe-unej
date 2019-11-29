@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('call', function () {
+    return view('z');
+});
+
+
 Route::get('/', function () {
     return view('landpage.index');
 });

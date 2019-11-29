@@ -58,11 +58,35 @@
 
 
 <div class="tab-content" id="nav-tabContent">
+
   <div class="tab-pane fade show active" id="nav-semua" role="tabpanel" aria-labelledby="nav-home-tab">
 
-<div class="row">
+  <div class="input-group mt-3 mr-3">
+      <input id="myInput" type="text" class="form-control" placeholder="Cari Beasiswa Disini" style="background-color:#2b4482;color: white;height: 50px;font-size: 20px;">
+      <span class="input-group-btn">
+          <button class="btn btn-default" type="button"  style="background-color:#2b4482;color: white;height: 50px">
+              <i class="lnr lnr-magnifier"></i>
+          </button>
+      </span>
+  </div>
+<div class="row" id="myTable">
+  <!-- <input id="myInput" type="text" placeholder="Search.."> -->
+ 
+  <br>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable #bml").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  </script>
+
         @foreach($beasiswaCuco as $index => $b)
-        <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content">
+        <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content" id="bml">
           <div class="blog_post">
               <img src="land-page/images/projects/wal{{$r+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
               <div class="blog_details">
@@ -86,7 +110,7 @@
       </div>
       @endforeach
         @foreach($beasiswaFakCuco as $index => $b)
-        <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content">
+        <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content" id="bml">
           <div class="blog_post">
               <img src="land-page/images/projects/wal{{$t+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
               <div class="blog_details">
@@ -111,7 +135,7 @@
       @endforeach
 
       @foreach($beasiswaFree as $index => $b)
-        <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content">
+        <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content" id="bml">
           <div class="blog_post">
               <img src="land-page/images/projects/wal{{$s+1+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
               <div class="blog_details">
