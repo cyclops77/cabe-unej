@@ -78,7 +78,7 @@
                   <i class="ti-mouse-alt"></i>
                 </span>
                 <h3 class="card-feature__title">Sedang Diverifikasi</h3>
-                <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
+                <p class="card-feature__subtitle">Tentukan mahasiswa yang sesuai dengan kebutuhan anda</p>
               </div>
               </a>
             </div>
