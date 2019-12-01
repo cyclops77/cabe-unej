@@ -21,7 +21,7 @@
               <h1 style="display: {{Auth::user()->role=="perusahaan" ? "block" : "none"}}">{{Auth::user()->name}}</h1>
               <h1 style="display: {{Auth::user()->role=="admin" ? "block" : "none"}}">Welcome Admin</h1>
               @endauth
-              <p>Vel aliquam quis, nulla pede mi commodo tristique nam hac Luctun torquent velit felis commodo pellentesque nulla cras vel aliqua quisan nulla pede mi commoda</p>
+              <p>Website ini pilihan tepat sebagai tempat mencari beasiswa sesua dengan kriteria. Terhubung dengan puluhan penyedia beasiswa yang kalian butuhkan. </p>
 
               @guest
               <a class="button bg" href="{{url('/login')}}">Cari Beasiswa</a>
@@ -47,7 +47,7 @@
       <div class="container">
         <div class="section-intro pb-85px text-center">
           <h2 class="section-intro__title">Register</h2>
-          <p class="section-intro__subtitle">Vel aliquam quis, nulla pede mi commodo tristique nam hac. Luctus torquent velit felis commodo pellentesque nulla cras. Tincidunt hacvel alivquam quis nulla pede mi commodo tristique nam hac  luctus torquent</p>
+          <p class="section-intro__subtitle">Selamat datang di Cabe (Cari Beasiswa) Unej miliki kesempatan mendapatkan mahasiswa terbaik di Universitas Jember</p>
         </div>
 
         <div class="container">
@@ -59,7 +59,7 @@
                   <i class="ti-package"></i>
                 </span>
                 <h3 class="card-feature__title">Regitrasi Perusahaan</h3>
-                <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
+                <p class="card-feature__subtitle">Daftarkan perusahaan anda sekarang </p>
               </div>
               </a>
             </div>
@@ -70,7 +70,7 @@
                   <i class="ti-mouse-alt"></i>
                 </span>
                 <h3 class="card-feature__title">Registrasi Mahasiswa</h3>
-                <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
+                <p class="card-feature__subtitle">Daftarkan dirimu dan raih kesempatan untuk menjadi tim mereka</p>
               </div>
               </a>
             </div>
