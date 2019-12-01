@@ -68,7 +68,7 @@ $(document).ready(function(){
                 <a class="button button-header bg" href="/logout" style="margin-top: 15px">Logout</a>
             @endauth
             @guest
-                <a class="button button-header bg" href="/login" style="margin-top: 15px">Login</a>            
+                <a class="button button-header bg float-right" href="/login" style="margin-top: 15px">Login</a>            
             @endguest
               </li>
             </ul>
