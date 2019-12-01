@@ -281,8 +281,10 @@ $(document).ready(function(){
                           <div class="form-group">
                             <label class="col-sm-3 control-label" for="w4-email"></label>
                             <div class="col-sm-6">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio porro dolor soluta suscipit explicabo illum repellat inventore quae placeat odit laudantium praesentium, nam earum expedita, cum facilis eaque. Recusandae, possimus!</p>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio porro dolor soluta suscipit explicabo illum repellat inventore quae placeat odit laudantium praesentium, nam earum expedita, cum facilis eaque. Recusandae, possimus!</p>
+                              <p>Anda menyatakan bahwa data data yang anda masukkan sudah benar dan sesuai </p>
+                              <p>
+                                serta setuju untuk kami mengelola data tersebut
+                              </p>
                             </div>
                           </div>
                           <div class="form-group">
@@ -290,7 +292,7 @@ $(document).ready(function(){
                             <div class="col-sm-9">
                               <div class="checkbox-custom">
                                 <input type="checkbox" name="terms" id="w4-terms" required>
-                                <label for="w4-terms">Saya membaca persetujuan LOREM</label>
+                                <label for="w4-terms">Saya setuju</label>
                               </div>
                             </div>
                           </div>
