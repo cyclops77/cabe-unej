@@ -8,6 +8,12 @@ class Fakultas extends Model
 {
     protected $table = 'fakultas';
 
+    public function getFakultas()
+    {
+        if(empty($this->id)){
+            return 'Bebas';
+        }return $this->nama_fak;
+    }
 	public function prodi()
     {
     	return $this->hasMany('App\Prodi');

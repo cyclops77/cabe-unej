@@ -25,7 +25,7 @@ class Beasiswa extends Model
     {
     	return $this->hasMany('App\Pendaftar_Beasiswa');
     }
-    public function beasiswa_atribut()
+    public function beasiswaAtribut()
     {
         return $this->hasOne('App\BeasiswaAtribut');
     }    
