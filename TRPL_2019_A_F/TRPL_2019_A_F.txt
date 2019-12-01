@@ -1,0 +1,5 @@
+link github :
+https://github.com/cyclops77/cabe-unej/
+
+link trello :
+https://trello.com/b/sLgZtn6o/trpl-a-grup-f
