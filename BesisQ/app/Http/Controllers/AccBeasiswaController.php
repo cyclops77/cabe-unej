@@ -34,8 +34,6 @@ class AccBeasiswaController extends Controller
                 })
                 ->get();
             $beasiswaFree = \App\Beasiswa::select('*')
-                ->whereNull('fakultas_id')
-                ->whereNull('prodi_id')
                 ->where('status','=','tidak aktiv')
                 ->whereNotIn('id',function($query){
                     $query->select('beasiswa_id')->from('beasiswa_revisi');

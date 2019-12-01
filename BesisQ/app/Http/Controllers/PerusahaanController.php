@@ -18,6 +18,12 @@ class PerusahaanController extends Controller
     }
     public function register(Request $request)
     {
+        $cek = \App\User::where('email',$request->email_perusahaan)
+            ->first();
+
+        if (!empty($cek)) {
+            return redirect()->back()->with('gagal','Email telah terkait dengan akun user yang telah ada');
+        }else{
         $tempatfile = ('bukti_image');
 
         $gbr = $request->file('foto');
@@ -42,8 +48,8 @@ class PerusahaanController extends Controller
 
         $user->save();
 
-        return redirect('login');
-
+        return redirect('login')->with('sukses','berhasil membuat akun');
+        }
     }
 
     public function listPendaftar()
