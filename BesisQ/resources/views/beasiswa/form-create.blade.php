@@ -88,6 +88,12 @@
             </div>
           </div>
           </div>
+          <div class="form-group mt-4 offset-3">
+            <label class="col-md-6" for="inputDefault">Minimal Point</label>
+            <div class="col-md-7">
+              <input class="form-control" name="minimal_point" type="number">
+            </div>
+          </div>
           <div class="form-group offset-3">
             <label class="col-md-6 control-label">Fakultas</label>
             <div class="col-md-7">
