@@ -94,7 +94,7 @@
               <a href="{{url('/beasiswaku')}}" style="text-decoration: none;">
               <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
                 <span class="card-feature__icon">
-                  <i class="ti-package"></i>
+                  <i class="ti-list"></i>
                 </span>
                 <h3 class="card-feature__title">Beasiswaku</h3>
                 <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
@@ -105,7 +105,7 @@
               <a href="{{url('/buat-beasiswa')}}" style="text-decoration: none;">
               <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
                 <span class="card-feature__icon">
-                  <i class="ti-mouse-alt"></i>
+                  <i class="ti-arrow-circle-right"></i>
                 </span>
                 <h3 class="card-feature__title">Buat Beasiswa</h3>
                 <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
@@ -114,7 +114,8 @@
             </div>
             
           </div>
-          <div class="col-lg-4 offset-4 mt-3">
+          <div class="row">
+          <div class="col-lg-4 offset-2 mt-3">
               <a href="{{url('/sedang-diverifikasi')}}" style="text-decoration: none;">
               <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
                 <span class="card-feature__icon">
@@ -125,6 +126,18 @@
               </div>
               </a>
             </div>
+            <div class="col-lg-4 mt-3">
+              <a href="{{url('/beasiswa-batas-akhir')}}" style="text-decoration: none;">
+              <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
+                <span class="card-feature__icon">
+                  <i class="ti-time"></i>
+                </span>
+                <h3 class="card-feature__title">Beasiswa Batas Akhir</h3>
+                <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
+              </div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
