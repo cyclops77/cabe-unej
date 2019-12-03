@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mahasiswa extends Model
 {
     protected $table = 'mahasiswa';
-    protected $fillable = ['id','user_id','fakultas_id','prodi_id','nama_lengkap','nohp','semester','ipk','gaji_ortu','usia','sertifikat','organisasi'];
+    protected $fillable = ['id','user_id','fakultas_id','prodi_id','nama_lengkap','nohp','semester','ipk','gaji_ortu','usia','sertifikat','organisasi','nim'];
 	
 	public function fakultas()
     {
@@ -19,6 +19,10 @@ class Mahasiswa extends Model
     }
     public function pendaftar_beasiswa()
     {
-    	return $this->hasMany('App\Pendaftar_Beasiswa');
+    	return $this->belongsTo('App\Pendaftar_Beasiswa');
     }    
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
