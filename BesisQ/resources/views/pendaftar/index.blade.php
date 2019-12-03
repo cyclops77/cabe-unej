@@ -45,9 +45,17 @@
             </div>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis nisi suscipit, aspernatur a, ducimus nemo provident tempore eveniet facere qui eaque fuga nihil vitae, harum! Reiciendis id illo dolore, ullam.  
                 <hr>
-                Fakultas : 
+                @if($b->fakultas == "")
+                Fakultas : Bebas
+                @else 
+                Fakultas : {{$b->fakultas->nama_fak}}
+                @endif
                 <br>
-                Prodi : 
+                @if($b->prodi == "")
+                Prodi : Bebas
+                @else
+                Prodi : {{$b->prodi->nama}}
+                @endif
                 <br>
                   <a class="button button-blog float-right" href="/beasiswaku/{{$b->slug_beasiswa}}">View More</a>
               </div>
