@@ -12,6 +12,18 @@ use Carbon\Carbon;
 
 class BeasiswaController extends Controller
 {
+    public function dueDate()
+    {
+        $r = mt_rand(1,6);
+        $s = mt_rand(1,6);
+        $t = mt_rand(1,6);
+        $now = date('Y-m-d H:i:s');
+        $beasiswa = \App\Beasiswa::select('*')
+            ->where('status','=','aktiv')
+            ->where('batas_akhir', '<', $now)            
+            ->get();
+        return view('beasiswa.duedate', compact('beasiswa','r','s','t'));
+    }
     public function dashbardAdmin()
     {
         return 'ADMIN';
@@ -77,7 +89,7 @@ class BeasiswaController extends Controller
     	$bea->slug_beasiswa = Str::slug($request->nama_beasiswa, '-');
         $bea->status = 'tidak aktiv';      	
         $bea->point_ipk = $request->point_ipk;              
-              
+        $bea->minimal_point = $request->minimal_point;      
         $bea->point_gaji = $request->point_gaji;               
         $bea->point_organisasi = $request->point_organisasi;
         $bea->point_sertifikat = $request->point_sertifikat;
