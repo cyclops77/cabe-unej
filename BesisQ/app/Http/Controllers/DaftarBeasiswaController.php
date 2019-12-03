@@ -13,7 +13,7 @@ class DaftarBeasiswaController extends Controller
     public function detail($slug_beasiswa)
     {
         $now = date('Y-m-d H:i:s');
-        $r = mt_rand(1,2);
+        $r = mt_rand(1,9);
         $userid = auth()->user()->id;
     
         $data_mahasiswa = \App\Mahasiswa::where('user_id','=',$userid)->first();
