@@ -37,7 +37,7 @@
     @endif
   
       <div class="row">
-        @foreach($beasiswaFree as $index => $b)
+        @foreach($beasiswaCuco as $index => $b)
         <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content">
           <div class="blog_post">
               <img src="land-page/images/projects/wal{{$r+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
@@ -81,6 +81,15 @@
                 </div>
                 <div class="col-md-5">
                 : {{$b->point_organisasi}}
+                </div>
+              </div>   
+
+              <div class="row mt-2">
+                <div class="col-md-5">
+                <strong>Minimal Point</strong>
+                </div>
+                <div class="col-md-5">
+                : <strong>{{$b->minimal_point}}</strong>
                 </div>
               </div>   
                 
@@ -148,11 +157,27 @@
                 <div class="col-md-5">
                 : {{$b->point_organisasi}}
                 </div>
+              </div> 
+              <div class="row mt-2 ">
+                <div class="col-md-5">
+                Minimal Point
+                </div>
+                <div class="col-md-5">
+                : {{$b->minimal_point}}
+                </div>
               </div>   
                 <hr>
+                @if($b->fakultas=="")
                 Fakultas : Bebas
+                @else
+                Fakultas : {{$b->fakultas->nama_fak}}
+                @endif
                 <br>
+                @if($b->prodi=="")
                 Prodi : Bebas
+                @else
+                Prodi : {{$b->prodi->nama}}
+                @endif
                 <br>
                 <hr>
           <div class="form-group">
