@@ -43,6 +43,8 @@ Route::get('/logout','AuthController@logout');
 //===||login perusahaan||===// 
 
 Route::group(['middleware' => ['auth','checkRole:perusahaan']], function(){
+
+Route::get('/beasiswa-batas-akhir','BeasiswaController@dueDate');	
 	
 Route::get('/buat-beasiswa','BeasiswaController@index');
 	
