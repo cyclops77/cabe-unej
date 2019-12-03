@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Beasiswa extends Model
 {
     protected $table = 'beasiswa';
-    protected $fillable = ['perusahaan_id','nama_beasiswa','slug_beasiswa','point_organisasi','point_ipk','point_gaji','point_usia','batas_akhir'];
+    protected $fillable = ['perusahaan_id','nama_beasiswa','slug_beasiswa','point_organisasi','point_ipk','point_gaji','point_usia','batas_akhir','minimal_point'];
 
     public function perusahaan()
     {
