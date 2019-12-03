@@ -14,9 +14,9 @@ class Pendaftar_Beasiswa extends Model
     {
     	return $this->belongsTo('App\Beasiswa');
     }
-    public function mahasiswa()
+    public function user()
     {
-    	return $this->belongsTo('App\Mahasiswa');
+    	return $this->belongsTo('App\User');
     }  
     public function getBukti()
     {
