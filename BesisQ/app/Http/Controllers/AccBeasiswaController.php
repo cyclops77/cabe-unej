@@ -19,8 +19,6 @@ class AccBeasiswaController extends Controller
             $isEmpty = "no";
             $pendaftar = \App\Beasiswa::where('status','=','tidak aktiv')->get();
             $beasiswaCuco = \App\Beasiswa::select('*')
-                ->whereNotNull('fakultas_id')
-                ->whereNotNull('prodi_id')
                 ->where('status','=','tidak aktiv')
                 ->whereNotIn('id',function($query){
                     $query->select('beasiswa_id')->from('beasiswa_revisi');
@@ -71,8 +69,6 @@ class AccBeasiswaController extends Controller
 
         $beasiswaCuco = \App\Beasiswa::select('*')
                 ->where('perusahaan_id','=',$perusahaan->id)
-                ->whereNotNull('fakultas_id')
-                ->whereNotNull('prodi_id')
                 ->where('status','=','tidak aktiv')
                 ->whereNotIn('id',function($query){
                     $query->select('beasiswa_id')->from('beasiswa_revisi');
@@ -100,8 +96,6 @@ class AccBeasiswaController extends Controller
 
         $beasiswaCucoR = \App\Beasiswa::select('*')
             ->where('perusahaan_id','=',$perusahaan->id)
-                ->whereNotNull('fakultas_id')
-                ->whereNotNull('prodi_id')
                 ->where('status','=','tidak aktiv')
                 ->whereIn('id',function($query){
                     $query->select('beasiswa_id')->from('beasiswa_revisi');
