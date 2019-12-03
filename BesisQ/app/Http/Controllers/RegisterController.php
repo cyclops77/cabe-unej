@@ -53,7 +53,8 @@ class RegisterController extends Controller
                     		'ipk' => $request->ipk,
                     		'gaji_ortu' => $request->gaji_ortu,
                             'sertifikat' => $request->jumlah_sertifikat,
-                            'organisasi' => $request->organisasi
+                            'organisasi' => $request->organisasi,
+                            'nim' => $request->nim,
                     	]);
                     	$user->name = $request->nama_lengkap;
                     	$user->email = $request->email;
