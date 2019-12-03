@@ -36,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function pendaftar_beasiswa()
+    {
+        return $this->hasMany('App\Pendaftar_Beasiswa');
+    }
+    public function mahasiswa()
+    {
+        return $this->hasOne('App\Mahasiswa');
+    }
 }
