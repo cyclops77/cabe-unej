@@ -19,6 +19,7 @@ class PendaftarBeasiswaController extends Controller
     }
     public function pendaftar($slug_beasiswa)
     {
+        $now = date('Y-m-d H:i:s');
     	$idBea = \App\Beasiswa::where('slug_beasiswa','=', $slug_beasiswa)->first();
         
         $cek = \App\Pendaftar_Beasiswa::select('*')
@@ -30,12 +31,11 @@ class PendaftarBeasiswaController extends Controller
         }else{    
         $isEmpty = "no";    
         $pendaftar = \App\Pendaftar_Beasiswa::select('*')
-    		->join('mahasiswa','mahasiswa.user_id','=','pendaftar_beasiswa.user_id')
     		->where('beasiswa_id','=',$idBea->id)->get();
 
     	// dd($pendaftar->point);
 
         }    
-    	return view('pendaftar.detail', compact('pendaftar','idBea','isEmpty'));	
+    	return view('pendaftar.detail', compact('pendaftar','idBea','isEmpty','now'));	
     }
 }
