@@ -26,8 +26,32 @@
   <!--================Blog Categorie Area =================-->
 
    <!--================ Hero sm Banner end =================-->
+ 
+    <style>
+      h5{
+        font-family: sans-serif;
+      }
+    </style>
+    <div class="col-md-4">
+      @if($idBea->fakultas == "")
+      <h5 class="offset-1 mt-3">Fakultas : Bebas </h5>
+      @else
+      <h5 class="offset-1 mt-3">Fakultas : {{$idBea->fakultas->nama_fak}}</h5>
+      @endif
+      @if($idBea->prodi == "")
+      <h5 class="offset-1 mt-1">Prodi : Bebas </h5>
+      @else
+      <h5 class="offset-1 mt-1">Prodi : {{$idBea->prodi->nama}}</h5>
+      @endif
+    </div>
+    @if($idBea->batas_akhir <= $now)
+      <button type="button" class="button button-blog float-right mr-4" data-toggle="modal" data-target="#bukti">
+        Bagikan Pendaftar Yang Lolos
+      </button>
+    @endif
 
-<div class="">
+
+  <div class="">
   <div class="container-table100">
     <div class="wrap-table100">
       <div class="table100 ver1 m-b-110">
@@ -37,6 +61,7 @@
               <tr class="row100 head">
                 <th class="cell100 column1">No</th>
                 <th class="cell100 column2">Nama Lengkap</th>
+                <th class="cell100 column2">NIM</th>
                 <th class="cell100 column3">Point</th>
                 <th class="cell100 column4">Keterangan</th>
                 <th class="cell100 column5">Detail</th>
@@ -55,10 +80,11 @@
               </tr>  
               @foreach($pendaftar as $index => $p)
               <tr class="row100 body">
-                <td class="cell100 column1">{{$index+1}}</td>
-                <td class="cell100 column2">{{$p->nama_lengkap}}</td>
-                <td class="cell100 column3">{{$p->point}}</td>
-                <td class="cell100 column4">{{$p->output}}</td>
+                <td class="cell100 column1" style="color: {{$p->point <= $p->beasiswa->minimal_point ? "red" : ""}}">{{$index+1}}</td>
+                <td class="cell100 column2" style="color: {{$p->point <= $p->beasiswa->minimal_point ? "red" : ""}}">{{$p->user->mahasiswa->nama_lengkap}}</td>
+                <td class="cell100 column2" style="color: {{$p->point <= $p->beasiswa->minimal_point ? "red" : ""}}">{{$p->user->mahasiswa->nim}}</td>
+                <td class="cell100 column3" style="color: {{$p->point <= $p->beasiswa->minimal_point ? "red" : ""}}">{{$p->point}}</td>
+                <td class="cell100 column4" style="color: {{$p->point <= $p->beasiswa->minimal_point ? "red" : ""}}">{{$p->output}}</td>
                 <td class="cell100 column5">
                   <button type="button" class="button button-blog" data-toggle="modal" data-target="#bukti{{$p->id}}">
                     lihat
