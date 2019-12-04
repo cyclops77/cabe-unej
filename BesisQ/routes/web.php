@@ -64,6 +64,10 @@ Route::get('/danger', function (){return view('danger');});
 
 Route::post('/send/edit-beasiswa','BeasiswaController@update');
 
+Route::post('/bagikan-hasil','BeasiswaController@publish');
+
+Route::get('/po', function (){return view('beasiswa.print-out');});
+
 });
 
 //===||login SEMUA||===// 
@@ -78,6 +82,10 @@ Route::get('/index','AuthController@role');
 
 Route::group(['middleware' => ['auth','checkRole:mahasiswa']], function(){
 
+Route::get('/lihat-pengumuman/{slug_beasiswa}','BeasiswaController@detailPengumuman');
+
+Route::get('/pengumuman-beasiswa','BeasiswaController@pengumuman');
+
 Route::get('/beasiswa','DashBoardController@indexMahasiswa');	
 
 Route::get('/beasiswa/{slug_beasiswa}', 'DaftarBeasiswaController@detail');
@@ -91,6 +99,8 @@ Route::post('/upload-bukti-syarat','DaftarBeasiswaController@daftarSekarang');
 Route::post('/upload-bukti', 'DaftarBeasiswaController@daftarSekarang');
 
 Route::post('/batalkan-beasiswa','DaftarBeasiswaController@hapusPengajuan');
+
+Route::get('/download/pengumuman/beasiswa/{slug_beasiswa}','BeasiswaController@cetak');
 
 });
 
