@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use PDF;
 use \App\Beasiswa;
 use \App\Fakultas;
 use \App\Prodi;
@@ -12,6 +14,16 @@ use Carbon\Carbon;
 
 class BeasiswaController extends Controller
 {
+
+    public function pengumuman()
+    {
+        $r = mt_rand(1,6);
+        $s = mt_rand(1,6);
+        $t = mt_rand(1,6);
+        $beasiswa = \App\Beasiswa::where('status','selesai')
+                        ->get();
+        return view('beasiswa.pengumuman.index', compact('beasiswa','r','s','t'));
+    }
     public function dueDate()
     {
         $r = mt_rand(1,6);
@@ -197,5 +209,55 @@ class BeasiswaController extends Controller
 
         return redirect()->back()->with('sukses','Behasil mengubah data beasiswa');
     }
+    }
+
+    public function publish(Request $req)
+    {
+        \App\Beasiswa::whereId($req->idBea)
+            ->update([
+                'status' => 'selesai',
+            ]);
+        foreach ($req->idnya as $target) {
+            \App\Pendaftar_Beasiswa::where('user_id',$target)
+                ->delete();
+        }
+        return redirect()->back()->with('sukses','berhasil melakukan publish');
+    }
+
+    public function detailPengumuman($slug_beasiswa)
+    {
+        $now = date('Y-m-d H:i:s');
+        $idBea = \App\Beasiswa::where('slug_beasiswa','=', $slug_beasiswa)->first();
+        
+        $cek = \App\Pendaftar_Beasiswa::select('*')
+            ->join('mahasiswa','mahasiswa.user_id','=','pendaftar_beasiswa.user_id')
+            ->where('beasiswa_id','=',$idBea->id)
+            ->first();    
+        
+        if (empty($cek)) {
+                $isEmpty = "yes";
+        }else{    
+        $isEmpty = "no";    
+        $pendaftar = \App\Pendaftar_Beasiswa::select('*')
+            ->where('beasiswa_id','=',$idBea->id)
+            ->orderBy('point', 'desc')
+            ->get();
+
+        // dd($pendaftar->point);
+
+        }    
+        return view('beasiswa.pengumuman.detail', compact('pendaftar','idBea','isEmpty','now'));
+    }
+
+    public function cetak($slug_beasiswa)
+    {
+        $idBea = \App\Beasiswa::where('slug_beasiswa','=', $slug_beasiswa)->first();
+        $pendaftar = \App\Pendaftar_Beasiswa::select('*')
+            ->where('beasiswa_id','=',$idBea->id)
+            ->orderBy('point', 'desc')
+            ->get();
+
+        $pdf = PDF::loadview('beasiswa.print-out',compact('idBea','pendaftar'));
+        return $pdf->download('Hasil-Pengumuman-Beasiswa-'. $idBea->nama_beasiswa.'.pdf');
     }
 }

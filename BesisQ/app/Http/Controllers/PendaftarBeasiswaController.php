@@ -31,7 +31,9 @@ class PendaftarBeasiswaController extends Controller
         }else{    
         $isEmpty = "no";    
         $pendaftar = \App\Pendaftar_Beasiswa::select('*')
-    		->where('beasiswa_id','=',$idBea->id)->get();
+    		->where('beasiswa_id','=',$idBea->id)
+            ->orderBy('point', 'desc')
+            ->get();
 
     	// dd($pendaftar->point);
 
