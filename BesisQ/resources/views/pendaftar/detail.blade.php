@@ -26,7 +26,18 @@
   <!--================Blog Categorie Area =================-->
 
    <!--================ Hero sm Banner end =================-->
- 
+ <div class="container mt-4">
+   @if(session('sukses'))
+<div class="alert alert-success" >
+{{session('sukses')}}
+</div>
+@endif
+@if(session('gagal'))
+<div class="alert alert-danger" >
+{{session('gagal')}}
+</div>
+@endif
+ </div>
     <style>
       h5{
         font-family: sans-serif;
@@ -44,8 +55,10 @@
       <h5 class="offset-1 mt-1">Prodi : {{$idBea->prodi->nama}}</h5>
       @endif
     </div>
+    <form action="{{url('bagikan-hasil')}}" method="post">
+      @csrf
     @if($idBea->batas_akhir <= $now)
-      <button type="button" class="button button-blog float-right mr-4" data-toggle="modal" data-target="#bukti">
+      <button type="submit" class="button button-blog float-right mr-4">
         Bagikan Pendaftar Yang Lolos
       </button>
     @endif
@@ -79,6 +92,8 @@
               @else  
               </tr>  
               @foreach($pendaftar as $index => $p)
+              <input type="hidden" value="{{$p->beasiswa_id}}" name="idBea">
+              <input type="hidden" name="idnya[]" value="{{$p->point <= $p->beasiswa->minimal_point ? $p->user_id : ""}}">
               <tr class="row100 body">
                 <td class="cell100 column1" style="color: {{$p->point <= $p->beasiswa->minimal_point ? "red" : ""}}">{{$index+1}}</td>
                 <td class="cell100 column2" style="color: {{$p->point <= $p->beasiswa->minimal_point ? "red" : ""}}">{{$p->user->mahasiswa->nama_lengkap}}</td>
@@ -121,6 +136,7 @@
         </div>
       </div>
     </div>  
+    </form>
   </div>  
 </div> 
     <hr align="center" width="89%">
