@@ -44,10 +44,16 @@
     @endif
       <div class="panel-body">
         <div class="card">
-          <form method="POST" action="{{url('/send/buat-beasiswa')}}" class="form-contact contact_form" novalidate="novalidate" id="myform">
+          <form method="POST" action="{{url('/send/buat-beasiswa')}}" class="form-contact contact_form" novalidate="novalidate" id="myform" enctype="multipart/form-data">
 {{csrf_field()}}
 
 <script type="text/javascript" src="{{asset('ckeditor/ckeditor.js')}}"></script>
+          <div class="form-group mt-4 offset-3">
+            <label class="col-md-6" for="inputDefault">Background</label>
+            <div class="col-md-7">
+              <input class="form-control-file" name="foto" type="file" required>
+            </div>
+          </div>
           <div class="form-group mt-4 offset-3">
             <label class="col-md-6" for="inputDefault">Nama Beasiswa</label>
             <div class="col-md-7">

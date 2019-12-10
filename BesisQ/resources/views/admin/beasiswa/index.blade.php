@@ -8,11 +8,11 @@
   <section class="hero-banner hero-banner--sm mb-30px">
     <div class="container">
       <div class="hero-banner--sm__content">
-        <h1>Pendaftar Perusahaan </h1>
+        <h1>Pendaftar Beasiswa </h1>
         <nav aria-label="breadcrumb" class="banner-breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{url('/')}}">Beranda</a></li>
-            <li class="breadcrumb-item active">Pendaftar Perusahaan</li>
+            <li class="breadcrumb-item active">Pendaftar Beasiswa</li>
           </ol>
         </nav>
       </div>
@@ -40,7 +40,7 @@
         @foreach($beasiswaCuco as $index => $b)
         <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content">
           <div class="blog_post">
-              <img src="land-page/images/projects/wal{{$r+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
+              <img src="{{asset('/foto-beasiswa/'.$b->beasiswaAtribut->foto)}}" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
               <div class="blog_details">
             <div class="row">
             <div class="col-md-12">

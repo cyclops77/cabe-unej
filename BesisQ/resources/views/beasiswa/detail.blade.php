@@ -48,7 +48,7 @@
               <div class="single-post row">
                   <div class="col-lg-12">
                       <div class="feature-img">
-                          <img class="img-fluid" src="{{asset('land-page/images/projects/'.$gbr)}}" style="object-fit: cover;height: 250px;width: 100%;">
+                          <img class="img-fluid" src="{{asset('/foto-beasiswa/'.$bea->beasiswaAtribut->foto)}}" style="object-fit: cover;width: 100%;">
                       </div>
                   </div>
                   <div class="col-lg-3  col-md-3">

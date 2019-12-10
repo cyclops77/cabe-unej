@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class BeasiswaAtribut extends Model
 {
     protected $table = 'beasiswa_atribut';
-    protected $fillable = ['id', 'beasiswa_id','right_text','middle_text'];  
+    protected $fillable = ['id', 'beasiswa_id','foto','right_text','middle_text'];  
 
     public function Beasiswa()
     {

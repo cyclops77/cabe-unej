@@ -188,7 +188,7 @@ $(document).ready(function(){
                           <div class="form-group">
                             <label class="col-sm-4 control-label" for="w4-username"> Nomor HP</label>
                             <div class="col-sm-4">
-                              <input type="text" class="form-control" name="nohp" id="w4-username" required>
+                              <input type="number" class="form-control" name="nohp" id="w4-username" required>
                             </div>
                           </div>
                            <div class="form-group">

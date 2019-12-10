@@ -38,7 +38,12 @@ class RegisterController extends Controller
                         $arr["thisError"] = "Password anda tidak sesuai";
                         $arr["linkBack"] = "daftar-mahasiswa";
                         return view('error',compact('arr'));
-                    }else{
+                    }else if(!preg_match("/^[a-zA-Z ]*$/", $request->nama_lengkap)){
+                        $arr["thisError"] = "Nama lengkap harus berupa Huruf";
+                        $arr["linkBack"] = "daftar-mahasiswa";
+                        return view('error',compact('arr'));
+                    }
+                    else{
                     	$user = new \App\User;
                     	$user->role = 'mahasiswa';
                     	$user->id = mt_rand(10000,19999);

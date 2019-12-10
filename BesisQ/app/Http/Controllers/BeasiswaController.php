@@ -76,6 +76,8 @@ class BeasiswaController extends Controller
         $tot = ($request->point_ipk+$request->point_gaji+$request->point_organisasi+$request->point_sertifikat);
         if ($tot > 100) {
             return redirect()->back()->with('gagal','total dari point tidak dapat lebih dari 100');
+        }else if (!preg_match("/^[a-zA-Z ]*$/", $request->nama_beasiswa)) {
+            return redirect()->back()->with('gagal','Nama dari beasiswa harus berupa huruf');
         }else if($tot < 100) {
             return redirect()->back()->with('gagal','total dari point tidak dapat kurang dari 100');
         }else if($tot = 100) {
@@ -84,12 +86,29 @@ class BeasiswaController extends Controller
             return redirect()->back()->with('gagal','Waktu yang di tentukan tidak boleh kurang dari waktu sekarang');
         }else{
 
+        if ($request->minimal_point >= 100) {
+            return redirect()->back()->with('gagal','Point minimal tidak bisa lebih dari 100');
+        }else if ($request->minimal_point <= 1) {
+            return redirect()->back()->with('gagal','Point minimal tidak bisa kurang dari 1');
+        }else{
+            $a1 = ($request->file('foto'))->getClientOriginalName();
+            if ((strpos($a1, "jpg") || strpos($a1, "jpeg") || strpos($a1, "png") || strpos($a1, "docx"))===false) {
+            return redirect()->back()->with('gagal','Foto Beasiswa harus berupa PNG, JPEG, JPG, docx');
+            }else{
 
+        
+        $tempatfile = ('foto-beasiswa');
+
+        $filenya = $request->file('foto');
+        $nama_file = $filenya->getClientOriginalName();
+        $filenya->move($tempatfile, $nama_file);
     	$bea = new \App\Beasiswa;
     	$bea->id = mt_rand(1000,9999);
         \App\BeasiswaAtribut::create([
+
             'id' => mt_rand(1000,9999),
             'beasiswa_id' => $bea->id,
+            'foto' => $filenya,
             'right_text' => $request->right_text,
             'middle_text' => $request->middle_text,
         ]);
@@ -110,6 +129,8 @@ class BeasiswaController extends Controller
 
     	return redirect()->back()->with('sukses','Berhasil Membuat Beasissssswaaa . . . !');
         }    
+    }
+        }
         }
     }
     public function detail($slug_beasiswa)

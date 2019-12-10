@@ -31,25 +31,25 @@
             <div class="col-md-6">
   <div class="form-group">
     <label for="exampleInputEmail1">Nama Perusahaan</label>
-    <input type="text" class="form-control" placeholder="Masukkan Nama Perusahaan" name="nama_perusahaan">
+    <input required type="text" class="form-control" placeholder="Masukkan Nama Perusahaan" name="nama_perusahaan">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Email Perusahaan</label>
-    <input type="text" class="form-control" placeholder="Masukkan Email Perusahaan" name="email_perusahaan">
+    <input required type="text" class="form-control" placeholder="Masukkan Email Perusahaan" name="email_perusahaan">
   </div>
   <div class="input-group mb-3">
   <div class="input-group">
     <label for="exampleInputEmail1">Jenis Perusahaan</label>
   </div>
   <select class="custom-select" id="inputGroupSelect01" name="jenis_perusahaan">
-    <option selected>Choose...</option>
+    <option selected disabled>Choose...</option>
     <option value="Bank">Bank</option>
     <option value="Koperasi">Koperasi</option>
   </select>
 </div>
 <div class="form-group">
     <label for="exampleInputEmail1">Password</label>
-    <input type="password" class="form-control" placeholder="Masukkan Password Perusahaan" name="password">
+    <input required type="password" class="form-control" placeholder="Masukkan Password Perusahaan" name="password">
   </div>
 
 
@@ -58,10 +58,10 @@
 <div class="col-md-6">
   <div class="form-group">
     <label for="exampleInputEmail1">Penanggung Jawab</label>
-    <input type="text" class="form-control" placeholder="Masukkan Nama Lengkap Anda" name="nama_penanggung">
+    <input required type="text" class="form-control" placeholder="Masukkan Nama Lengkap Anda" name="nama_penanggung">
   </div>
   <label for="exampleFormControlFile1">Example file input</label>
-    <input type="file" class="form-control-file" name="foto">
+    <input required type="file" class="form-control-file" name="foto">
   </div>
   
 </div>

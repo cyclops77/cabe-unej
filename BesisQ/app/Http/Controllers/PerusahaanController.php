@@ -21,34 +21,63 @@ class PerusahaanController extends Controller
         $cek = \App\User::where('email',$request->email_perusahaan)
             ->first();
 
+        $a1 = $request->file('foto')->getClientOriginalName();
+
+
+        
+
         if (!empty($cek)) {
-            return redirect()->back()->with('gagal','Email telah terkait dengan akun user yang telah ada');
+           $arr["thisError"] = "Email telah terkait dengan akun user yang telah ada";
+           $arr["linkBack"] = "daftar-perusahaan";
+                
+           return view('error',compact('arr'));
         }else{
-        $tempatfile = ('bukti_image');
+            if ((strpos($a1, "jpg") || strpos($a1, "jpeg") || strpos($a1, "png") || strpos($a1, "docx"))===false) {
+            $arr["thisError"] = "Foto harus berupa PNG, JPG, JPEG";
+           $arr["linkBack"] = "daftar-perusahaan";
+                
+           return view('error',compact('arr'));            
+            }else{
+                if (!preg_match("/^[a-zA-Z ]*$/", $request->nama_perusahaan)) {
+                    $arr["thisError"] = "Nama perusahaan harus berupa huruf";
+                   $arr["linkBack"] = "daftar-perusahaan";
+                        
+                   return view('error',compact('arr'));
+                }else if (!preg_match("/^[a-zA-Z ]*$/", $request->nama_penanggung)) {
+                    $arr["thisError"] = "Nama penanggung harus berupa huruf";
+                   $arr["linkBack"] = "daftar-perusahaan";
+                        
+                   return view('error',compact('arr'));
+                }
+                else{
 
-        $gbr = $request->file('foto');
-        $nama_Gbr = $gbr->getClientOriginalName();
-        $gbr->move($tempatfile, $nama_Gbr);
+            $tempatfile = ('bukti_image');
 
-        $user = new \App\User;
-        $user->id = mt_rand(50000,99999);
-        $user->role = 'perusahaan';
-        \App\Perusahaan::create([
-                'user_id' => $user->id,
-                'nama_perusahaan' => $request->nama_perusahaan,
-                'jenis_perusahaan' => $request->jenis_perusahaan,
-                'email_perusahaan' => $request->email_perusahaan,
-                'nama_penanggung' => $request->nama_penanggung,
-                'status' => 'Belum Terverifikasi',
-                'bukti' => $nama_Gbr,
-            ]);
-        $user->name = $request->nama_perusahaan;
-        $user->email = $request->email_perusahaan;
-        $user->password = bcrypt($request->password);
+            $gbr = $request->file('foto');
+            $nama_Gbr = $gbr->getClientOriginalName();
+            $gbr->move($tempatfile, $nama_Gbr);
 
-        $user->save();
+            $user = new \App\User;
+            $user->id = mt_rand(50000,99999);
+            $user->role = 'perusahaan';
+            \App\Perusahaan::create([
+                    'user_id' => $user->id,
+                    'nama_perusahaan' => $request->nama_perusahaan,
+                    'jenis_perusahaan' => $request->jenis_perusahaan,
+                    'email_perusahaan' => $request->email_perusahaan,
+                    'nama_penanggung' => $request->nama_penanggung,
+                    'status' => 'Belum Terverifikasi',
+                    'bukti' => $nama_Gbr,
+                ]);
+            $user->name = $request->nama_perusahaan;
+            $user->email = $request->email_perusahaan;
+            $user->password = bcrypt($request->password);
 
-        return redirect('login')->with('sukses','berhasil membuat akun');
+            $user->save();
+
+            return redirect('login')->with('sukses','berhasil membuat akun');
+        }
+        }
         }
     }
 

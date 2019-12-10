@@ -88,7 +88,7 @@
         @foreach($beasiswaCuco as $index => $b)
         <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content" id="bml">
           <div class="blog_post">
-              <img src="land-page/images/projects/wal{{$r+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
+              <img src="{{asset('/foto-beasiswa/'.$b->beasiswaAtribut->foto)}}" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
               <div class="blog_details">
             <div class="row">
             <div class="col-md-8">
@@ -112,7 +112,7 @@
         @foreach($beasiswaFakCuco as $index => $b)
         <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content" id="bml">
           <div class="blog_post">
-              <img src="land-page/images/projects/wal{{$t+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
+              <img src="{{asset('/foto-beasiswa/'.$b->beasiswaAtribut->foto)}}" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
               <div class="blog_details">
             <div class="row">
             <div class="col-md-8">
@@ -137,7 +137,7 @@
       @foreach($beasiswaFree as $index => $b)
         <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content" id="bml">
           <div class="blog_post">
-              <img src="land-page/images/projects/wal{{$s+1+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
+              <img src="{{asset('/foto-beasiswa/'.$b->beasiswaAtribut->foto)}}" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
               <div class="blog_details">
             <div class="row">
             <div class="col-md-8">
@@ -169,7 +169,7 @@
        @foreach($beasiswaFree as $index => $b)
         <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content">
           <div class="blog_post">
-              <img src="land-page/images/projects/wal{{$s+1+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
+              <img src="{{asset('/foto-beasiswa/'.$b->beasiswaAtribut->foto)}}" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
               <div class="blog_details">
             <div class="row">
             <div class="col-md-8">
@@ -198,7 +198,7 @@
       @foreach($beasiswaFakCuco as $index => $b)
         <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content">
           <div class="blog_post">
-              <img src="land-page/images/projects/wal{{$t+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
+              <img src="{{asset('/foto-beasiswa/'.$b->beasiswaAtribut->foto)}}" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
               <div class="blog_details">
             <div class="row">
             <div class="col-md-8">
@@ -228,7 +228,7 @@
       @foreach($beasiswaCuco as $index => $b)
         <div class="col-sm-6 col-lg-4 mb-4 mb-3 offer-single__content">
           <div class="blog_post">
-              <img src="land-page/images/projects/wal{{$r+$index}}.jpg" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
+              <img src="{{asset('/foto-beasiswa/'.$b->beasiswaAtribut->foto)}}" class="special_img" alt="" style="height: 150px;width: 100%; object-fit: cover;">
               <div class="blog_details">
             <div class="row">
             <div class="col-md-8">

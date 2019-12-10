@@ -58,20 +58,30 @@ $(document).ready(function(){
               <li class="nav-item active">
                 <a class="nav-link" href="/"><strong>Beranda</strong></a>
               </li> 
-              <li class="nav-item"><a class="nav-link" href="{{url('/profile')}}">Profil Saya</a></li> 
             </ul>
+            @if(Auth::user()->role == "mahasiswa")
+            <ul class="nav navbar-nav menu_nav ml-2">
+              <li class="nav-item">
+                <a class="nav-link" href="{{url('/profile')}}">Profil Saya</a>
+              </li> 
+            </ul>
+            @endif
               @endauth
 
-            <ul class="navbar-right">
-              <li class="nav-item">
             @auth
+            <ul class="nav navbar-nav menu_nav justify-content-end">
+              <li class="nav-item">
                 <a class="button button-header bg" href="/logout" style="margin-top: 15px">Logout</a>
-            @endauth
-            @guest
-                <a class="button button-header bg float-right" href="/login" style="margin-top: 15px">Login</a>            
-            @endguest
               </li>
             </ul>
+            @endauth
+            @guest
+            <ul class="nav navbar-nav menu_nav justify-content-end">
+              <li class="nav-item">
+                <a class="button button-header bg float-right" href="/login" style="margin-top: 15px">Login</a>
+              </li>
+            </ul>
+            @endguest
           </div> 
         </div>
       </nav>
