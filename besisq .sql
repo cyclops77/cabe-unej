@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 29, 2019 at 10:49 AM
+-- Generation Time: Dec 10, 2019 at 07:15 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -41,6 +41,7 @@ CREATE TABLE `beasiswa` (
   `point_organisasi` int(11) DEFAULT NULL,
   `point_sertifikat` int(11) DEFAULT NULL,
   `batas_akhir` datetime NOT NULL,
+  `minimal_point` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -49,28 +50,35 @@ CREATE TABLE `beasiswa` (
 -- Dumping data for table `beasiswa`
 --
 
-INSERT INTO `beasiswa` (`id`, `status`, `perusahaan_id`, `fakultas_id`, `prodi_id`, `nama_beasiswa`, `slug_beasiswa`, `point_ipk`, `point_gaji`, `point_organisasi`, `point_sertifikat`, `batas_akhir`, `created_at`, `updated_at`) VALUES
-(1834, 'aktiv', 4, 15, 54, 'Fun Teaching', 'teaching-and-money', 35, 15, 20, 30, '2019-12-08 00:00:00', '2019-11-08 13:18:10', '2019-10-04 18:59:33'),
-(1841, 'aktiv', 4, 1, 1, 'Perco baaan 2', 'perco-baaan-2', 35, 15, 20, 30, '2019-12-08 00:00:00', '2019-11-08 03:45:16', '2019-11-05 19:07:36'),
-(2502, 'aktiv', 4, 14, 44, 'contoh beasiswa', 'contoh-beasiswa', 35, 15, 20, 30, '2019-12-08 00:00:00', '2019-11-08 03:45:16', '2019-10-04 19:08:48'),
-(3037, 'aktiv', 4, 1, NULL, 'IT Globality', 'it-globality', 35, 15, 20, 30, '2019-12-08 00:00:00', '2019-11-08 03:45:16', '2019-09-27 08:20:53'),
-(3290, 'aktiv', 4, 1, 1, 'Test Nih template', 'test-nih-template', 30, 30, 30, 10, '2019-12-08 00:00:00', '2019-11-08 11:17:24', '2019-11-08 04:17:24'),
-(3308, 'tidak aktiv', 4, 1, NULL, 'Beasiswa Z', 'beasiswa-z', 50, 20, 10, 20, '2019-12-19 00:00:00', '2019-11-14 19:02:42', '2019-11-14 19:02:42'),
-(3628, 'aktiv', 4, 3, 8, 'English First', 'beasiswa-english-first', 35, 15, 20, 30, '2019-12-08 00:00:00', '2019-11-08 13:17:42', '2019-11-06 06:00:06'),
-(4076, 'tidak aktiv', 4, 1, NULL, 'English Seconds', 'beasiswa-english-seconds', 25, 20, 25, 30, '2019-12-08 00:00:00', '2019-11-09 07:16:56', '2019-11-09 00:16:56'),
-(4798, 'aktiv', 4, 1, 1, 'Analyst Systems', 'analyst-systems', 35, 15, 20, 30, '2019-12-08 00:00:00', '2019-11-08 03:45:16', '2019-09-27 08:20:32'),
-(5138, 'aktiv', 4, 9, 26, 'Teknik Mesin', 'teknik-mesin', 35, 15, 20, 30, '2019-12-08 00:00:00', '2019-11-08 03:45:16', '2019-09-27 09:37:56'),
-(6204, 'tidak aktiv', 4, 3, NULL, 'Indo Laktosa', 'indo-laktosa', 50, 10, 20, 20, '2019-11-22 00:00:00', '2019-11-09 07:19:01', '2019-11-09 00:19:01'),
-(6556, 'aktiv', 4, 1, NULL, 'Test', 'test', 35, 15, 20, 30, '2019-12-08 00:00:00', '2019-11-08 03:45:16', '2019-11-06 06:00:58'),
-(6563, 'aktiv', 4, 1, 1, 'Creative Systems', 'creative-systems', 35, 15, 20, 30, '2019-12-08 00:00:00', '2019-11-08 03:45:16', '2019-09-27 08:19:47'),
-(7743, 'aktiv', 4, 9, 26, 'Teknik Jaya', 'teknik-jaya', 35, 15, 20, 30, '2019-12-08 00:00:00', '2019-11-08 03:45:16', '2019-10-04 19:15:05'),
-(7918, 'aktiv', 4, 2, NULL, 'Test ID', 'test-id', 35, 15, 20, 30, '2019-12-08 00:00:00', '2019-11-08 03:45:16', '2019-11-06 09:16:47'),
-(8081, 'aktiv', 4, 9, 31, 'teknik Kimia', 'teknik-kimia', 40, 10, 20, 30, '2019-12-08 00:00:00', '2019-11-09 08:27:49', '2019-11-09 01:27:49'),
-(8156, 'aktiv', 4, 1, 1, 'Beasiswa Percobaan', 'beasiswa-percobaan', 35, 15, 20, 30, '2019-12-08 00:00:00', '2019-11-08 03:45:16', '2019-11-05 19:04:19'),
-(8795, 'aktiv', 4, NULL, NULL, 'BCA Foundation', 'bca-foundation', 35, 15, 20, 30, '2019-12-08 00:00:00', '2019-11-08 03:45:16', '2019-09-26 22:26:47'),
-(8945, 'aktiv', 4, 9, NULL, 'Engineer Smile', 'engineer-smile', 35, 15, 20, 30, '2019-11-06 00:00:00', '2019-11-09 08:57:14', '2019-09-27 09:37:43'),
-(9128, 'aktiv', 4, NULL, NULL, 'Pemkab Kabupaten', 'pemkab-kabupaten', 35, 15, 20, 30, '2019-12-08 00:00:00', '2019-11-08 03:45:16', '2019-10-04 19:00:38'),
-(9656, 'tidak aktiv', 26, 1, NULL, 'Djarum \'45', 'djarum-45', 25, 10, 40, 25, '2019-11-30 00:00:00', '2019-11-09 08:30:07', '2019-11-09 01:30:07');
+INSERT INTO `beasiswa` (`id`, `status`, `perusahaan_id`, `fakultas_id`, `prodi_id`, `nama_beasiswa`, `slug_beasiswa`, `point_ipk`, `point_gaji`, `point_organisasi`, `point_sertifikat`, `batas_akhir`, `minimal_point`, `created_at`, `updated_at`) VALUES
+(1812, 'tidak aktiv', 4, 1, 1, 'Beasiswa Fotografi', 'beasiswa-fotografi', 80, 10, 5, 5, '2020-03-02 00:00:00', 60, '2019-12-09 22:20:26', '2019-12-09 22:20:26'),
+(1834, 'aktiv', 4, 15, 54, 'Fun Teaching', 'teaching-and-money', 35, 15, 20, 30, '2019-12-08 00:00:00', 50, '2019-12-03 17:56:42', '2019-10-04 18:59:33'),
+(1841, 'aktiv', 4, 1, 1, 'Perco baaan 2', 'perco-baaan-2', 35, 15, 20, 30, '2019-12-08 00:00:00', 50, '2019-12-03 17:56:42', '2019-11-05 19:07:36'),
+(2502, 'aktiv', 4, 14, 44, 'contoh beasiswa', 'contoh-beasiswa', 35, 15, 20, 30, '2019-12-08 00:00:00', 50, '2019-12-03 17:56:42', '2019-10-04 19:08:48'),
+(3037, 'aktiv', 4, 1, NULL, 'IT Globality', 'it-globality', 35, 15, 20, 30, '2019-12-08 00:00:00', 50, '2019-12-03 17:56:42', '2019-09-27 08:20:53'),
+(3290, 'aktiv', 4, 1, 1, 'Test Nih template', 'test-nih-template', 30, 30, 30, 10, '2019-12-08 00:00:00', 50, '2019-12-03 17:56:42', '2019-11-08 04:17:24'),
+(3308, 'tidak aktiv', 4, 1, NULL, 'Beasiswa Z', 'beasiswa-z', 50, 20, 10, 20, '2019-12-19 00:00:00', 50, '2019-12-03 17:56:42', '2019-11-14 19:02:42'),
+(3571, 'tidak aktiv', 4, 1, NULL, 'Beasiswa Qwerty', 'beasiswa-qwerty', 50, 20, 20, 10, '2020-01-21 00:00:00', 65, '2019-12-03 10:59:14', '2019-12-03 10:59:14'),
+(3628, 'aktiv', 4, 3, 8, 'English First', 'beasiswa-english-first', 35, 15, 20, 30, '2019-12-08 00:00:00', 50, '2019-12-03 17:56:42', '2019-11-06 06:00:06'),
+(4076, 'tidak aktiv', 4, 1, NULL, 'English Seconds', 'beasiswa-english-seconds', 25, 20, 25, 30, '2019-12-08 00:00:00', 50, '2019-12-03 17:56:42', '2019-11-09 00:16:56'),
+(4798, 'aktiv', 4, 1, 1, 'Analyst Systems', 'analyst-systems', 35, 15, 20, 30, '2019-12-08 00:00:00', 50, '2019-12-03 17:56:42', '2019-09-27 08:20:32'),
+(5138, 'aktiv', 4, 9, 26, 'Teknik Mesin', 'teknik-mesin', 35, 15, 20, 30, '2019-12-08 00:00:00', 50, '2019-12-03 17:56:42', '2019-09-27 09:37:56'),
+(5641, 'tidak aktiv', 4, 1, 1, 'B TEST', 'b-test', 50, 10, 20, 20, '2020-01-04 00:00:00', 1111, '2019-12-04 18:33:21', '2019-12-04 18:33:21'),
+(5958, 'tidak aktiv', 4, 1, 1, 'BCA Foundationasasassa', 'bca-foundationasasassa', 25, 25, 25, 25, '2020-03-14 00:00:00', 1212, '2019-12-04 18:32:26', '2019-12-04 18:32:26'),
+(6204, 'tidak aktiv', 4, 3, NULL, 'Indo Laktosa', 'indo-laktosa', 50, 10, 20, 20, '2019-11-22 00:00:00', 50, '2019-12-03 18:15:05', '2019-12-03 11:15:05'),
+(6556, 'aktiv', 4, 1, NULL, 'Test', 'test', 35, 15, 20, 30, '2019-12-29 00:00:00', 50, '2019-12-10 06:06:26', '2019-11-06 06:00:58'),
+(6563, 'aktiv', 4, 1, 1, 'Creative Systems', 'creative-systems', 35, 15, 20, 30, '2019-12-02 00:00:00', 50, '2019-12-04 02:25:34', '2019-09-27 08:19:47'),
+(7146, 'aktiv', 30, 1, NULL, 'Beasiswa PX', 'beasiswa-px', 20, 20, 20, 40, '2019-12-01 00:00:00', 50, '2019-12-10 04:25:59', '2019-11-30 21:13:31'),
+(7553, 'aktiv', 30, 1, 1, 'Beasiswa PXX', 'beasiswa-pxx', 50, 25, 20, 5, '2019-12-31 00:00:00', 50, '2019-12-03 18:20:09', '2019-12-03 11:20:09'),
+(7743, 'aktiv', 4, 9, 26, 'Teknik Jaya', 'teknik-jaya', 35, 15, 20, 30, '2019-12-08 00:00:00', 50, '2019-12-03 17:56:42', '2019-10-04 19:15:05'),
+(7918, 'aktiv', 4, 2, NULL, 'Test ID', 'test-id', 35, 15, 20, 30, '2019-12-08 00:00:00', 50, '2019-12-03 17:56:42', '2019-11-06 09:16:47'),
+(7932, 'tidak aktiv', 4, 1, 1, 'Beasiswa Root Pixel', 'beasiswa-root-pixel', 60, 10, 20, 10, '2019-12-28 00:00:00', 55, '2019-12-09 22:12:50', '2019-12-09 22:12:50'),
+(8081, 'aktiv', 4, 9, 31, 'teknik Kimia', 'teknik-kimia', 40, 10, 20, 30, '2019-12-08 00:00:00', 50, '2019-12-03 17:56:42', '2019-11-09 01:27:49'),
+(8156, 'aktiv', 4, 1, 1, 'Beasiswa Percobaan', 'beasiswa-percobaan', 35, 15, 20, 30, '2019-12-08 00:00:00', 50, '2019-12-03 17:56:42', '2019-11-05 19:04:19'),
+(8795, 'aktiv', 4, NULL, NULL, 'BCA Foundation', 'bca-foundation', 35, 15, 20, 30, '2019-12-08 00:00:00', 50, '2019-12-03 17:56:42', '2019-09-26 22:26:47'),
+(8945, 'selesai', 4, 9, NULL, 'Engineer Smile', 'engineer-smile', 35, 15, 20, 30, '2019-11-06 00:00:00', 50, '2019-12-04 05:03:21', '2019-12-03 22:03:21'),
+(9128, 'aktiv', 4, NULL, NULL, 'Pemkab Kabupaten', 'pemkab-kabupaten', 35, 15, 20, 30, '2019-12-08 00:00:00', 50, '2019-12-03 17:56:42', '2019-10-04 19:00:38'),
+(9656, 'tidak aktiv', 26, 1, NULL, 'Djarum \'45', 'djarum-45', 25, 10, 40, 25, '2019-11-30 00:00:00', 50, '2019-12-03 17:56:42', '2019-11-09 01:30:07');
 
 -- --------------------------------------------------------
 
@@ -81,7 +89,8 @@ INSERT INTO `beasiswa` (`id`, `status`, `perusahaan_id`, `fakultas_id`, `prodi_i
 CREATE TABLE `beasiswa_atribut` (
   `id` bigint(20) NOT NULL,
   `beasiswa_id` bigint(20) NOT NULL,
-  `right_text` varchar(500) NOT NULL,
+  `foto` varchar(500) DEFAULT NULL,
+  `right_text` varchar(1000) NOT NULL,
   `middle_text` varchar(1000) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
@@ -91,23 +100,36 @@ CREATE TABLE `beasiswa_atribut` (
 -- Dumping data for table `beasiswa_atribut`
 --
 
-INSERT INTO `beasiswa_atribut` (`id`, `beasiswa_id`, `right_text`, `middle_text`, `updated_at`, `created_at`) VALUES
-(1251, 6072, '<p>Test</p>', '<p>LOL</p>', '2019-11-09 01:19:21', '2019-11-09 01:19:21'),
-(1536, 9656, '<p>Hey&nbsp;</p>', '<p>kau yang cantik</p>', '2019-11-09 01:24:59', '2019-11-09 01:24:59'),
-(1611, 9781, '<p>jnjjnkj</p>', '<p>bhbbhbjh<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /></p>', '2019-11-07 20:58:28', '2019-11-07 20:58:28'),
-(1707, 9276, '<p>jnjjnkj</p>', '<p>bhbbhbjh<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /></p>', '2019-11-07 20:58:11', '2019-11-07 20:58:11'),
-(2605, 8445, '<p>asds</p>', '<p>kamskdmaskd</p>', '2019-11-06 09:16:13', '2019-11-06 09:16:13'),
-(3079, 7918, '<p>asds</p>', '<p>kamskdmaskd</p>', '2019-11-06 09:16:47', '2019-11-06 09:16:47'),
-(3303, 6085, '<p>jnjjnkj</p>', '<p>bhbbhbjh<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /></p>', '2019-11-07 20:58:47', '2019-11-07 20:58:47'),
-(3370, 5637, '<p>Test INI BROO</p>', '<p>KMASKMSKASKAS&nbsp;<a href=\"http://127.0.0.1:8000/buat-beasiswa\">http://127.0.0.1:8000/buat-beasiswa</a></p>\r\n\r\n<p>amskamskamskamsls f asdkmaskdfmsadf sldfsdf SDFO JASDASDI NAS&nbsp; LAS MAA M JJA S ASYB K</p>', '2019-11-07 02:16:04', '2019-11-07 02:16:04'),
-(4402, 6204, '<p>jnkjnknkjnkjn</p>', '<p>klnknhbk</p>', '2019-11-07 21:01:24', '2019-11-07 21:01:24'),
-(5320, 6556, '<p>kmaksmkas</p>', '<p><strong>Beasiswa BCA merupakan beasiswa yang diselenggarakan oleh perusahaan kami untuk membantu biaya perkuliahan mahasiswa jenjang S1. Beasiswa ini diberiikan selama satu tahun penuh di jurusan apapun dan di universitas manapun di Indonesia. Beasiswa kami menyediakan kurang lebih 500 beasiswa setiap tahunnya.</strong></p>\r\n\r\n<p><strong>Diselenggarakan pertama kali pada tahun 2014, beasiswa ini akan mendanai studimu secara penuh selama satu tahun. Beasiswa BCA dibuka setiap tahunnya dan dibuka pada bulan Agustus. Daftarkan dirimu sekarang juga.</strong></p>\r\n\r\n<p><br />\r\n&nbsp;</p>', '2019-11-06 06:00:58', '2019-11-06 06:00:58'),
-(5542, 3308, '<p>saasdads</p>', '<p>sdsfd</p>', '2019-11-14 19:02:42', '2019-11-14 19:02:42'),
-(5767, 1477, '<p>jnjjnkj</p>', '<p>bhbbhbjh<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /></p>', '2019-11-07 20:54:00', '2019-11-07 20:54:00'),
-(6610, 7615, '<p>jnjjnkj</p>', '<p>bhbbhbjh<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /></p>', '2019-11-07 20:55:35', '2019-11-07 20:55:35'),
-(7042, 4076, '<p>makksakkasmkmas</p>', '<p><strong>&nbsp;sadadsasdasdad&nbsp;sadadsasdasdad&nbsp;sadadsasdasdad&nbsp;sadadsasdasdadsadadsasdasdad vv&nbsp;&nbsp;sadadsasdasdad&nbsp;sadadsasdasdad&nbsp;sadadsasdasdad&nbsp;sadadsasdasdad</strong></p>', '2019-11-07 19:45:26', '2019-11-07 19:45:26'),
-(7160, 3628, '<p><strong>safhjsadfjdhsfjsd</strong></p>', '<p>Beasiswa BCA merupakan beasiswa yang diselenggarakan oleh perusahaan kami untuk membantu biaya perkuliahan mahasiswa jenjang S1. Beasiswa ini diberiikan selama satu tahun penuh di jurusan apapun dan di universitas manapun di Indonesia. Beasiswa kami menyediakan kurang lebih 500 beasiswa setiap tahunnya.</p>\r\n\r\n<p>Diselenggarakan pertama kali pada tahun 2014, beasiswa ini akan mendanai studimu secara penuh selama satu tahun. Beasiswa BCA dibuka setiap tahunnya dan dibuka pada bulan Agustus. Daftarkan dirimu sekarang juga.</p>\r\n\r\n<p><br />\r\n&nbsp;</p>', '2019-11-06 06:00:05', '2019-11-06 06:00:05'),
-(7465, 3290, '<p>Test INI BROO</p>', '<p>KMASKMSKASKAS&nbsp;<a href=\"http://127.0.0.1:8000/buat-beasiswa\">http://127.0.0.1:8000/buat-beasiswa</a></p>\r\n\r\n<p>amskamskamskamsls f asdkmaskdfmsadf sldfsdf SDFO JASDASDI NAS&nbsp; LAS MAA M JJA S ASYB K</p>', '2019-11-07 02:17:29', '2019-11-07 02:17:29');
+INSERT INTO `beasiswa_atribut` (`id`, `beasiswa_id`, `foto`, `right_text`, `middle_text`, `updated_at`, `created_at`) VALUES
+(1137, 7553, 'a1.jpg', '<p>lorem</p>', '<p>LoremLoremLoremLorem</p>', '2019-12-10 05:33:38', '2019-11-30 21:14:27'),
+(1251, 6072, 'a2.jpg', '<p>Test</p>', '<p>LOL</p>', '2019-12-10 05:33:44', '2019-11-09 01:19:21'),
+(1276, 1812, 'a3.jpg', '<h4>Cross Join Clause</h4>\r\n\r\n<p>To perform a &quot;cross join&quot; use the&nbsp;<code>crossJoin</code>&nbsp;method with the name of the table you wish to cross join to. Cross joins generate a cartesian product between the first table and the joined table:</p>', '<pre>\r\n<code>DB::table(&#39;users&#39;)\r\n        -&gt;join(&#39;contacts&#39;, function ($join) {\r\n            $join-&gt;on(&#39;users.id&#39;, &#39;=&#39;, &#39;contacts.user_id&#39;)-&gt;orOn(...);\r\n        })\r\n        -&gt;get();</code></pre>', '2019-12-10 05:33:52', '2019-12-09 22:20:26'),
+(1536, 9656, 'a4.jpg', '<p>Hey&nbsp;</p>', '<p>kau yang cantik</p>', '2019-12-10 05:33:56', '2019-11-09 01:24:59'),
+(1611, 9781, 'a5.jpg', '<p>jnjjnkj</p>', '<p>bhbbhbjh<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /></p>', '2019-12-10 05:34:04', '2019-11-07 20:58:28'),
+(1707, 9276, 'a6.jpg', '<p>jnjjnkj</p>', '<p>bhbbhbjh<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /></p>', '2019-12-10 05:34:13', '2019-11-07 20:58:11'),
+(1921, 7932, 'Screenshot from 2019-12-09 14-24-00.png', '<h1>#<u><a href=\"https://laravel.com/docs/6.x/queries#joins\">Joins</a></u></h1>\r\n\r\n<h4>Inner Join Clause</h4>\r\n\r\n<p>The query builder may also be used to write join statements. To perform a basic &quot;inner join&quot;, you may use the&nbsp;<code>join</code>&nbsp;method on a query builder instance. The first argument passed to the&nbsp;<code>join</code>&nbsp;method is the name of the table you need to join to, while the remaining arguments specify the column constraints for the join. You can even join to multiple tables in a single query:</p>', '<pre>\r\n<code>$users = DB::table(&#39;users&#39;)\r\n            -&gt;join(&#39;contacts&#39;, &#39;users.id&#39;, &#39;=&#39;, &#39;contacts.user_id&#39;)\r\n            -&gt;join(&#39;orders&#39;, &#39;users.id&#39;, &#39;=&#39;, &#39;orders.user_id&#39;)\r\n            -&gt;select(&#39;users.*&#39;, &#39;contacts.phone&#39;, &#39;orders.price&#39;)\r\n            -&gt;get();</code></pre>\r\n\r\n<hr />\r\n<p><img alt=\"indecision\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/whatchutalkingabout_smile.png\" style=\"height:23px; width:23px\" title=\"indecision\" /></p>', '2019-12-09 22:12:50', '2019-12-09 22:12:50'),
+(2605, 8445, 'a1.jpg', '<p>asds</p>', '<p>kamskdmaskd</p>', '2019-12-10 05:34:18', '2019-11-06 09:16:13'),
+(3026, 7146, 'a2.jpg', '<p>Lorem&nbsp;LoremLoremLoremLoremLoremLorem</p>', '<p><strong>LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem</strong></p>', '2019-12-10 05:34:22', '2019-11-30 21:11:44'),
+(3079, 7918, 'a3.jpg', '<p>asds</p>', '<p>kamskdmaskd</p>', '2019-12-10 05:34:25', '2019-11-06 09:16:47'),
+(3303, 6085, 'a4.jpg', '<p>jnjjnkj</p>', '<p>bhbbhbjh<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /></p>', '2019-12-10 05:34:36', '2019-11-07 20:58:47'),
+(3370, 5637, 'a5.jpg', '<p>Test INI BROO</p>', '<p>KMASKMSKASKAS&nbsp;<a href=\"http://127.0.0.1:8000/buat-beasiswa\">http://127.0.0.1:8000/buat-beasiswa</a></p>\r\n\r\n<p>amskamskamskamsls f asdkmaskdfmsadf sldfsdf SDFO JASDASDI NAS&nbsp; LAS MAA M JJA S ASYB K</p>', '2019-12-10 05:34:41', '2019-11-07 02:16:04'),
+(4350, 5958, 'a6.jpg', '<p>asddsas</p>', '<p>asdasdasdasd</p>', '2019-12-10 05:34:46', '2019-12-04 18:32:26'),
+(4402, 6204, 'a1.jpg', '<p>jnkjnknkjnkjn</p>', '<p>klnknhbk</p>', '2019-12-10 05:34:51', '2019-11-07 21:01:24'),
+(5320, 6556, 'a2.jpg', '<p>kmaksmkas</p>', '<p><strong>Beasiswa BCA merupakan beasiswa yang diselenggarakan oleh perusahaan kami untuk membantu biaya perkuliahan mahasiswa jenjang S1. Beasiswa ini diberiikan selama satu tahun penuh di jurusan apapun dan di universitas manapun di Indonesia. Beasiswa kami menyediakan kurang lebih 500 beasiswa setiap tahunnya.</strong></p>\r\n\r\n<p><strong>Diselenggarakan pertama kali pada tahun 2014, beasiswa ini akan mendanai studimu secara penuh selama satu tahun. Beasiswa BCA dibuka setiap tahunnya dan dibuka pada bulan Agustus. Daftarkan dirimu sekarang juga.</strong></p>\r\n\r\n<p><br />\r\n&nbsp;</p>', '2019-12-10 05:34:55', '2019-11-06 06:00:58'),
+(5542, 3308, 'a3.jpg', '<p>saasdads</p>', '<p>sdsfd</p>', '2019-12-10 05:34:59', '2019-11-14 19:02:42'),
+(5767, 1477, 'a7.jpg', '<p>jnjjnkj</p>', '<p>bhbbhbjh<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /></p>', '2019-12-10 05:36:06', '2019-11-07 20:54:00'),
+(6610, 7615, 'a5.jpg', '<p>jnjjnkj</p>', '<p>bhbbhbjh<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /></p>', '2019-12-10 05:36:10', '2019-11-07 20:55:35'),
+(7042, 4076, 'a6.jpg', '<p>makksakkasmkmas</p>', '<p><strong>&nbsp;sadadsasdasdad&nbsp;sadadsasdasdad&nbsp;sadadsasdasdad&nbsp;sadadsasdasdadsadadsasdasdad vv&nbsp;&nbsp;sadadsasdasdad&nbsp;sadadsasdasdad&nbsp;sadadsasdasdad&nbsp;sadadsasdasdad</strong></p>', '2019-12-10 05:36:14', '2019-11-07 19:45:26'),
+(7160, 3628, 'a1.jpg', '<p><strong>safhjsadfjdhsfjsd</strong></p>', '<p>Beasiswa BCA merupakan beasiswa yang diselenggarakan oleh perusahaan kami untuk membantu biaya perkuliahan mahasiswa jenjang S1. Beasiswa ini diberiikan selama satu tahun penuh di jurusan apapun dan di universitas manapun di Indonesia. Beasiswa kami menyediakan kurang lebih 500 beasiswa setiap tahunnya.</p>\r\n\r\n<p>Diselenggarakan pertama kali pada tahun 2014, beasiswa ini akan mendanai studimu secara penuh selama satu tahun. Beasiswa BCA dibuka setiap tahunnya dan dibuka pada bulan Agustus. Daftarkan dirimu sekarang juga.</p>\r\n\r\n<p><br />\r\n&nbsp;</p>', '2019-12-10 05:36:18', '2019-11-06 06:00:05'),
+(7374, 3571, 'a2.jpg', '<p>As in C or Perl, PHP requires instructions to be terminated with a semicolon at the end of each statement. The closing tag of a block of PHP code automatically implies a semicolon; you do not need to have a semicolon terminating the last line of a PHP block.&nbsp;<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /><img alt=\"yes\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/thumbs_up.png\" style=\"height:23px; width:23px\" title=\"yes\" /></p>', '<p><strong>$(document).ready(function() {<br />\r\n&nbsp; &nbsp;$(&#39;[data-toggle=&quot;popover&quot;]&#39;).popover({<br />\r\n&nbsp; &nbsp; &nbsp; placement: &#39;top&#39;,<br />\r\n&nbsp; &nbsp; &nbsp; trigger: &#39;hover&#39;<br />\r\n&nbsp; &nbsp;});<br />\r\n});<img alt=\"indecision\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/whatchutalkingabout_smile.png\" style=\"height:23px; width:23px\" title=\"indecision\" /></strong></p>', '2019-12-10 05:36:21', '2019-12-03 10:59:14'),
+(7465, 3290, 'a1.jpg', '<p>Test INI BROO</p>', '<p>KMASKMSKASKAS&nbsp;<a href=\"http://127.0.0.1:8000/buat-beasiswa\">http://127.0.0.1:8000/buat-beasiswa</a></p>\r\n\r\n<p>amskamskamskamsls f asdkmaskdfmsadf sldfsdf SDFO JASDASDI NAS&nbsp; LAS MAA M JJA S ASYB K</p>', '2019-12-10 05:36:22', '2019-11-07 02:17:29'),
+(7466, 9128, 'a4.jpg', '<p><strong>safhjsadfjdhsfjsd</strong></p>', '<p>bhbbhbjh<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /></p>', '2019-12-10 05:36:30', '0000-00-00 00:00:00'),
+(7467, 8081, 'a5.jpg', '<p><strong>safhjsadfjdhsfjsd</strong></p>', '<p>bhbbhbjh<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /></p>', '2019-12-10 05:36:33', '0000-00-00 00:00:00'),
+(7468, 8795, 'a6.jpg', '<p><strong>safhjsadfjdhsfjsd</strong></p>', '<p>bhbbhbjh<img alt=\\\"heart\\\" src=\\\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\\\" style=\\\"height:23px; width:23px\\\" title=\\\"heart\\\" /></p>', '2019-12-10 05:36:36', '0000-00-00 00:00:00'),
+(7469, 7743, 'a7.jpg', '<p>Lorem&nbsp;LoremLoremLoremLoremLoremLorem</p>', '<p>Lorem&nbsp;LoremLoremLoremLoremLoremLorem</p>', '2019-12-10 05:36:40', '0000-00-00 00:00:00'),
+(7470, 6563, 'a1.jpg', '<p>As in C or Perl, PHP requires instructions to be terminated with a semicolon at the end of each statement. The closing tag of a block of PHP code automatically implies a semicolon; you do not need to have a semicolon terminating the last line of a PHP block.&nbsp;<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /><img alt=\"yes\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/thumbs_up.png\" style=\"height:23px; width:23px\" title=\"yes\" /></p>', '<p>KMASKMSKASKAS&nbsp;<a href=\"http://127.0.0.1:8000/buat-beasiswa\">http://127.0.0.1:8000/buat-beasiswa</a></p>\r\n\r\n<p>amskamskamskamsls f asdkmaskdfmsadf sldfsdf SDFO JASDASDI NAS&nbsp; LAS MAA M JJA S ASYB K</p>', '2019-12-10 05:36:44', '0000-00-00 00:00:00'),
+(7471, 8945, 'a4.jpg', '<p>As in C or Perl, PHP requires instructions to be terminated with a semicolon at the end of each statement. The closing tag of a block of PHP code automatically implies a semicolon; you do not need to have a semicolon terminating the last line of a PHP block.&nbsp;<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /><img alt=\"yes\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/thumbs_up.png\" style=\"height:23px; width:23px\" title=\"yes\" /></p>', '<p>As in C or Perl, PHP requires instructions to be terminated with a semicolon at the end of each statement. The closing tag of a block of PHP code automatically implies a semicolon; you do not need to have a semicolon terminating the last line of a PHP block.&nbsp;<img alt=\"heart\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/heart.png\" style=\"height:23px; width:23px\" title=\"heart\" /><img alt=\"yes\" src=\"http://127.0.0.1:8000/ckeditor/plugins/smiley/images/thumbs_up.png\" style=\"height:23px; width:23px\" title=\"yes\" /></p>', '2019-12-10 05:36:48', '0000-00-00 00:00:00'),
+(9282, 5641, 'tipe-mahasiswa-A-1.jpg', '<p>saddsad</p>', '<p>asdasdasdsd</p>', '2019-12-10 05:23:57', '2019-12-04 18:33:21');
 
 -- --------------------------------------------------------
 
@@ -123,13 +145,6 @@ CREATE TABLE `beasiswa_revisi` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `beasiswa_revisi`
---
-
-INSERT INTO `beasiswa_revisi` (`id`, `beasiswa_id`, `jenis_kesalahan`, `catatan`, `created_at`, `updated_at`) VALUES
-(410, 6204, 'POint gaji ortu kecilikan', 'HEHEHE LOL', '2019-11-09 08:31:01', '2019-11-09 08:31:01');
 
 -- --------------------------------------------------------
 
@@ -198,6 +213,7 @@ CREATE TABLE `mahasiswa` (
   `gaji_ortu` int(11) NOT NULL,
   `sertifikat` int(20) NOT NULL,
   `organisasi` varchar(200) NOT NULL,
+  `nim` varchar(12) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -206,37 +222,41 @@ CREATE TABLE `mahasiswa` (
 -- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`id`, `user_id`, `fakultas_id`, `prodi_id`, `nama_lengkap`, `nohp`, `semester`, `ipk`, `gaji_ortu`, `sertifikat`, `organisasi`, `created_at`, `updated_at`) VALUES
-(10209, 12262, 1, 2, 'nur dwi sofiana', '08912213312', 5, '3.75', 10000000, 3, 'Pengurus Inti', '2019-11-05 09:10:30', '2019-11-05 09:10:30'),
-(10757, 13928, 1, 1, 'aga123', '0822756756', 5, '3.76', 10000000, 3, 'Ketua dan Wakil Ketua', '2019-11-06 06:13:28', '2019-11-06 06:13:28'),
-(10941, 13781, 9, 26, 'alfian ferdiansyah', '12313131', 2, '3.32', 3000000, 3, 'Ketua dan Wakil Ketua', '2019-10-28 17:36:50', '2019-10-28 17:36:50'),
-(11018, 14400, 1, 1, 'aga123', '0822756756', 5, '3.76', 10000000, 3, 'Ketua dan Wakil Ketua', '2019-11-06 06:14:00', '2019-11-06 06:14:00'),
-(11442, 13965, 3, 9, 'alfian ferdiansyah', '088234234', 5, '4', 10000000, 0, 'Ketua dan Wakil Ketua', '2019-10-27 09:41:03', '2019-09-26 22:22:09'),
-(11682, 14482, 1, 1, 'Arizha Izul', '08912213312', 5, '3.5', 10000009, 4, 'Ketua dan Wakil Ketua', '2019-11-09 00:24:59', '2019-11-09 00:24:59'),
-(12206, 13650, 1, 1, 'Eka Yastina', '0822756756', 5, '3.5', 10000000, 3, 'Pengurus Divisi', '2019-11-09 00:32:26', '2019-11-09 00:32:26'),
-(12428, 10578, 9, 27, 'aww', '0822756756', 5, '3.5', 3500000, 2, 'Ketua dan Wakil Ketua', '2019-10-28 17:37:47', '2019-10-28 17:37:47'),
-(12504, 12644, 2, 49, 'alfian ferdiansyah', '0822756756', 5, '3.5', 10000000, 3, 'Ketua dan Wakil Ketua', '2019-11-05 07:05:47', '2019-11-05 07:05:47'),
-(12575, 11586, 9, 27, 'asdasd', '08912213312', 3, '3.75', 1500000, 2, 'Ketua dan Wakil Ketua', '2019-10-31 05:51:25', '2019-10-31 05:51:25'),
-(13575, 11172, 1, 1, 'Izul Fikri', '08912213312', 5, '3.5', 10000000, 3, 'Ketua dan Wakil Ketua', '2019-11-14 18:54:18', '2019-11-14 18:54:18'),
-(14071, 12326, 11, 34, 'asd', '0822756756', 5, '3.5', 123123123, 12, 'Pengurus Divisi', '2019-11-03 20:22:22', '2019-11-03 20:22:22'),
-(14219, 10855, 12, 35, 'alfian ferdiansyah', '0822756756', 5, '4', 10000000, 4, 'Ketua dan Wakil Ketua', '2019-10-27 09:41:01', '2019-09-30 08:55:33'),
-(14644, 15391, 1, 1, 'Taufik Rahman', '0822756756', 5, '3.75', 8000000, 4, 'Ketua dan Wakil Ketua', '2019-11-04 17:23:41', '2019-11-04 17:23:41'),
-(15625, 13925, 1, 1, 'Muhammad Alfian', '082257851837', 5, '3.75', 12000000, 2, 'Ketua dan Wakil Ketua', '2019-11-04 03:55:10', '2019-11-04 03:55:10'),
-(15731, 10785, 1, 1, 'agaa', '08225785837', 5, '3.5', 8000000, 2, 'Ketua dan Wakil Ketua', '2019-11-04 18:12:20', '2019-11-04 18:12:20'),
-(15761, 16529, 1, 1, 'Muhammad Alfian', '082257851837', 5, '3.75', 12000000, 2, 'Pengurus Inti', '2019-11-04 03:55:55', '2019-11-04 03:55:55'),
-(16237, 14717, 8, 24, 'alfian ferdiansyah', '08912213312', 5, '4', 10000000, 2, 'Ketua dan Wakil Ketua', '2019-11-05 07:05:04', '2019-11-05 07:05:04'),
-(16352, 18495, 9, 26, 'taufik', '12313131', 3, '4', 10000000, 0, 'Ketua dan Wakil Ketua', '2019-10-27 09:40:59', '2019-09-30 03:32:05'),
-(16439, 15244, 1, 3, 'Bima Saputra', '08912213312', 5, '3.75', 10000000, 3, 'Ketua dan Wakil Ketua', '2019-11-05 09:11:49', '2019-11-05 09:11:49'),
-(16451, 13976, 9, 26, 'Mashudah Sabilaturrizqi', '08912213312', 5, '3.7', 9000000, 10, 'Pengurus Inti', '2019-11-09 08:05:00', '2019-11-09 01:05:00'),
-(16579, 15125, 9, 31, 'Aga', '24234', 4, '4', 10000000, 0, 'Ketua dan Wakil Ketua', '2019-10-27 09:40:37', '2019-09-27 09:39:54'),
-(16854, 11060, 1, 1, 'henry', '08912213312', 5, '4', 10000000, 0, 'Ketua dan Wakil Ketua', '2019-10-27 09:40:50', '2019-09-27 08:22:26'),
-(17227, 12001, 9, 26, 'Henry Kristiano', '08656', 4, '3.76', 10000000, 4, 'Ketua dan Wakil Ketua', '2019-10-28 01:08:42', '2019-10-02 00:30:41'),
-(17466, 14224, 1, 1, 'aga', '08233123', 5, '3.5', 8000000, 3, 'Ketua dan Wakil Ketua', '2019-11-04 18:13:22', '2019-11-04 18:13:22'),
-(17739, 17573, 1, 1, 'Afry', '08912213312', 5, '3.5', 10000000, 1, 'Ketua dan Wakil Ketua', '2019-11-24 04:17:21', '2019-11-24 04:17:21'),
-(17783, 14717, 1, 1, 'Kufra', '08912213312', 5, '4', 10000000, 2, 'Ketua dan Wakil Ketua', '2019-11-18 21:25:41', '2019-11-18 21:25:41'),
-(18597, 19589, 1, 1, 'Afry', '08912213312', 5, '3.5', 10000000, 1, 'Ketua dan Wakil Ketua', '2019-11-24 04:18:33', '2019-11-24 04:18:33'),
-(18642, 19741, 1, 3, 'Firmansyah Wahyu', '0822756756', 5, '3.5', 10000000, 4, 'Pengurus Inti', '2019-11-11 09:12:52', '2019-11-11 09:12:52'),
-(18965, 18230, 1, 1, 'alfian', '23423', 5, '4', 9999999, 99, 'Ketua dan Wakil Ketua', '2019-10-27 09:40:56', '2019-10-17 18:32:15');
+INSERT INTO `mahasiswa` (`id`, `user_id`, `fakultas_id`, `prodi_id`, `nama_lengkap`, `nohp`, `semester`, `ipk`, `gaji_ortu`, `sertifikat`, `organisasi`, `nim`, `created_at`, `updated_at`) VALUES
+(10209, 12262, 1, 2, 'nur dwi sofiana', '08912213312', 5, '3.75', 10000000, 3, 'Pengurus Inti', '172410102002', '2019-12-03 16:16:42', '2019-11-05 09:10:30'),
+(10757, 13928, 1, 1, 'aga123', '0822756756', 5, '3.76', 10000000, 3, 'Ketua dan Wakil Ketua', '172410101009', '2019-12-03 16:16:54', '2019-11-06 06:13:28'),
+(10941, 13781, 9, 26, 'alfian ferdiansyah', '12313131', 2, '3.32', 3000000, 3, 'Ketua dan Wakil Ketua', '0', '2019-10-28 17:36:50', '2019-10-28 17:36:50'),
+(11014, 14760, 1, 2, 'Muhammad Asif', '08992312891', 5, '3.31', 10000000, 1, 'Pengurus Divisi', '172410102024', '2019-12-08 01:31:30', '2019-12-07 18:31:30'),
+(11018, 14400, 1, 1, 'aga123', '0822756756', 5, '3.76', 10000000, 3, 'Ketua dan Wakil Ketua', '172410101090', '2019-12-03 16:17:11', '2019-11-06 06:14:00'),
+(11442, 13965, 3, 9, 'alfian ferdiansyah', '088234234', 5, '4', 10000000, 0, 'Ketua dan Wakil Ketua', '0', '2019-10-27 09:41:03', '2019-09-26 22:22:09'),
+(11682, 14482, 1, 1, 'Arizha Izul', '08912213312', 5, '3.5', 10000009, 4, 'Ketua dan Wakil Ketua', '172410101067', '2019-12-03 16:17:29', '2019-11-09 00:24:59'),
+(12206, 13650, 1, 1, 'Eka Yastina', '0822756756', 5, '3.5', 10000000, 3, 'Pengurus Divisi', '172410101098', '2019-12-03 16:17:38', '2019-11-09 00:32:26'),
+(12276, 17785, 1, 1, 'alfian F', '0822756756', 5, '3.96', 10000000, 3, 'Ketua dan Wakil Ketua', '172410101027', '2019-12-03 16:17:47', '2019-11-30 21:18:07'),
+(12428, 10578, 9, 27, 'aww', '0822756756', 5, '3.5', 3500000, 2, 'Ketua dan Wakil Ketua', '171210101054', '2019-12-03 18:35:53', '2019-10-28 17:37:47'),
+(12504, 12644, 2, 49, 'alfian ferdiansyah', '0822756756', 5, '3.5', 10000000, 3, 'Ketua dan Wakil Ketua', '0', '2019-11-05 07:05:47', '2019-11-05 07:05:47'),
+(12575, 11586, 9, 27, 'asdasd', '08912213312', 3, '3.75', 1500000, 2, 'Ketua dan Wakil Ketua', '0', '2019-10-31 05:51:25', '2019-10-31 05:51:25'),
+(12636, 15213, 1, 1, 'Titania Ayunda', '0822756756', 5, '3.4', 5000000, 2, 'Pengurus Divisi', '172410101025', '2019-12-09 21:13:25', '2019-12-09 21:13:25'),
+(13575, 11172, 1, 1, 'Izul Fikri', '08912213312', 5, '3.5', 10000000, 3, 'Ketua dan Wakil Ketua', '162410101021', '2019-12-03 16:18:04', '2019-11-14 18:54:18'),
+(14071, 12326, 11, 34, 'asd', '0822756756', 5, '3.5', 123123123, 12, 'Pengurus Divisi', '0', '2019-11-03 20:22:22', '2019-11-03 20:22:22'),
+(14219, 10855, 12, 35, 'alfian ferdiansyah', '0822756756', 5, '4', 10000000, 4, 'Ketua dan Wakil Ketua', '0', '2019-10-27 09:41:01', '2019-09-30 08:55:33'),
+(14644, 15391, 1, 1, 'Taufik Rahman', '0822756756', 5, '3.75', 8000000, 4, 'Ketua dan Wakil Ketua', '172410101140', '2019-12-03 16:18:13', '2019-11-04 17:23:41'),
+(15625, 13925, 1, 1, 'Muhammad Alfian', '082257851837', 5, '3.75', 12000000, 2, 'Ketua dan Wakil Ketua', '172410101072', '2019-12-03 16:18:18', '2019-11-04 03:55:10'),
+(15731, 10785, 1, 1, 'agaa', '08225785837', 5, '3.5', 8000000, 2, 'Ketua dan Wakil Ketua', '172410101092', '2019-12-03 16:18:27', '2019-11-04 18:12:20'),
+(15761, 16529, 1, 1, 'Muhammad Alfian', '082257851837', 5, '3.75', 12000000, 2, 'Pengurus Inti', '172410101099', '2019-12-03 16:18:32', '2019-11-04 03:55:55'),
+(16237, 14717, 8, 24, 'alfian ferdiansyah', '08912213312', 5, '4', 10000000, 2, 'Ketua dan Wakil Ketua', '0', '2019-11-05 07:05:04', '2019-11-05 07:05:04'),
+(16352, 18495, 9, 26, 'taufik', '12313131', 3, '4', 10000000, 0, 'Ketua dan Wakil Ketua', '0', '2019-10-27 09:40:59', '2019-09-30 03:32:05'),
+(16439, 15244, 1, 3, 'Bima Saputra', '08912213312', 5, '3.75', 10000000, 3, 'Ketua dan Wakil Ketua', '172410103002', '2019-12-03 16:18:43', '2019-11-05 09:11:49'),
+(16451, 13976, 9, 26, 'Mashudah Sabilaturrizqi', '08912213312', 5, '3.7', 9000000, 10, 'Pengurus Inti', '0', '2019-11-09 08:05:00', '2019-11-09 01:05:00'),
+(16579, 15125, 9, 31, 'Aga', '24234', 4, '4', 10000000, 0, 'Ketua dan Wakil Ketua', '0', '2019-10-27 09:40:37', '2019-09-27 09:39:54'),
+(16854, 11060, 1, 1, 'henry', '08912213312', 5, '4', 10000000, 0, 'Ketua dan Wakil Ketua', '172410101109', '2019-12-04 02:21:33', '2019-09-27 08:22:26'),
+(17227, 12001, 9, 26, 'Henry Kristiano', '08656', 4, '3.76', 10000000, 4, 'Ketua dan Wakil Ketua', '0', '2019-10-28 01:08:42', '2019-10-02 00:30:41'),
+(17283, 16314, 1, 2, 'Arifu Fanny', '08912213312', 5, '3.75', 3000000, 4, 'Pengurus Divisi', '172410102015', '2019-12-03 09:43:03', '2019-12-03 09:43:03'),
+(17466, 14224, 1, 1, 'aga', '08233123', 5, '3.5', 8000000, 3, 'Ketua dan Wakil Ketua', '172410101123', '2019-12-03 16:20:07', '2019-11-04 18:13:22'),
+(17739, 17573, 1, 1, 'Afry', '08912213312', 5, '3.5', 10000000, 1, 'Ketua dan Wakil Ketua', '0', '2019-11-24 04:17:21', '2019-11-24 04:17:21'),
+(17783, 14717, 1, 1, 'Kufra', '08912213312', 5, '4', 10000000, 2, 'Ketua dan Wakil Ketua', '0', '2019-11-18 21:25:41', '2019-11-18 21:25:41'),
+(18597, 19589, 1, 1, 'Afry', '08912213312', 5, '3.5', 10000000, 1, 'Ketua dan Wakil Ketua', '0', '2019-11-24 04:18:33', '2019-11-24 04:18:33'),
+(18642, 19741, 1, 3, 'Firmansyah Wahyu', '0822756756', 5, '3.5', 10000000, 4, 'Pengurus Inti', '0', '2019-11-11 09:12:52', '2019-11-11 09:12:52'),
+(18965, 18230, 1, 1, 'alfian', '23423', 5, '4', 9999999, 99, 'Ketua dan Wakil Ketua', '0', '2019-10-27 09:40:56', '2019-10-17 18:32:15');
 
 -- --------------------------------------------------------
 
@@ -296,11 +316,14 @@ CREATE TABLE `pendaftar_beasiswa` (
 --
 
 INSERT INTO `pendaftar_beasiswa` (`id`, `user_id`, `beasiswa_id`, `point`, `bukti_ipk`, `bukti_gaji`, `bukti_sertifikat`, `bukti_organisasi`, `output`, `created_at`, `updated_at`) VALUES
+(456, 11060, 6563, 40, '1abf80ae-d97b-4c58-ae6d-78d858c2d23a.jpeg', '1abf80ae-d97b-4c58-ae6d-78d858c2d23a.jpeg', '1abf80ae-d97b-4c58-ae6d-78d858c2d23a.jpeg', '1abf80ae-d97b-4c58-ae6d-78d858c2d23a.jpeg', 'Dipertimbangkan', '2019-12-04 04:32:43', '2019-12-03 21:32:43'),
 (2198, 10578, 8945, 60, 'a1.jpeg', 'a2.jpeg', 'a3.jpeg', 'a4.jpeg', 'Dipertimbangkan', '2019-10-28 17:40:10', '2019-10-28 17:40:10'),
 (2739, 11172, 6563, 55, '1abf80ae-d97b-4c58-ae6d-78d858c2d23a.jpeg', 'organisasi.png', 'sertif.png', 'slip.png', 'Dipertimbangkan', '2019-11-14 18:56:21', '2019-11-14 18:56:21'),
+(3014, 15125, 8081, 60, 'Screenshot from 2019-11-21 20-58-29.png', 'Screenshot from 2019-11-21 22-32-09.png', 'Screenshot from 2019-11-21 22-32-25.png', 'Screenshot from 2019-11-26 21-16-22.png', 'Dipertimbangkan', '2019-11-30 21:19:34', '2019-11-30 21:19:34'),
+(3108, 15213, 7146, 27, 'Screenshot from 2019-12-06 19-23-30.png', 'Screenshot from 2019-12-05 12-10-29.png', 'Screenshot from 2019-11-29 10-04-54.png', 'Screenshot from 2019-11-27 19-51-57.png', 'Tidak Berhasil', '2019-12-09 21:25:04', '2019-12-09 21:25:04'),
 (3935, 12001, 7743, 65, 'Screenshot from 2019-10-26 15-43-14.png', 'Screenshot from 2019-10-20 14-10-52.png', 'Screenshot from 2019-10-23 12-02-05.png', 'Screenshot from 2019-10-18 21-43-16.png', 'Dipertimbangkan', '2019-10-27 18:27:22', '2019-10-27 18:27:22'),
 (6577, 15391, 4798, 65, '1abf80ae-d97b-4c58-ae6d-78d858c2d23a.jpeg', 'organisasi.png', 'sertif.png', 'slip.png', 'Dipertimbangkan', '2019-11-04 17:24:14', '2019-11-04 17:24:14'),
-(7827, 16529, 6563, 48, '1abf80ae-d97b-4c58-ae6d-78d858c2d23a.jpeg', 'slip.png', 'sertif.png', 'organisasi.png', 'Dipertimbangkan', '2019-11-04 03:58:02', '2019-11-04 03:58:02'),
+(7827, 16529, 6563, 48, '1abf80ae-d97b-4c58-ae6d-78d858c2d23a.jpeg', 'slip.png', 'sertif.png', 'organisasi.png', 'Dipertimbangkan', '2019-12-04 04:32:43', '2019-12-03 21:32:43'),
 (9529, 14224, 4798, 55, '1abf80ae-d97b-4c58-ae6d-78d858c2d23a.jpeg', 'sertif.png', 'slip.png', 'organisasi.png', 'Dipertimbangkan', '2019-11-04 18:14:56', '2019-11-04 18:14:56'),
 (9681, 13976, 7743, 68, 'organisasi.png', 'slip.png', 'organisasi.png', '0009012IMG-20160730-091855780x390.jpg', 'Dipertimbangkan', '2019-11-05 09:59:38', '2019-11-05 09:59:38');
 
@@ -352,7 +375,12 @@ INSERT INTO `perusahaan` (`id`, `user_id`, `nama_perusahaan`, `jenis_perusahaan`
 (25, 97196, 'Perusahaan Z', 'Bank', 'alfian', 'agagx18@gmail.com', 'organisasi.png', 'Belum Terverifikasi', '2019-11-04 18:24:44', '2019-11-04 18:24:44'),
 (26, 50426, 'Surya Perindo', 'Bank', 'Henry', 'suryaperindo@gmail.com', 'organisasi.png', 'terverifikasi', '2019-11-09 01:07:59', '2019-11-09 00:57:15'),
 (27, 93409, 'Suryanaga', 'Bank', 'henry', 'suryanaga@gmail.com', 'sertif.png', 'Belum Terverifikasi', '2019-11-11 09:10:36', '2019-11-11 09:10:36'),
-(28, 50530, 'Surya', 'Bank', 'izul fikri', '12a@gmail.com', 'sertif.png', 'Belum Terverifikasi', '2019-11-14 19:00:33', '2019-11-14 19:00:33');
+(28, 50530, 'Surya', 'Bank', 'izul fikri', '12a@gmail.com', 'sertif.png', 'terverifikasi', '2019-11-30 19:12:41', '2019-11-14 19:00:33'),
+(29, 66202, 'Malas Ngoding', 'Bank', 'G', 'alfian000000@gmail.com', 'Screenshot from 2019-11-26 21-33-37.png', 'Belum Terverifikasi', '2019-11-30 19:14:48', '2019-11-30 19:14:48'),
+(30, 81113, 'Perusahaan X', 'Bank', 'hendry', 'px@gmail.com', 'Screenshot from 2019-11-26 21-23-22.png', 'terverifikasi', '2019-11-30 21:09:16', '2019-11-30 21:08:07'),
+(31, 93866, 'bank crud1', 'Bank', 'aga', 'asdasd@gmail.comas', '13743473_1740015109548510_466826736_n.jpg', 'Belum Terverifikasi', '2019-12-04 18:11:29', '2019-12-04 18:11:29'),
+(32, 81226, 'Djarum Mild!@@@!', 'Bank', 'henry sdsdfsdf213123123', 'jarum@gmail.com121', '13743473_1740015109548510_466826736_n.jpg', 'Belum Terverifikasi', '2019-12-04 18:21:15', '2019-12-04 18:21:15'),
+(33, 90360, 'Pedjuang Pendidikan', 'Bank', 'henry sdfsdff', 'haha@gmail.com', '13767449_1557761607866469_839943373_n.jpg', 'Belum Terverifikasi', '2019-12-04 18:23:05', '2019-12-04 18:23:05');
 
 -- --------------------------------------------------------
 
@@ -460,7 +488,7 @@ INSERT INTO `users` (`id`, `role`, `name`, `email`, `email_verified_at`, `passwo
 (10841, 'mahasiswa', 'as', 'alimpes12@gmail.com11', NULL, '$2y$10$jDIX2WNF1tLCvexDy.TW4eMDUDJhzwghCTpghMNe4ZTB.UdjRa6Mi', NULL, '2019-09-24 05:01:13', '2019-09-24 05:01:13'),
 (10855, 'mahasiswa', 'alfian ferdiansyah', 'ear@gmail.com', NULL, '$2y$10$dbTxzDMldnTeV50XhHJ5.e3TpOOs81BcHZLxwREBavQKFP84DNV8K', NULL, '2019-09-30 08:55:33', '2019-09-30 08:55:33'),
 (11060, 'mahasiswa', 'henry', 'henry@gmail.com', NULL, '$2y$10$1mrHSnU/njbKu.SD3pPHne1fsiMxO.D/vqefisW08W/daXKodFXka', NULL, '2019-09-27 08:22:26', '2019-09-27 08:22:26'),
-(11172, 'mahasiswa', 'Izul Fikri', 'izzulfikri@gmail.com', NULL, '$2y$10$jahFjgoyyYO8lIFV2dABO.C81p5clYu.kWwYhsrfTk1Mgd7lfUGH2', NULL, '2019-11-14 18:54:18', '2019-11-14 18:54:18'),
+(11172, 'mahasiswa', 'Izul Fikri', 'izzulfikri@gmail.com', NULL, '$2y$10$DPeDTXLco13q1/5MVVZ4v.y0Z97atCXoAkLnkP7EhE7ZLRKqrsWJG', NULL, '2019-11-14 18:54:18', '2019-11-14 18:54:18'),
 (12001, 'mahasiswa', 'Henry Kristiano', 'hkristiano@gmail.com', NULL, '$2y$10$j0usFWtKe6cTP.a2ZPC7YOINWy3bUZVuUMsqRzk7Puty0rR3uexmK', NULL, '2019-09-30 17:46:12', '2019-09-30 17:46:12'),
 (12107, 'mahasiswa', 'test', 'alfian000000111@gmail.com', NULL, '$2y$10$wSYKPQOWb1APuO7CqIwFYuuBFPcMA0fOsdt3H2WC6Cz0/ub5yOGvW', NULL, '2019-09-17 09:25:02', '2019-09-17 09:25:02'),
 (12262, 'mahasiswa', 'nur dwi sofiana', 's12@gmail.com', NULL, '$2y$10$p1HIwWMcdSieDqbA0DE9OOB4J7evzEKkVF/fxjm1aMhgW0WAAgfFC', NULL, '2019-11-05 09:10:30', '2019-11-05 09:10:30'),
@@ -475,15 +503,19 @@ INSERT INTO `users` (`id`, `role`, `name`, `email`, `email_verified_at`, `passwo
 (14400, 'mahasiswa', 'aga123', 'ariza@gmail.com', NULL, '$2y$10$ZaFqABQNH0l2rHN0N/xkG.G60SN0cYd5Rs7YLu6IpnPMpDL9w86RC', NULL, '2019-11-06 06:14:00', '2019-11-06 06:14:00'),
 (14482, 'mahasiswa', 'Arizha Izul', 'izzzzul@gmail.com', NULL, '$2y$10$W6C6lFoCDxkEq.GZ5lbQleM9Gy4bQmBcPozEh8P4Rv31ibfDfTfqS', NULL, '2019-11-09 00:25:00', '2019-11-09 00:25:00'),
 (14717, 'mahasiswa', 'Kufra', 'Kufra@gmail.com', NULL, '$2y$10$PJTAz9jfRBNeHH0Zg2Qn9eG1epp/tGGgwkB.9BmqIJqzHH6mxPuFK', NULL, '2019-11-18 21:25:41', '2019-11-18 21:25:41'),
+(14760, 'mahasiswa', 'Muhammad Asif', 'asif@gmail.com', NULL, '$2y$10$8KFSyNg2laZqsTpOzHWPz.w3DBeXowXLjwMgwWIHg8e5wE8It5PcS', NULL, '2019-12-07 18:30:48', '2019-12-07 18:30:48'),
 (15125, 'mahasiswa', 'Aga', 'Aga@gmail.com', NULL, '$2y$10$UKHh5rS.byebGHrolJ48..uYCa5TKgxGSjX20qTWenL1xzkThBadS', NULL, '2019-09-27 09:39:54', '2019-09-27 09:39:54'),
 (15170, 'mahasiswa', 'asdasd', 'er@gmail.acom', NULL, '$2y$10$/ngHtgnNpUjubKdEQNfuCuWk2sy0uNSOGACoduMJjEFkEeS/gRCmO', NULL, '2019-09-24 20:07:56', '2019-09-24 20:07:56'),
+(15213, 'mahasiswa', 'Titania Ayunda', 'tania@gmail.comas', NULL, '$2y$10$rNv87b2SFOsHdQcVqZ31X.d75BaBQ4bNGYXbYf1b7LshzSYbJufKa', NULL, '2019-12-09 21:13:25', '2019-12-09 21:13:25'),
 (15244, 'mahasiswa', 'Bima Saputra', 'asas1212122@gmail.com', NULL, '$2y$10$DxemBaKphMHjLhxb7Fiks.CO50UWPNqaJ9Jb7wRwz7O4AiWGIb9SG', NULL, '2019-11-05 09:11:49', '2019-11-05 09:11:49'),
 (15315, 'mahasiswa', 'tania', 'tania@gmail.com', NULL, '$2y$10$wNUWNMlbF3/ao8qOibCv8e7fnHrR6iaYPEgIb.mQ6gazImlkWycNG', NULL, '2019-09-06 08:17:45', '2019-09-06 08:17:45'),
 (15391, 'mahasiswa', 'Taufik Rahman', 'tr@gmail.com', NULL, '$2y$10$7T4LGNiBz9GiG7Iwp6Uqqe/Svp7opLRvs1ulzuOve/qB/le2cxCp.', NULL, '2019-11-04 17:23:41', '2019-11-04 17:23:41'),
 (15711, 'mahasiswa', 'asd', 'er@gmail.com', NULL, '$2y$10$CbcgPc2UEWcDORcfEnxCTeR3u1cUQXoh5ZEyVYRWwGplhwvTrFbJi', NULL, '2019-09-24 10:30:59', '2019-09-24 10:30:59'),
+(16314, 'mahasiswa', 'Arifu Fanny', 'arifu@gmail.com', NULL, '$2y$10$eE30rKPPoqsmSbFl7gD6VuE5f0YA8aKQzSlj1.tmGCzHNDyf4UiDe', NULL, '2019-12-03 09:43:03', '2019-12-03 09:43:03'),
 (16529, 'mahasiswa', 'Muhammad Alfian', 'al.fian12@gmail.com', NULL, '$2y$10$laVIYk3/QJV.WhoeaRm3uOXzFgCQwGuZinPQRuC5l3WgcHw/yW93O', NULL, '2019-11-04 03:55:55', '2019-11-04 03:55:55'),
 (16631, 'mahasiswa', 'terimalah', 'aw@gmail.com', NULL, '$2y$10$Mx9mpb9WHJeMUVX7DW2LNuSUQzfJYnXT0Wf/QZyetdRUeoIo2Inh2', NULL, '2019-09-16 18:58:09', '2019-09-16 18:58:09'),
 (16996, 'mahasiswa', 'as', 'asdasd@gmai.com', NULL, '$2y$10$vTlqqIJN1c8A1ThtYG9H5ehAjcrgL7Yhu6W3XUwmo3rOAQpqMY8xO', NULL, '2019-09-24 04:38:48', '2019-09-24 04:38:48'),
+(17785, 'mahasiswa', 'alfian F', 'aaalll@gmail.com', NULL, '$2y$10$yH7AqQxaWANriJp8j6rOle/rRevmwsikO5gjvJGSEtOtpiTKghxpu', NULL, '2019-11-30 21:18:07', '2019-11-30 21:18:07'),
 (17922, 'mahasiswa', 'ijul', 'zzzz@gmail.com', NULL, '$2y$10$yZHnWYYfIzmi51ctPVkGkO2BUdzNbTnn59tPd71Nxp3tIB0jgRx2y', NULL, '2019-09-19 02:36:09', '2019-09-19 02:36:09'),
 (18230, 'mahasiswa', 'alfian', 'lol@gmail.com', NULL, '$2y$10$QgBU/l90zSWC4IAOg7hulurM6qluLazl7O8kEUPq5GvtDmUE9u.aC', NULL, '2019-10-17 18:32:16', '2019-10-17 18:32:16'),
 (18495, 'mahasiswa', 'taufik', 'taufik@gmail.com', NULL, '$2y$10$.Sj1aBrcZNAqoCs4jiZP1epaTfma114J1qYCV9UwEAY037qkTIBPq', NULL, '2019-09-30 03:32:06', '2019-09-30 03:32:06'),
@@ -503,13 +535,17 @@ INSERT INTO `users` (`id`, `role`, `name`, `email`, `email_verified_at`, `passwo
 (70704, 'perusahaan', 'Perusahaan Kerupuk', 'arizhajuli@gmail.com', NULL, '$2y$10$7HBy1o1O7TapylYHxt.NFuApoVnz7ChnHcaFTj0KYmoCrAGvrO7GW', NULL, '2019-11-04 07:47:05', '2019-11-04 07:47:05'),
 (72194, 'perusahaan', 'Perusahaan Z', 'agagx18@gmail.com', NULL, '$2y$10$t0FvYjWxpwhvTEyLP6t87uKfIsC.VMmrESYCEJ7LsCnqa7uSKk5vu', NULL, '2019-11-04 18:22:04', '2019-11-04 18:22:04'),
 (72420, 'perusahaan', 'Bank', 'p@gmail.com', NULL, '$2y$10$UBaak6bPRoXaZbIsbwhOr.GhwS8f7XmjArRH16O8r4AhxuWyC8fie', NULL, '2019-09-17 06:38:19', '2019-09-17 06:38:19'),
+(81113, 'perusahaan', 'Perusahaan X', 'px@gmail.com', NULL, '$2y$10$11FcyZcXrgFXBdy/C4JgEOV8VwS/z7kpNA4TOwqiz8vL0lWkbnaFi', NULL, '2019-11-30 21:08:08', '2019-11-30 21:08:08'),
+(81226, 'perusahaan', 'Djarum Mild!@@@!', 'jarum@gmail.com121', NULL, '$2y$10$qnZWv0SO8XbpnmcEGHTViO/B5XQ4JtIXstra6ioEULow2AZ.KLIu6', NULL, '2019-12-04 18:21:16', '2019-12-04 18:21:16'),
 (83074, 'perusahaan', 'Perusahaan A', 'perusahaanA@gmail.com', NULL, '$2y$10$KDJDR33MIAaLy6Eo9RX4feYcHBC6.5YgLe58F7LZmiMF462BdXdA6', NULL, '2019-11-04 08:28:27', '2019-11-04 08:28:27'),
 (83286, 'perusahaan', 'Semen Holcim', 'h@gmail.com', NULL, '$2y$10$NqadedV7/p1XUjZSq.BFK.k0/5m3bbVds0z4spVId02KjohBbpfKy', NULL, '2019-09-17 09:35:29', '2019-09-17 09:35:29'),
 (84148, 'perusahaan', 'Djarum Mild', 'jarum11@gmail.com', NULL, '$2y$10$oNuTLvB0PNjEIzLKWrbkiubfIE9tMzAVTsDv.8XBP9bc5zYtvRaE6', NULL, '2019-09-17 09:35:29', '2019-09-17 09:35:29'),
 (86118, 'perusahaan', 'kopi', 'kopi@gmail.com', NULL, '$2y$10$VfpH2/3u1vLnUN/FF2v0v.7QbTqPmtWUjRMJ8zWgqS4Ul/K5oI8ma', NULL, '2019-09-19 02:45:07', '2019-09-19 02:45:07'),
+(90360, 'perusahaan', 'Pedjuang Pendidikan', 'haha@gmail.com', NULL, '$2y$10$fkVDGjfBBkMboQWrhwzU9e70rn3xXqxToXFOaJkYgqWgONapnRRPW', NULL, '2019-12-04 18:23:05', '2019-12-04 18:23:05'),
 (90816, 'perusahaan', 'Bca Mandiri', 'bca@gmail.com', NULL, '$2y$10$p00ri2.U5gSmh/jJk0A2reFbIL5ckXyghTlhxKkVrM6tbijcBWJ1i', NULL, '2019-09-07 08:47:24', '2019-09-07 08:47:24'),
 (91708, 'perusahaan', 'CONTOH', 'bni@gmail.com', NULL, '$2y$10$vfKiLxl5R0QN7eMhJv.ziuRFd1oyEHVAen1U5GCttXi8aMWhjlMw.', NULL, '2019-10-31 07:12:19', '2019-10-31 07:12:19'),
 (93409, 'perusahaan', 'Suryanaga', 'suryanaga@gmail.com', NULL, '$2y$10$UJl6Q.ybpZ2dVfxr6FLvqOfugCysncJZytfOF1acDXgCz0Fi0Gsdy', NULL, '2019-11-11 09:10:37', '2019-11-11 09:10:37'),
+(93866, 'perusahaan', 'bank crud1', 'asdasd@gmail.comas', NULL, '$2y$10$hFG5rf8EmZ89O2cqBathxe4mYS7xumH3Q/uDPllvN.wVXWFOKbEj2', NULL, '2019-12-04 18:11:29', '2019-12-04 18:11:29'),
 (99321, 'perusahaan', 'Djarum Super', 'jarum@gmail.com', NULL, '$2y$10$OAwZElmdUl0rO4Zq1BixruX8.Xov6wx4ae5UI.j97CL7S0hG6PRQS', NULL, '2019-09-07 03:50:29', '2019-09-07 03:50:29');
 
 --
@@ -613,7 +649,7 @@ ALTER TABLE `beasiswa`
 -- AUTO_INCREMENT for table `beasiswa_atribut`
 --
 ALTER TABLE `beasiswa_atribut`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7466;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9283;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -643,7 +679,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `perusahaan`
 --
 ALTER TABLE `perusahaan`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `prodi`
