@@ -32,7 +32,8 @@ class BeasiswaController extends Controller
         $now = date('Y-m-d H:i:s');
         $beasiswa = \App\Beasiswa::select('*')
             ->where('status','=','aktiv')
-            ->where('batas_akhir', '<', $now)            
+            ->where('batas_akhir', '<', $now)
+            ->orderByDesc('updated_at')            
             ->get();
         return view('beasiswa.duedate', compact('beasiswa','r','s','t'));
     }
@@ -90,6 +91,10 @@ class BeasiswaController extends Controller
             return redirect()->back()->with('gagal','Point minimal tidak bisa lebih dari 100');
         }else if ($request->minimal_point <= 1) {
             return redirect()->back()->with('gagal','Point minimal tidak bisa kurang dari 1');
+        }else if($request->right_text == ""){
+            return redirect()->back()->with('gagal','Right text harus terisi');
+        }else if($request->middle_text == ""){
+            return redirect()->back()->with('gagal','Middle text harus terisi');
         }else{
             $a1 = ($request->file('foto'))->getClientOriginalName();
             if ((strpos($a1, "jpg") || strpos($a1, "jpeg") || strpos($a1, "png") || strpos($a1, "docx"))===false) {
@@ -108,7 +113,7 @@ class BeasiswaController extends Controller
 
             'id' => mt_rand(1000,9999),
             'beasiswa_id' => $bea->id,
-            'foto' => $filenya,
+            'foto' => $nama_file,
             'right_text' => $request->right_text,
             'middle_text' => $request->middle_text,
         ]);
